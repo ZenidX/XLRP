@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZenidX/XLRP/issues"
   },
-  "homepage": "https://github.com/ZenidX/XLRP#readme"
+  "homepage": "https://github.com/ZenidX/XLRP#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.1"
+  }
 }
