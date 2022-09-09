@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJob</title>
+    <!--Normalización de css para navegadores-->
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="container-fluid">
+    <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg')">        
+    <header class="row border-bottom border-dark border-2">
+        <div class="col-8 offset-1 my-2"><img style="height: 77px;" src="https://play-lh.googleusercontent.com/vN386lH1wv8TJ-qVwcONj8WqQDrblPxsuC_4aCztQ9OHBWSPE9DDMte06we3yQJL0g" alt="MyJob"></div>
+        <div class="col-3">
+            <div class="row h-100">
+                <div class="col d-flex align-items-center justify-content-center h-100">
+                    <form action="">
+                        <button onclick="iniciar()" class="btn border border-2 btn-primary w-100">Iniciar sesión</button>
+                    </form>
+                </div>
+                <div class="col d-flex align-items-center justify-content-center h-100">
+                    <form action="">
+                        <button class="btn border border-2 btn-secondary w-100">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main style="height: 80vh" class="text-center d-flex align-items-center justify-content-center">
+            <form action="">
+                <select name="seleccionar" id="seleccionar">
+                    <option value="Cursos">Cursos</option>
+                    <option value="Actividades">Actividades</option>
+                    <option value="Servicios">Servicios</option>
+                </select>
+                <input type="text">
+            </form>
+    </main>
+    </div>
+    <footer class="row text-center border-top border-2 border-dark">
+        <a href="">Contacto</a> <br>
+        <a href="">Trabaja con nosotros</a> <br>
+        <a href="">Etc</a>
+    </footer>
+    <!--jQuery-->
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+    <!--Link al archivo js-->
+    <script src="./main.js"></script>
+    <!--Link a bootstrap-->
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
