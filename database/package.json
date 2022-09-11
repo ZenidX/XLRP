@@ -1,4 +1,22 @@
 {
+  "name": "xlrp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZenidX/XLRP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZenidX/XLRP/issues"
+  },
+  "homepage": "https://github.com/ZenidX/XLRP#readme",
   "dependencies": {
     "bootstrap": "^5.2.1"
   }
