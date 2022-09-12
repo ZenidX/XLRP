@@ -9,41 +9,95 @@
     <link rel="stylesheet" href="./normalize.css">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body class="container-fluid">
-    <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg')">        
-    <header class="row border-bottom border-dark border-2">
-        <div class="col-8 offset-1 my-2"><img style="height: 77px;" src="https://play-lh.googleusercontent.com/vN386lH1wv8TJ-qVwcONj8WqQDrblPxsuC_4aCztQ9OHBWSPE9DDMte06we3yQJL0g" alt="MyJob"></div>
+<body class="container-fluid">    
+        <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg');
+        background-repeat:no-repeat; 
+        background-position: fixed;
+        background-size: cover;
+        opacity:0.8;
+        position: absolute;
+        z-index: -1;
+        height: 95vh;
+        width:98.75vw;
+        left:0;"
+        >
+
+        </div>
+    <header class="row border-bottom border-dark border-2"
+    style="background-color:rgba(46, 127, 224, 0.4)">
+        <div class="col-8 offset-1 my-2">
+            <img style="height: 77px;" src="https://play-lh.googleusercontent.com/vN386lH1wv8TJ-qVwcONj8WqQDrblPxsuC_4aCztQ9OHBWSPE9DDMte06we3yQJL0g" alt="MyJob">
+        </div>
         <div class="col-3">
             <div class="row h-100">
                 <div class="col d-flex align-items-center justify-content-center h-100">
                     <form action="">
-                        <button onclick="iniciar()" class="btn border border-2 btn-primary w-100">Iniciar sesión</button>
+                        <button onclick="iniciar()" class="btn border border-2 btn-primary" style="width:10vw;">Iniciar sesión</button>
                     </form>
                 </div>
                 <div class="col d-flex align-items-center justify-content-center h-100">
                     <form action="">
-                        <button class="btn border border-2 btn-secondary w-100">Registrarse</button>
+                        <button class="btn border border-2 btn-secondary" style="width:10vw;">Registrarse</button>
                     </form>
                 </div>
             </div>
         </div>
     </header>
-    <main style="height: 80vh" class="text-center d-flex align-items-center justify-content-center">
-            <form action="">
+    <main style="height: 80vh" class="text-center">
+        <div
+        style="
+        background-color:rgba(117, 168, 230, 0.15);
+        position:absolute;
+        z-index:-2;
+        height:100%;
+        width:100%;
+        left:0;"
+        ></div>
+            <div class="row h-50 d-flex align-items-end">
+            <form action="" class="col">
                 <select name="seleccionar" id="seleccionar">
-                    <option value="Cursos">Cursos</option>
+                    <option value="Actividades">Elige una opción</option>
                     <option value="Actividades">Actividades</option>
+                    <option value="Cursos">Cursos</option>
                     <option value="Servicios">Servicios</option>
                 </select>
-                <input type="text">
+                <input type="search" id="search" oninput="buscar()">
             </form>
+            </div>
+            <div class="row h-50">
+                <div class="col" 
+                id="resultados"
+                style= "display:none;">
+                    Resultados relevantes
+                </div>
+            </div>
     </main>
-    </div>
-    <footer class="row text-center border-top border-2 border-dark">
-        <a href="">Contacto</a> <br>
-        <a href="">Trabaja con nosotros</a> <br>
-        <a href="">Etc</a>
-    </footer>
+
+    <ul class="row border-top border-2 border-dark"
+    style="
+    background-color:rgb(36, 98, 173)">
+        <li class="col-2 offset-2 list-group">
+            <strong>My Job</strong>
+            <a href="">Sobre nosotros</a>
+            <a href="">Política de empresa</a>
+            <a href="">Contacto</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Comunidad</strong>
+            <a href="">Servicios</a>
+            <a href="">Cursos</a>
+            <a href="">Actividades</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Trabaja con nosotros</strong>
+            <a href="">Envíanos tu CV</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Privacidad</strong>
+            <a href="">Aviso legal</a>
+            <a href="">Cookies</a>
+        </li>
+    </ul>
     <!--jQuery-->
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
