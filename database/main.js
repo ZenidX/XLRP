@@ -14,3 +14,13 @@ init.onclick = function iniciar() {
         interruptor = false;
     }
 };
+var boton_inicio = document.getElementById("exampleModalLabel");
+var boton_registro = document.getElementById("registrarselabel");
+
+boton_inicio.addEventListener("click", reseteo);
+boton_registro.addEventListener("click", reseteo);
+
+function reseteo(){
+    form.needs-validation;
+}
+
