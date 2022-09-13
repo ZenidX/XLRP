@@ -170,18 +170,15 @@
 })()
 </script>
 <script>
+   const iniBTN = document.getElementById("iniciar-sesion");
+   const forInicio = document.getElementById("formularioInicio");
+   iniBTN.addEventListener("click", limpiarFormulario);
+   const regBTN = document.getElementById("registro");
+   const forReg = document.getElementById("formularioRegistro");
+   regBTN.addEventListener("click", limpiarFormulario);
    function limpiarFormulario(){
-    document.getElementById("formularioInicio").reset();
-    document.getElementById("formularioRegistro").reset();
-    form.addEventListener('submit', event => {
-
-      if(form.checkValidity()){
-        event.preventDefault()
-        event.stopPropagation()
-      }
-      form.classList.remove('.needs-validation.was-validated')
-      form.classList.add('.needs.validation')
-    },false)
+    forInicio.reset();
+    forReg.reset();
     }
 </script>
 
