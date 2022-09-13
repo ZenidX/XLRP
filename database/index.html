@@ -8,28 +8,43 @@
     <link rel="stylesheet" href="./normalize.css">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body class="container-fluid">
-    <header class="row border-bottom border-dark border-2 pb-5" style="margin-top:5px;">
-        <div class="col-7 my-2"><img style="height: 77px;" src="https://play-lh.googleusercontent.com/vN386lH1wv8TJ-qVwcONj8WqQDrblPxsuC_4aCztQ9OHBWSPE9DDMte06we3yQJL0g" alt="MyJob"></div>
-        <div class="col-3">
-            <div class="row h-100">
+<body class="container-fluid p-0" style="width:100vw;">
+  <!-- Foto fondo -->
+  <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg');
+  background-repeat:no-repeat; 
+  background-position: fixed;
+  background-size: cover;
+  opacity:0.8;
+  position: absolute;
+  z-index: -1;
+  height: 100vh;
+  width:100vw;
+  left:0;"
+  >
+  </div>
+    <header class="row border-bottom border-dark border-2" style="background-color:#0000006e; width: 100.9vw;">
+      <div class="col-8 offset-1 my-2">
+          <img style="height: 77px;" src="https://play-lh.googleusercontent.com/vN386lH1wv8TJ-qVwcONj8WqQDrblPxsuC_4aCztQ9OHBWSPE9DDMte06we3yQJL0g" alt="MyJob">
+      </div>
+      <div class="col-3">
+          <div class="row h-100">
+              <div class="col d-flex align-items-center justify-content-center h-100">
+              <button type="button" id="iniciar-sesion" class="btn border border-2 btn-primary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Iniciar sesión</button>
+              </div>
                 <div class="col d-flex align-items-center justify-content-center h-100">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Iniciar sesión</button>
-                </div>
-                <div class="col d-flex align-items-center justify-content-center h-100">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">Registrarse</button>
+                    <button type="button" id="registro" class="btn border border-2 btn-secondary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">Registrarse</button>
                 </div>
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                 </div>
-                <div class="modal-body">
-                    <form class="needs-validation" novalidate>
+                <div style="font-weight: bold;" class="modal-body">
+                    <form id="formularioInicio" class="needs-validation" novalidate>
                         <div class="mb-3">
                           <label for="userId" class="form-label">Email</label>
                           <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
@@ -53,13 +68,13 @@
         </div>
         <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="registrarselabel">Registrarse</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                 </div>
-                <div class="modal-body">
-                    <form class="needs-validation" novalidate>
+                <div style="font-weight: bold;" class="modal-body">
+                    <form id="formularioRegistro" class="needs-validation" novalidate>
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
                           <input type="text" class="form-control" id="nombre" required>
@@ -93,6 +108,37 @@
             </div>
         </div>
     </header>
+    <main style="height:70vh; width: 98vw;"></main>
+    <!-- Footer -->
+    <ul class="row border-top border-2 border-dark m-0 p-0 text-black"
+    style="
+    background-color:rgb(207, 236, 127, 0.2) ;
+    width: 100vw;
+    height: 15vh;
+    font-size: 12px;
+    ">
+        <li class="col-2 offset-2 list-group">
+            <strong>My Job</strong>
+            <a href="" class="text-black text-decoration-none">Sobre nosotros</a>
+            <a href="" class="text-black text-decoration-none">Política de empresa</a>
+            <a href="" class="text-black text-decoration-none">Contacto</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Comunidad</strong>
+            <a href="" class="text-black text-decoration-none">Servicios</a>
+            <a href="" class="text-black text-decoration-none">Cursos</a>
+            <a href="" class="text-black text-decoration-none">Actividades</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Trabaja con nosotros</strong>
+            <a href="" class="text-black text-decoration-none">Envíanos tu CV</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Privacidad</strong>
+            <a href="" class="text-black text-decoration-none">Aviso legal</a>
+            <a href="" class="text-black text-decoration-none">Cookies</a>
+        </li>
+    </ul>
 <!--Link al archivo js-->
 <script src="./main.js"></script>
 <!--Link a bootstrap-->
@@ -103,7 +149,6 @@
 </script>
 <!-- VALIDAR FORMULARIO, RELLENAR CAMPOS-->
 <script>
-
     (() => {
   'use strict'
 
@@ -125,9 +170,38 @@
 })()
 </script>
 <script>
-    let boton_inicio = exampleModalLabel;
-    let boton_register = registrarselabel;
-    boton_inicio.addEventListener('submit', event => {form.classList.remove('.was-validated')},false);
+   function limpiarFormulario(){
+    document.getElementById("formularioInicio").reset();
+    document.getElementById("formularioRegistro").reset();
+    form.addEventListener('submit', event => {
+
+      if(form.checkValidity()){
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.remove('.needs-validation.was-validated')
+      form.classList.add('.needs.validation')
+    },false)
+    }
+</script>
+
+<script>
+  const iniciarSesionBTN =  document.getElementById("iniciar-sesion");
+  const formularioInicio = document.getElementById("formularioInicio");
+  iniciarSesionBTN.addEventListener("click", myFunction);
+  const registroBTN = document.getElementById("registro");
+  const formularioReg = document.getElementById("formularioRegistro");
+  registroBTN.addEventListener("click", myFunction);
+
+function myFunction() {
+  if(formularioInicio.classList.contains("was-validated")){
+    formularioInicio.classList.remove("was-validated");
+  }
+  if(formularioReg.classList.contains("was-validated")){
+    formularioReg.classList.remove("was-validated");
+  }
+
+}
 </script>
 </body>
 </html>
