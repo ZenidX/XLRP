@@ -1,0 +1,14 @@
+2022-09-08 10:33:45.136  INFO 1924 --- [restartedMain] SpringBoot.SpringBoot1Application        : Starting SpringBoot1Application using Java 11.0.16 on DESKTOP-V4P182J with PID 1924 (C:\Users\rusky\Desktop\ejerciciosFundacioEsplai\SpringBoot\SpringBoot-1\target\classes started by rusky in C:\Users\rusky\Desktop\ejerciciosFundacioEsplai\SpringBoot\SpringBoot-1)
+2022-09-08 10:33:45.136  INFO 1924 --- [restartedMain] SpringBoot.SpringBoot1Application        : No active profile set, falling back to 1 default profile: "default"
+2022-09-08 10:33:45.297  INFO 1924 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-08 10:33:45.298  INFO 1924 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-08 10:33:45.299  INFO 1924 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-08 10:33:45.317  INFO 1924 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-08 10:33:45.318  INFO 1924 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 179 ms
+2022-09-08 10:33:45.379  INFO 1924 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-08 10:33:45.387  INFO 1924 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-08 10:33:45.393  INFO 1924 --- [restartedMain] SpringBoot.SpringBoot1Application        : Started SpringBoot1Application in 0.289 seconds (JVM running for 248.576)
+2022-09-08 10:33:45.397  INFO 1924 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-09-08 10:33:45.398  INFO 1924 --- [restartedMain] SpringBoot.SpringBoot1Application        : Ejemplo de sintaxis
+2022-09-08 10:34:11.012  INFO 1924 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-09-08 10:34:11.105  INFO 1924 --- [Thread-11] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
