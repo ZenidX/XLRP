@@ -10,7 +10,7 @@ public class HomeController {
 	@GetMapping("/") 
 	public ModelAndView test() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/pagina1/index.html");
+		modelAndView.setViewName("buscador/index.html");
 		modelAndView.setStatus(HttpStatus.I_AM_A_TEAPOT); 		
 		return modelAndView;
 	}
@@ -18,7 +18,7 @@ public class HomeController {
 	@GetMapping("/1")
 	public ModelAndView D() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/pagina2/index.html");
+		modelAndView.setViewName("database/index.html");
 		return modelAndView;
 	}
 	@GetMapping("/2")
