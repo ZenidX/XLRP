@@ -12,20 +12,24 @@
     <!--Link a algunos estilos guapos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
-<body class="container-fluid p-0" style="background-size:cover; background-repeat: no-repeat;">    
+<body class="container-fluid p-0" style="background-size:cover; background-repeat: no-repeat; background-position: center;">    
     <!-- IMÁGEN DE FONDO SIN LA FUNCIÓN DE JS 
     <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg');
     background-repeat: no-repeat; background-position: fixed; background-size: cover; opacity: 0.8; position: absolute; z-index: -1; height: 95vh; width: 98.75vw; left:0;"></div> -->
-    <header class="container-fluid" style="  height: 90px; background: #0000006e;">
+    <header class="container-fluid" style="height: 90px; background: #0000006e;">
         <div class="inner-width">
-            <h1 class="logo">MyJob</h1>
+            <h1 class="logo">ActivityApp</h1>
             <i class="menu-toggle-btn fas fa-bars"></i>
             <nav class="navigation-menu">
                 <a href="#"><i class="fas fa-home home"></i>Inicio</a>
                 <a href="./index.html"> Buscador</a>
                 <a href="#"> Conocenos</a>
-                <a href="#" class="aj_btn"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</a>
-                <a href="#" class="aj_btn"> <i aria-hidden="true"></i>SING UP</a>
+                <form action="">
+                    <a href="#" class="aj_btn"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</a>
+                </form>
+                <form action="">
+                    <a href="#" class="aj_btn"> <i aria-hidden="true"></i>SING UP</a>
+                </form>
             </nav>
         </div>
     </header>
@@ -42,7 +46,7 @@
     </div> -->
     <main style="height: 80vh;" class="text-center container-fluid">
         <div class="h-100 w-100 d-flex align-items-center justify-content-center">
-            <div class="h-50 w-50" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+            <div class="h-50 w-50" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
                 <div class="h-100 w-100">
                     <form action="./resultados.html" method="get" class="col py-2">
                         <select name="seleccionar" id="seleccionar" onchange="cambiar()">
@@ -57,15 +61,15 @@
                         Destacadas
                     </div>
                     <div class="d-flex" style="height: 65%; width:100%;">
-                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue;"></div>
-                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue;"></div>
-                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue;"></div>
+                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);"></div>
+                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);"></div>
+                        <div class="m-2 d-flex h-100" style="width:33%; background-color:aliceblue; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);"></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <ul class="row border-top border-2 border-dark text-black container-fluid m-0" style="background-color:#CFEC7F ;">
+    <ul class="row border-top border-2 border-dark text-black container-fluid m-0" style="background-color:rgb(150, 126, 118) ;">
         <li class="col-2 offset-2 list-group">
             <strong>My Job</strong>
             <a href="" class="text-black text-decoration-none">Sobre nosotros</a>

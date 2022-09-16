@@ -10930,6 +10930,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@font-face {
+  font-family: "Ms Madi";
+  src: url("./fonts/MsMadi-Regular.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -10949,6 +10953,7 @@ header {
 }
 
 .logo {
+  font-family: "Ms Madi";
   float: left;
   padding: 27px 0;
   color: #fff;

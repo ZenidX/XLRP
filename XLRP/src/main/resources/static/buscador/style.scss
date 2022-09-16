@@ -1,5 +1,10 @@
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+@font-face {
+  font-family: 'Ms Madi';
+  src: url('./fonts/MsMadi-Regular.ttf');
+}
+
 
 *{
   margin: 0;
@@ -20,6 +25,7 @@ header{
 }
 
 .logo{
+  font-family: 'Ms Madi';
   float: left;
   padding: 27px 0;
   color: #fff;
