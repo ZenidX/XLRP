@@ -33,17 +33,90 @@
             </nav>
         </div>
     </header>
-    <!-- BOTONES DE INICIO DE SESION Y REGISTRO PARA LIGARLOS CON JS 
-        <div class="col d-flex align-items-center justify-content-center h-100">
-        <form action="">
-            <button onclick="iniciar()" class="btn border border-2 btn-primary" style="width:10vw;">Iniciar sesión</button>
-        </form>
-    </div>
-    <div class="col d-flex align-items-center justify-content-center h-100">
-        <form action="">
-            <button class="btn border border-2 btn-secondary" style="width:10vw;">Registrarse</button>
-        </form>
-    </div> -->
+        <!-- BOTONES DE INICIO DE SESION Y REGISTRO PARA LIGARLOS CON JS
+        <div class="col-3">
+            <div class="row h-100">
+                <div class="col d-flex align-items-center justify-content-center h-100">
+                <button type="button" id="iniciar-sesion" class="btn border border-2 btn-primary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Iniciar sesión</button>
+                </div>
+                  <div class="col d-flex align-items-center justify-content-center h-100">
+                      <button type="button" id="registro" class="btn border border-2 btn-secondary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">Registrarse</button>
+                  </div>
+              </div>
+          </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
+                  <div class="modal-header">
+                      <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                  </div>
+                  <div style="font-weight: bold;" class="modal-body">
+                      <form id="formularioInicio" class="needs-validation" novalidate>
+                          <div class="mb-3">
+                            <label for="userId" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
+                            <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="contraseña" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="contraseña" required>
+                            <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                          </div>
+                          <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="mantenerConectado">
+                            <label class="form-check-label" for="mantenerConectado">Mantenerme conectado</label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Entrar</button>
+                      </form>
+                      </div>
+                  </div>
+  
+              </div>
+          </div>
+          <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="registrarselabel">Registrarse</h5>
+                      <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                  </div>
+                  <div style="font-weight: bold;" class="modal-body">
+                      <form id="formularioRegistro" class="needs-validation" novalidate>
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                            <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="apellidos" class="form-label">Apellidos</label>
+                              <input type="text" class="form-control" id="apellidos" required>
+                              <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                          <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required>
+                            <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="emailRegister" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp" required>
+                              <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                          <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terminos" required>
+                            <label class="form-check-label" for="terminos">Aceptar términos y condiciones</label>
+                            <div class="invalid-feedback">Acceptar condiciones</div>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Regístrate</button>
+                      </form>
+                      </div>
+                  </div>
+  
+              </div>
+          </div>
+      </header>
+  -->
     <main style="height: 80vh;" class="text-center container-fluid">
         <div class="h-100 w-100 d-flex align-items-center justify-content-center">
             <div class="h-50 w-50" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
