@@ -11025,13 +11025,15 @@ button.aj_btn:hover {
   .navigation-menu {
     position: fixed;
     width: 100%;
-    max-width: 400px;
+    max-width: 220px;
     background: #172b4d;
     top: 90px;
     right: 0;
     display: none;
+    z-index: 1;
     padding: 20px 40px;
     box-sizing: border-box;
+    text-align: center;
   }
   .navigation-menu::before {
     content: "";
@@ -11042,7 +11044,11 @@ button.aj_btn:hover {
     top: -10px;
     right: 10px;
   }
-  .navigation-menu a {
+  .centrado {
+    display: flex;
+    justify-content: center;
+  }
+  .navigation-menu a, button {
     display: block;
     margin: 10px 0;
   }
