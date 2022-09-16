@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyJob</title>
+    <title>ActivityApp</title>
     <!--Normalización de css para navegadores-->
     <link rel="stylesheet" href="./normalize.css">
     <!--Linkeación al bootstrap-->
@@ -105,42 +105,46 @@
             </div>
         </div>
     </header>
-    <main style="height: 80vh;" class="d-flex container-fluid p-0">
-        <!-- <div class="w-75 text-center m-0 p-2" style="height:85%;">
-            <div class="h-100" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                <div>
-                    <form action="./resultados.html" method="get">
-                        <select name="seleccionar" id="seleccionar" onchange="cambiar()">
-                            <option value="Opción">Elige una opción</option>
-                            <option value="Actividades">Actividades</option>
-                            <option value="Cursos">Cursos</option>
-                            <option value="Servicios">Servicios</option>
-                        </select>
-                        <input type="search" id="search" oninput="buscar()" style="width: 75%;">
-                    </form> 
-                </div>
-                <div>
-                <p>Resultados relevantes</p>
-                </div>
+    <main style="height: 80vh;" class="container-fluid text-center">
+        <div class="row m-0 w-100" style="height:15%;">
+            <div class="col text-center m-0 p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                <form action="./resultados.html" method="get" class="h-100 d-flex justify-content-center align-items-center">
+                    <select name="seleccionar" id="seleccionar" onchange="cambiar()">
+                        <option value="Opción">Elige una opción</option>
+                        <option value="Actividades">Actividades</option>
+                        <option value="Cursos">Cursos</option>
+                        <option value="Servicios">Servicios</option>
+                    </select>
+                    <input type="search" id="search" oninput="buscar()" style="width: 75%;">
+                </form> 
             </div>
-        </div>-->
-        <nav class="w-25 text-center m-0 p-2" style="height: 85%;">
-            <div class="h-100" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                <h2 class="w-100 text-center">
-                    Filtros
-                </h2>
-                <p>Resultados</p>
-                <p>Distancia</p>
-                <p>Precio</p>
-            </div>
-        </nav>
-        <div class="w-75 text-center m-0 p-2" style="height:85%;">
-            <div class="h-100" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                <h2>Resultados</h2>
+        </div>
+        <div class="row" style="height: 81%;">
+            <nav class="col-2 text-center m-0 p-2">
+                <div class="h-100" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h2>Filtros</h2>
+                    <form action="">    
+                        <p>Resultados</p>
+                            <label for="Más relevantes">Más relevantes</label>
+                            <input type="radio" name="Más relevantes">
+                            <label for="Más baratos">Más baratos</label>
+                            <input type="radio" name="Más baratos">
+                        <p>Distancia</p>
+                        <p>Precio</p>
+                    </form>
+                </div>
+            </nav>
+            <div class="col text-center m-0 p-2">
+                <div class="h-100" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h2>Resultados</h2>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 1</div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 2</div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 3</div>
+                </div>
             </div>
         </div>
     </main>
-    <ul class="row container-fluid border-top border-2 border-dark m-0 text-black" style=" background-color:rgb(150, 126, 118) ;">
+    <ul class="row container-fluid border-top border-2 border-dark m-0 mt-2 text-black" style=" background-color:rgb(150, 126, 118) ;">
         <li class="col-2 offset-2 list-group">
             <strong>My Job</strong>
             <a href="" class="text-black text-decoration-none">Sobre nosotros</a>

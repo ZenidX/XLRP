@@ -10934,6 +10934,7 @@ textarea.form-control-lg {
   font-family: "Ms Madi";
   src: url("./fonts/MsMadi-Regular.ttf");
 }
+/* Estilo de barra de navegación */
 * {
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -11055,4 +11056,24 @@ button.aj_btn:hover {
   .navigation-menu.active {
     display: block;
   }
+}
+/* Barra de búsqueda */
+select {
+  border-radius: 12px;
+  margin-right: 5px;
+  border: 0;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+#search {
+  border: 0;
+  padding-left: 15px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
 }/*# sourceMappingURL=style.css.map */
