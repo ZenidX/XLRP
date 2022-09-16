@@ -16,7 +16,7 @@
     <!-- IMÁGEN DE FONDO SIN LA FUNCIÓN DE JS 
     <div style="background-image: url('https://images.ecestaticos.com/sURb1shD_023UNne1TMRhUvpUHs=/0x0:2121x1414/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F7fa%2F8e8%2Fdb9%2F7fa8e8db92b3b783a2aadefae8a57cec.jpg');
     background-repeat: no-repeat; background-position: fixed; background-size: cover; opacity: 0.8; position: absolute; z-index: -1; height: 95vh; width: 98.75vw; left:0;"></div> -->
-    <header class="container-fluid" style="height: 90px; background: #0000006e;">
+    <header class="container-fluid">
         <div class="inner-width">
             <h1 class="logo">ActivityApp</h1>
             <i class="menu-toggle-btn fas fa-bars"></i>
@@ -25,55 +25,47 @@
                 <a href="./index.html"> Buscador</a>
                 <a href="#"> Conocenos</a>
                 <form action="">
-                    <a href="#" class="aj_btn"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</a>
+                    <button type="button" id="iniciar-sesion" class="aj_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</button>
                 </form>
                 <form action="">
-                    <a href="#" class="aj_btn"> <i aria-hidden="true"></i>SING UP</a>
+                    <button type="button" id="registro" class="aj_btn" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">SIGN UP</button>
                 </form>
             </nav>
         </div>
     </header>
         <!-- BOTONES DE INICIO DE SESION Y REGISTRO PARA LIGARLOS CON JS
-        <div class="col-3">
-            <div class="row h-100">
-                <div class="col d-flex align-items-center justify-content-center h-100">
-                <button type="button" id="iniciar-sesion" class="btn border border-2 btn-primary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Iniciar sesión</button>
+        <button type="button" id="iniciar-sesion" class="btn border border-2 btn-primary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Iniciar sesión</button>
+        <button type="button" id="registro" class="btn border border-2 btn-secondary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">Registrarse</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                 </div>
-                  <div class="col d-flex align-items-center justify-content-center h-100">
-                      <button type="button" id="registro" class="btn border border-2 btn-secondary" style="width:10vw;" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">Registrarse</button>
-                  </div>
-              </div>
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
-                  <div class="modal-header">
-                      <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
-                  </div>
-                  <div style="font-weight: bold;" class="modal-body">
-                      <form id="formularioInicio" class="needs-validation" novalidate>
-                          <div class="mb-3">
+                <div style="font-weight: bold;" class="modal-body">
+                    <form id="formularioInicio" class="needs-validation" novalidate>
+                        <div class="mb-3">
                             <label for="userId" class="form-label">Email</label>
                             <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
                             <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                          </div>
-                          <div class="mb-3">
+                        </div>
+                        <div class="mb-3">
                             <label for="contraseña" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="contraseña" required>
                             <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                          </div>
-                          <div class="mb-3 form-check">
+                        </div>
+                        <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="mantenerConectado">
                             <label class="form-check-label" for="mantenerConectado">Mantenerme conectado</label>
-                          </div>
-                          <button type="submit" class="btn btn-primary">Entrar</button>
-                      </form>
-                      </div>
-                  </div>
-  
-              </div>
-          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
           <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div style="background-color: rgba(0, 0, 0, 0.1);" class="modal-content">
