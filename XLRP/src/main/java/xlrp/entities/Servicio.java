@@ -14,10 +14,15 @@ public class Servicio{
 	@Column(name="id_servicio")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id_servicio;
+	@Column(name="foto")
 	private String foto;
+	@Column(name="titulo")
 	private String titulo;
+	@Column(name="descripcion")
 	private String descripcion;
+	@Column(name="horario")
 	private String horario;
+	@Column(name="tarifa")
 	private String tarifa;
 	public Servicio(){}
 	public Servicio(

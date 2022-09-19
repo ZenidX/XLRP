@@ -9,18 +9,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="clientes")
-public class Cliente {
+public class Cliente{
 	@Id
 	@Column(name="id_cita")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id_cita;
+	@Column(name="id_cliente")
 	private long id_cliente;
+	@Column(name="id_servicio")
 	private long id_servicio;
+	@Column(name="hora")
 	private String hora;
+	@Column(name="direccion")
 	private String direccion;
+	@Column(name="municipio")
 	private String municipio;
+	@Column(name="cp")
 	private String cp;
-	private String comentarios;
+	@Column(name="comentario")
+	private String comentario;
 	public Cliente(){}
 	public Cliente(long id_cita, long id_cliente, long id_servicio, String hora, String direccion, String municipio,
 			String cp, String comentarios) {
@@ -32,7 +39,7 @@ public class Cliente {
 		this.direccion = direccion;
 		this.municipio = municipio;
 		this.cp = cp;
-		this.comentarios = comentarios;
+		this.comentario = comentarios;
 	}
 	public long getId_cita() {
 		return id_cita;
@@ -76,10 +83,10 @@ public class Cliente {
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
-	public String getComentarios() {
-		return comentarios;
+	public String getComentario() {
+		return comentario;
 	}
-	public void setComentarios(String comentarios) {
-		this.comentarios = comentarios;
+	public void setComentario(String comentarios) {
+		this.comentario = comentarios;
 	}
 }

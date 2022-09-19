@@ -14,16 +14,27 @@ public class Perfil{
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column(name="cuenta")
 	private String cuenta;
+	@Column(name="contraseña")
 	private String contraseña;
+	@Column(name="nombre")
 	private String nombre;
+	@Column(name="apellidos")
 	private String apellidos;
+	@Column(name="titulo")
 	private String titulo;
+	@Column(name="direccion")
 	private String direccion;
+	@Column(name="municipio")
 	private String municipio;
+	@Column(name="cp")
 	private String cp;
+	@Column(name="telefono")
 	private String telefono;
+	@Column(name="email")
 	private String email;
+	@Column(name="foto")
 	private String foto;
 	public Perfil(){}
 	public Perfil(String cuenta,String password,String nombre,String apellidos,String titulo,String direccion,String municipio,String cp,String telefono,String email,String foto){

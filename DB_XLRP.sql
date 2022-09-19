@@ -17,6 +17,11 @@ CREATE TABLE IF NOT EXISTS perfiles(
     email 		VARCHAR(100),
     foto 		VARCHAR(255)
 );
+INSERT INTO perfiles (id, cuenta, contraseña, nombre, apellidos, edad, titulo, municipio, cp, telefono, email, foto) VALUES
+  (1,"ZenidX",         "DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
+  (2,"ChocloMaravilla","DoomEternal","Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
+  (3,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
+  (4,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
 DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
 	id_servicio    	INT PRIMARY KEY NOT NULL,
@@ -28,6 +33,12 @@ CREATE TABLE IF NOT EXISTS servicios(
     tarifa 			VARCHAR(255),
 	FOREIGN KEY (id_profesional) REFERENCES db_xlrp.perfiles(id)
 );
+/*INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,horario, tarifa) VALUES
+  (1,"ZenidX",         "DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
+  (2,"ChocloMaravilla","DoomEternal","Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
+  (3,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
+  (4,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
+  */
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
 	id_cita     INT PRIMARY KEY,
@@ -37,10 +48,16 @@ CREATE TABLE IF NOT EXISTS clientes(
     direccion	VARCHAR(255),
     municipio	VARCHAR(255),
     cp 			VARCHAR(255),
-    comentarios VARCHAR(255),
+    comentario	VARCHAR(255),
     FOREIGN KEY (id_servicio) REFERENCES db_xlrp.servicios(id_servicio),
     FOREIGN KEY (id_cliente ) REFERENCES db_xlrp.perfiles(id)
 );
+/*INSERT INTO perfiles (id, cuenta, contraseña, nombre, apellidos, edad, titulo, municipio, cp, telefono, email, foto) VALUES
+  (1,"ZenidX",         "DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
+  (1,"ChocloMaravilla","DoomEternal","Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
+  (1,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
+  (1,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
+*/
 /*
 DROP TABLE IF EXISTS cursos;
 CREATE TABLE IF NOT EXISTS cursos(

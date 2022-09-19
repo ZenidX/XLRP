@@ -22,7 +22,7 @@ public class Controller {
 	private PerfilDAO perfilDAO;
 	@Autowired
 	private PerfilesService perfilesService;
-	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
+	@RequestMapping(value="/perfiles")
 	public ResponseEntity<List<Perfil>> getPerfiles(){
 		List<Perfil> perfiles = perfilesService.allPerfiles();
 		return ResponseEntity.ok(perfiles);
