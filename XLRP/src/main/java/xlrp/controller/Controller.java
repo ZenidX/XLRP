@@ -57,7 +57,7 @@ public class Controller {
 		return ResponseEntity.ok(servicios);
 	}
 	@GetMapping(value="{id_servicio}")
-	public ResponseEntity<Void> deleteServicio(@PathVariable("id_servicio") Long id_servicio){
+	public ResponseEntity<Void> readServicio(@PathVariable("id_servicio") Long id_servicio){
 		servicioDAO.deleteById(id_servicio);
 		return ResponseEntity.ok(null);
 	}
