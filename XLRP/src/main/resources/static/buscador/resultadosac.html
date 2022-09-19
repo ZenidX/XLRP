@@ -109,15 +109,15 @@
     <main style="height: 80vh;" class="container-fluid">
         <div class="row m-0 w-100" style="height:15%;">
             <div class="col text-center m-0 p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                <form action="./resultados.html" method="get" class="h-100 d-flex justify-content-center align-items-center">
+                <form id="form-search" action="./resultadosge.html" method="get" class="col py-2">
                     <select name="seleccionar" id="seleccionar" onchange="cambiar()">
                         <option value="Opción">Elige una opción</option>
                         <option value="Actividades">Actividades</option>
                         <option value="Cursos">Cursos</option>
                         <option value="Servicios">Servicios</option>
                     </select>
-                    <input type="search" id="search" oninput="buscar()" style="width: 75%;">
-                </form> 
+                    <input type="search" id="search" oninput="buscar()" style="width: 60%;">
+                </form>
             </div>
         </div>
         <div class="row" style="height: 81%;">
@@ -125,7 +125,7 @@
                 <div class="h-100" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
                     <h2 class="text-center">Filtros</h2>
                     <form style="margin-left:4%;" action="">    
-                        <p class="mb-0">Ordenar</p>
+                        <p class="mb-0 fw-bold">Ordenar</p>
                             <input type="radio" id="Destacados" name="ordenar" value="Destacados">
                             <label for="Destacados">Destacados</label><br>
                             <input type="radio" id="Precio bajo" name="ordenar" value="Precio bajo">
@@ -134,9 +134,9 @@
                             <label for="Precio alto">Precio más alto</label><br>
                             <input type="radio" id="Valoración" name="ordenar" value="Valoración">
                             <label for="Valoración">Mejor valorados</label>
-                        <p style="margin-top:4%;">Distancia</p>
+                        <p class="mb-0 fw-bold" style="margin-top:4%;">Distancia</p>
                             <label for="Distancia">Radio de búsqueda (km)</label>
-                            <input type="range" list="tickmarks">
+                            <input class="" type="range" list="tickmarks" id="Distancia">
                             <datalist id="tickmarks">
                                 <option value="0" label="0%"></option>
                                 <option value="10"></option>
@@ -156,9 +156,9 @@
             <div class="col text-center m-0 p-2">
                 <div class="h-100" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
                     <h2>Resultados</h2>
-                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 1</div>
-                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 2</div>
-                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;">Resultado 3</div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 1</a></div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 2</a></div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 3</a></div>
                 </div>
             </div>
         </div>

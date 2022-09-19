@@ -1,18 +1,26 @@
 /*FUNCIONES DE PRUEBA*/
-/* var resultados=document.getElementById("resultados");
-function buscar() {
+/* function buscar() {
     var search=document.getElementById("search").value;
     resultados.innerHTML=search;
-
 }
+*/
+/* Funcion que te lleva a una página u otra */
 function cambiar(){
     var select = document.getElementById('seleccionar');
     var valor = select.selectedIndex;
-    resultados.innerHTML=select.options[valor].text;
     if (select.options[valor].value=="Actividades"){
-        document.getElementById("search").value=select.options[valor].text
+        var formsearch = document.getElementById("form-search");
+        formsearch.setAttribute("action", "./resultadosac.html");
     }
-} */
+    if (select.options[valor].value=="Cursos"){
+        var formsearch = document.getElementById("form-search");
+        formsearch.setAttribute("action", "./resultadoscu.html");
+    }
+    if (select.options[valor].value=="Servicios"){
+        var formsearch = document.getElementById("form-search");
+        formsearch.setAttribute("action", "./resultadosse.html");
+    }
+}
 
 /* Menú de navegación con jQuery*/
 $(".menu-toggle-btn").click(function(){
