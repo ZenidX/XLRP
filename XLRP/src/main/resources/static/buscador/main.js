@@ -49,7 +49,7 @@ setInterval(nextBackground, 6000);
 
 header.css('background-image', backgrounds[0]);
 
-/* Funcionalidad del inicio sesión y registro TENGO QUE ADAPTARLA EN EL HTML A ESTO*/
+/* Funcionalidad de estilo del inicio sesión y registro*/
 var init = document.getElementById("init");
 var inicia = document.getElementById("iniciar");
 let interruptor = true;
@@ -71,3 +71,5 @@ boton_registro.addEventListener("click", reseteo);
 function reseteo(){
     form.needs-validation;
 }
+
+/* Funcionalidad del registro*/
