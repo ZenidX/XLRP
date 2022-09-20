@@ -35,7 +35,6 @@ public class Controller {
 		List<Perfil> perfiles = perfilesService.allPerfiles();
 		return ResponseEntity.ok(perfiles);
 	}
-	@RequestMapping(value="/Perfiles/delete=")
 	@GetMapping(value="{id}")
 	public ResponseEntity<Void> deletePerfil(@PathVariable("id") Long id){
 		perfilDAO.deleteById(id);
