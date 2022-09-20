@@ -18,4 +18,7 @@ public class ServiciosService {
 	public Long countAll() {
 		return servicioDAO.count();
 	}
+	public Servicio getUno() {
+		return servicioDAO.getReferenceById((long)1);
+	}
 }

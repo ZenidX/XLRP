@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import com.example.demo.entities.Servicio;
 import com.example.demo.service.PerfilesService;
 import com.example.demo.service.ServiciosService;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class Controller {
@@ -59,6 +60,11 @@ public class Controller {
 	public ResponseEntity<List<Servicio>> getServicios(){
 		List<Servicio> servicios=serviciosService.allServicios();
 		return ResponseEntity.ok(servicios);
+	}
+	@RequestMapping(value="/servicios/1",method=RequestMethod.GET)
+	public ResponseEntity<Servicio> getServicio(){
+		Servicio serv1=serviciosService.getUno();
+		return ResponseEntity.ok(serv1);
 	}
 	@GetMapping(value="{id_servicio}")
 	public ResponseEntity<Void> readServicio(@PathVariable("id_servicio") Long id_servicio){

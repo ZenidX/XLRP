@@ -34,12 +34,9 @@ CREATE TABLE IF NOT EXISTS servicios(
     tarifa 			VARCHAR(255),
 	FOREIGN KEY (id_profesional) REFERENCES db_xlrp.perfiles(id)
 );
-/*INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,horario, tarifa) VALUES
-  (1,"ZenidX",         "DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
-  (2,"ChocloMaravilla","DoomEternal","Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
-  (3,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
-  (4,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
-  */
+INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,horario, tarifa) VALUES
+  (1,2,"pollo mareao","Animador 3D 25cm", "Con fotoshop te hago lo que quieras","Hasta el amanecer","300€/hora+mamada");
+SELECT * FROM servicios;
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
 	id_cita     INT PRIMARY KEY,
