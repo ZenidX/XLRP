@@ -18,7 +18,15 @@ public class ServiciosService {
 	public Long countAll() {
 		return servicioDAO.count();
 	}
-	public Servicio getUno() {
-		return servicioDAO.getReferenceById((long)1);
+	public Servicio servicioPorId(long id_servicio) {
+		List<Servicio>servicios =  servicioDAO.findAll();
+		int i = 0;
+		while(id_servicio != servicios.get(i).getId_servicio()) {
+			i++;
+			if(i==servicios.size()) {
+				break;
+			}
+		}
+		return servicios.get(i);
 	}
 }
