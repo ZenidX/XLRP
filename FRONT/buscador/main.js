@@ -60,7 +60,7 @@ function reseteo(){
     form.needs-validation;
 }
 
-/* Funcionalidad del registro*/
+/* Funcionalidad del registro a través de JSON*/
 const nombre = document.getElementById("nombre");
 const apellidos = document.getElementById("apellidos");
 const password = document.getElementById("password");
@@ -70,6 +70,7 @@ console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
     const JSON = new FormData(formularioRegistro)
+    // Para ver que se haya creado el formData correctamente
     for (var pair of JSON.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
