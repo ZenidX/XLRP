@@ -45,16 +45,19 @@ public class Controller {
 		List<Servicio> servicios=serviciosService.allServicios();
 		return ResponseEntity.ok(servicios);
 	}
-	@RequestMapping(value="/servicios/1",method=RequestMethod.GET)
+	//###################### RUBEN
+	@RequestMapping(value="/servicios/",method=RequestMethod.GET)
 	public ResponseEntity<Servicio> getServicio(){
 		Servicio serv1=serviciosService.getUno();
 		return ResponseEntity.ok(serv1);
 	}
-	@RequestMapping(value="{id_servicio}",method=RequestMethod.GET)
-	public ResponseEntity<Void> deleteServicio(@PathVariable("id_servicio") Long id_servicio){
+	/*
+	@RequestMapping(value="/buscador/tipo={type}xkeyword={keyword}",method=RequestMethod.GET)
+	public ResponseEntity<Void> deleteServicio(@PathVariable String type,@PathVariable String keyword){
 		servicioDAO.deleteById(id_servicio);
 		return ResponseEntity.ok(null);
 	}
+	*/
 	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> deletePerfil(@PathVariable Long id){
 		perfilDAO.deleteById(id);
