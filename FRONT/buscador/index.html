@@ -72,7 +72,7 @@
                     <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                 </div>
                 <div style="font-weight: bold;" class="modal-body">
-                    <form id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(event, this)">
+                    <form action="http://localhost:8080/api/registrarse" id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(value, key)">
                         <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -85,12 +85,12 @@
                         </div>
                         <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="contraseña" required>
                         <div class="invalid-feedback">Rellenar los campos en blanco</div>
                         </div>
                         <div class="mb-3">
                             <label for="emailRegister" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailRegister" name="emailRegister" aria-describedby="emailHelp" required>
+                            <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
                             <div class="invalid-feedback">Rellenar los campos en blanco</div>
                         </div>
                         <div class="mb-3 form-check">

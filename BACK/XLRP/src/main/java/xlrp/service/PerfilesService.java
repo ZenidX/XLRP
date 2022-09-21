@@ -19,7 +19,7 @@ public class PerfilesService {
 		List<Perfil> perfiles=perfilDAO.findAll();
 		for(int i=0;i<perfiles.size();i++){
 			if(cuenta==(perfiles.get(i)).getCuenta()){
-				if(contraseña==(perfiles.get(i)).getPassword()){
+				if(contraseña==(perfiles.get(i)).getContraseña()){
 					autentification=true;
 				}
 			}

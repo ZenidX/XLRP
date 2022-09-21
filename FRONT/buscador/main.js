@@ -66,22 +66,22 @@ const apellidos = document.getElementById("apellidos");
 const password = document.getElementById("password");
 const emailRegister = document.getElementById("emailRegister");
 
-async function registrar(ev, data){
-    ev.preventDefault();
-    data = $(data).serialize();
-    const string = $('form').attr('action').split('/')[5];
-    if(string == 'registrar') action = 'POST';
-    const res = await fetch(`http://${ip}:${puerto}/api/pedidos/${string}`, {
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        method: `${action}`
-    }); 
-    const jsonData = await res.json();
-    return jsonData;
-}
-console.log(registrar())
+console.log(JSON)
+formularioRegistro.onsubmit = async (e) => {
+    e.preventDefault();
+    const JSON = new FormData(formularioRegistro)
+    for (var pair of JSON.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
+    let response = await fetch('http://localhost:8080/api/registrarse', {
+        method: 'POST',
+        body: JSON
+    });
+
+    let result = await response.json();
+
+    alert(result.message);
+};
 
 /* Llamar a servicios desde el buscador*/
 async function fetchJSON(url) {
