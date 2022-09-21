@@ -61,6 +61,41 @@ function reseteo(){
 }
 
 /* Funcionalidad del registro*/
+const nombre = document.getElementById("nombre");
+const apellidos = document.getElementById("apellidos");
+const password = document.getElementById("password");
+const emailRegister = document.getElementById("emailRegister");
+
+async function registrar(ev, data){
+    ev.preventDefault();
+    data = $(data).serialize();
+    const string = $('form').attr('action').split('/')[5];
+    if(string == 'registrar') action = 'POST';
+    const res = await fetch(`http://${ip}:${puerto}/api/pedidos/${string}`, {
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: `${action}`
+    }); 
+    const jsonData = await res.json();
+    return jsonData;
+}
+console.log(registrar())
+
+/* Llamar a servicios desde el buscador*/
+async function fetchJSON(url) {
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+    return jsonResponse;
+} 
+
+const url = 'http://localhost:8080/api/servicios'
+
+fetchJSON(url).then(json => {
+    document.getElementById("serdes").innerHTML = json[0].descripcion;
+    console.log("Adios");
+});
 
 /* Llamar API y json*/
 /*async function fetchJSON(url) {
@@ -83,18 +118,3 @@ function cambio() {
         console.log("se esta haciendo un cambio");
     });
 }*/
-
-/* Llamar a servicios desde el buscador*/
-async function fetchJSON(url) {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-} 
-
-const url = 'http://localhost:8080/api/servicios'
-
-fetchJSON(url).then(json => {
-    document.getElementById("serdes").innerHTML = json[0].descripcion;
-    console.log("Adios");
-});
-//Esto es un ejemlo de evento
