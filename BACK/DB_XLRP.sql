@@ -5,7 +5,6 @@ USE db_xlrp;
 DROP TABLE IF EXISTS perfiles;
 CREATE TABLE IF NOT EXISTS perfiles(
 	id INT PRIMARY KEY NOT NULL,
-    cuenta		VARCHAR(255),
     contraseña  VARCHAR(255),
     nombre 		VARCHAR(255),
     apellidos 	VARCHAR(255),
@@ -17,11 +16,11 @@ CREATE TABLE IF NOT EXISTS perfiles(
     email 		VARCHAR(100),
     foto 		VARCHAR(255)
 );
-INSERT INTO perfiles (id, cuenta, contraseña, nombre, apellidos, edad, titulo, municipio, cp, telefono, email, foto) VALUES
-  (1,"ZenidX","DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
-  (2,"ChocloMaravilla","1234","Ruben","Medina Martinez",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","ruskimartinez@gmail.com","URL_foto_ruben"),
-  (3,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
-  (4,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
+INSERT INTO perfiles (id, contraseña, nombre, apellidos, edad, titulo, municipio, cp, telefono, email, foto) VALUES
+  (1,"DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
+  (2,"1234","Ruben","Medina Martinez",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","ruskimartinez@gmail.com","URL_foto_ruben"),
+  (3,"DoomEternal","Luis","Martinez",24,"Matemático","Badalona", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
+  (4,"DoomEternal","Pol","Vela",24,"Policia","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
 SELECT * FROM perfiles;
 DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
@@ -35,7 +34,13 @@ CREATE TABLE IF NOT EXISTS servicios(
 	FOREIGN KEY (id_profesional) REFERENCES db_xlrp.perfiles(id)
 );
 INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,horario, tarifa) VALUES
-  (1,2,"pollo mareao","Animador 3D 25cm", "Con fotoshop te hago lo que quieras","Hasta el amanecer","300€/hora+mamada");
+  (1,1,"foto","Clases Particulares de Matemáticas", "Son 5 años de experiencia motivando a chavales a no tenerle miedo a las matemáticas.","Hasta el amanecer","20€/hora"),
+  (2,3,"foto","Clases Particulares de Química",     "Te enseño a hacer caramelos azules","Hasta el amanecer","20€/hora"),
+  (3,2,"foto","Clases Particulares de Animación 3D","Con fotoshop te hago lo que quieras","Hasta el amanecer","20€/hora"),
+  (4,2,"foto","Edición Photoshop", "Con fotoshop te hago lo que quieras","Hasta el amanecer","100€/hora+mamada"),
+  (5,1,"foto","Examenes de Matemáticas", "Te hago tus examenes de asignaturas matematicas del grado","Hasta el amanecer","100€/hora sin presiones, 300€/hora preparado"),
+  (6,3,"foto","Ph piscinas", "Te mido el ph de la piscina","Hasta el amanecer","300€/hora+mamada"),
+  (7,4,"foto","policia gigolo", "Te doy duro con mi porra de cadete de la academia de polica","Hasta el amanecer","300€/hora+mamada");
 SELECT * FROM servicios;
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
@@ -50,13 +55,11 @@ CREATE TABLE IF NOT EXISTS clientes(
     FOREIGN KEY (id_servicio) REFERENCES db_xlrp.servicios(id_servicio),
     FOREIGN KEY (id_cliente ) REFERENCES db_xlrp.perfiles(id)
 );
-/*
-INSERT INTO perfiles (id, cuenta, contraseña, nombre, apellidos, edad, titulo, municipio, cp, telefono, email, foto) VALUES
-  (1,"ZenidX",         "DoomEternal","Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
-  (1,"ChocloMaravilla","DoomEternal","Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
-  (1,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
-  (1,"ZenidX","DoomEternal","Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
-*/
+INSERT INTO clientes (id_cita, id_cliente, id_servicio, hora, direccion, municipio, cp, comentario) VALUES
+  (1,1,1,"Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
+  (2,2,2,"Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
+  (3,3,3,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
+  (4,4,4,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
 /*
 DROP TABLE IF EXISTS cursos;
 CREATE TABLE IF NOT EXISTS cursos(
