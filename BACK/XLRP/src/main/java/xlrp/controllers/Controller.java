@@ -36,7 +36,7 @@ public class Controller {
 		return perfilesService.autentificacion(perfil_sesion);
 	}
 	@RequestMapping(value="/registrarse",method=RequestMethod.POST)
-	public Perfil registrarse(@RequestBody Perfil perfil_registro) {
+	public Perfil registrarse(@RequestBody Perfil perfil_registro){
 		return perfilesService.registro(perfil_registro);
 	}
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
@@ -49,11 +49,9 @@ public class Controller {
 		List<Servicio> servicios=serviciosService.allServicios();
 		return ResponseEntity.ok(servicios);
 	}
-	//###################### RUBEN
-	@RequestMapping(value="/servicios/",method=RequestMethod.GET)
-	public ResponseEntity<Servicio> getServicio(){
-		Servicio serv1=serviciosService.getUno();
-		return ResponseEntity.ok(serv1);
+	@RequestMapping(value="/servicios/{id_servicio}", method=RequestMethod.GET)
+	public ResponseEntity<Servicio> PeticionServicios(@PathVariable long id_servicio){
+		return ResponseEntity.ok(serviciosService.servicioPorId(id_servicio));
 	}
 	/*
 	@RequestMapping(value="/buscador/tipo={type}xkeyword={keyword}",method=RequestMethod.GET)

@@ -19,7 +19,7 @@ public class PerfilesService {
 		List<Perfil> perfiles=perfilDAO.findAll();
 		for(int i=0;i<perfiles.size();i++){
 			if(cuenta==(perfiles.get(i)).getCuenta()){
-				if(contraseña==(perfiles.get(i)).getPassword()){
+				if(contraseña==(perfiles.get(i)).getContraseña()){
 					autentification=true;
 				}
 			}
@@ -37,7 +37,7 @@ public class PerfilesService {
 		perfilDAO.saveAndFlush(perfil_registro);
 		List<Perfil> perfiles=perfilDAO.findAll();
 		int i=0;
-		while(i<perfiles.size()) {
+		while(i<perfiles.size()){
 			if(perfil_registro.getCuenta()==perfiles.get(i).getCuenta()){
 				if(perfil_registro.getContraseña()==perfiles.get(i).getContraseña()) {
 					break;
