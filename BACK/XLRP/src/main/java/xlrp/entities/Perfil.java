@@ -24,8 +24,8 @@ public class Perfil{
 	private String apellidos;
 	@Column(name="titulo")
 	private String titulo;
-	@Column(name="direccion")
-	private String direccion;
+	//@Column(name="direccion")
+	//private String direccion;
 	@Column(name="municipio")
 	private String municipio;
 	@Column(name="cp")
@@ -37,13 +37,13 @@ public class Perfil{
 	@Column(name="foto")
 	private String foto;
 	public Perfil(){}
-	public Perfil(String cuenta,String password,String nombre,String apellidos,String titulo,String direccion,String municipio,String cp,String telefono,String email,String foto){
+	public Perfil(String cuenta,String password,String nombre,String apellidos,String titulo,String municipio,String cp,String telefono,String email,String foto){
 		this.cuenta=cuenta;
 		this.contraseña=password;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
 		this.titulo=titulo;
-		this.direccion=direccion;
+		//this.direccion=direccion;
 		this.municipio=municipio;
 		this.cp=cp;
 		this.telefono=telefono;
@@ -86,12 +86,12 @@ public class Perfil{
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getDireccion() {
+	/*public String getDireccion() {
 		return direccion;
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
+	}*/
 	public String getMunicipio() {
 		return municipio;
 	}
