@@ -36,8 +36,8 @@ public class Controller {
 		return perfilesService.autentificacion(perfil_sesion);
 	}
 	@RequestMapping(value="/registrarse",method=RequestMethod.POST)
-	public Perfil registrarse(@RequestBody Perfil perfil_registro){
-		return perfilesService.registro(perfil_registro);
+	public ResponseEntity<Perfil> registrarse(@RequestBody Perfil perfil_registro){
+		return ResponseEntity.ok(perfilesService.registro(perfil_registro));
 	}
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
 	public ResponseEntity<List<Perfil>> getPerfiles(){
