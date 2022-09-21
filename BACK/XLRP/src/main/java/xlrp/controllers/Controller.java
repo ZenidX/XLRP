@@ -35,6 +35,10 @@ public class Controller {
 	public boolean iniciarSesion(@RequestBody Perfil perfil_sesion){
 		return perfilesService.autentificacion(perfil_sesion);
 	}
+	@RequestMapping(value="/registrarse",method=RequestMethod.POST)
+	public Perfil registrarse(@RequestBody Perfil perfil_registro) {
+		return perfilesService.registro(perfil_registro);
+	}
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
 	public ResponseEntity<List<Perfil>> getPerfiles(){
 		List<Perfil> perfiles = perfilesService.allPerfiles();

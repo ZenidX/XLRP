@@ -62,10 +62,10 @@ public class Perfil{
 	public String getCuenta() {
 		return this.cuenta;
 	}
-	public void setPassword(String contraseña) {
+	public void setContraseña(String contraseña) {
 		this.contraseña=contraseña;
 	}
-	public String getPassword() {
+	public String getContraseña() {
 		return this.contraseña;
 	}
 	public String getNombre() {

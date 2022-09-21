@@ -30,7 +30,21 @@ public class PerfilesService {
 		List<Perfil> perfiles=perfilDAO.findAll();
 		return perfiles;
 	}
-	public Long countAll() {
+	public Long countAll(){
 		return perfilDAO.count();
+	}
+	public Perfil registro(Perfil perfil_registro){
+		perfilDAO.saveAndFlush(perfil_registro);
+		List<Perfil> perfiles=perfilDAO.findAll();
+		int i=0;
+		while(i<perfiles.size()) {
+			if(perfil_registro.getCuenta()==perfiles.get(i).getCuenta()){
+				if(perfil_registro.getContraseña()==perfiles.get(i).getContraseña()) {
+					break;
+				}
+			}
+			i++;
+		}
+		return perfiles.get(i);
 	}
 }
