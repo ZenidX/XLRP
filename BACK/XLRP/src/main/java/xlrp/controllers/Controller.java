@@ -31,38 +31,50 @@ public class Controller {
 	private ClienteDAO clienteDAO;
 	@Autowired
 	private ClientesService clientesService;
+	
+	//End Point de Inicio de Sesión.------------------------------------------------------------->
 	@RequestMapping(value="/autentificacion",method=RequestMethod.POST)
 	public boolean iniciarSesion(@RequestBody Perfil perfil_sesion){
 		return perfilesService.autentificacion(perfil_sesion);
 	}
+	
+	//End Point de Registro.--------------------------------------------------------------------->
 	@RequestMapping(value="/registrarse",method=RequestMethod.POST)
 	public ResponseEntity<Perfil> registrarse1(@RequestBody Perfil perfil_registro){
 		return ResponseEntity.ok(perfilesService.registro(perfil_registro));
 	}
+	
+	//End Point de Todos los Perfiles.----------------------------------------------------------->
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
 	public ResponseEntity<List<Perfil>> getPerfiles(){
 		List<Perfil> perfiles = perfilesService.allPerfiles();
 		return ResponseEntity.ok(perfiles);
 	}
+	
+	//End Point de Todos los Servicios.---------------------------------------------------------->
 	@RequestMapping(value="/servicios",method=RequestMethod.GET)
 	public ResponseEntity<List<Servicio>> getAllServicios(){
 		List<Servicio> servicios=serviciosService.allServicios();
 		return ResponseEntity.ok(servicios);
 	}
+	
+	//End Point de Servicio por ID.-------------------------------------------------------------->
 	@RequestMapping(value="/servicios/{id_servicio}", method=RequestMethod.GET)
 	public ResponseEntity<Servicio> PeticionServicios(@PathVariable long id_servicio){
 		return ResponseEntity.ok(serviciosService.servicioPorId(id_servicio));
 	}
-	/*
-	@RequestMapping(value="/buscador/tipo={type}xkeyword={keyword}",method=RequestMethod.GET)
-	public ResponseEntity<Void> deleteServicio(@PathVariable String type,@PathVariable String keyword){
-		servicioDAO.deleteById(id_servicio);
-		return ResponseEntity.ok(null);
-	}
-	*/
+	
+	//End Point de Borrado de Perfiles.----------------------------------------------------------->
 	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> deletePerfil(@PathVariable Long id){
 		perfilDAO.deleteById(id);
 		return ResponseEntity.ok(null);
+	}
+	
+	//End Point de Buscador de Servicios por palabra clave.--------------------------------------->
+	@RequestMapping(value="/Servicio/Buscar/{Keyword}", method=RequestMethod.GET)
+	public ResponseEntity<Servicio> ServicioBuscador(@PathVariable String Keyword){
+		return ResponseEntity.ok(serviciosService.servicioKeyword(Keyword));
+		
 	}
 }
