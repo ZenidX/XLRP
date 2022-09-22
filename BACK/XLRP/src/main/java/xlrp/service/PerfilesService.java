@@ -39,7 +39,7 @@ public class PerfilesService {
 	}
 	public Perfil registro(Perfil perfil_registro){
 
-		LOGGER.info(perfil_registro.toString());
+		//LOGGER.info(perfil_registro.toString());
 		return perfil_registro;
 		/*
 		perfilDAO.saveAndFlush(perfil_registro);
