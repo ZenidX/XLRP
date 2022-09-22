@@ -29,4 +29,15 @@ public class ServiciosService {
 		}
 		return servicios.get(i);
 	}
+	public Servicio servicioKeyword(String Keyword) {
+		List<Servicio>serviciosKeyword = servicioDAO.findAll();
+		int i = 0;
+		while(Keyword != serviciosKeyword.get(i).getTitulo()) {
+			i++;
+			if(i==serviciosKeyword.size()) {
+				break;
+			}
+		}
+		return serviciosKeyword.get(i);
+	}
 }
