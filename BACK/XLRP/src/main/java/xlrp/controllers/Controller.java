@@ -31,50 +31,72 @@ public class Controller {
 	private ClienteDAO clienteDAO;
 	@Autowired
 	private ClientesService clientesService;
-	
-	//End Point de Inicio de Sesión.------------------------------------------------------------->
 	@RequestMapping(value="/autentificacion",method=RequestMethod.POST)
 	public boolean iniciarSesion(@RequestBody Perfil perfil_sesion){
 		return perfilesService.autentificacion(perfil_sesion);
 	}
-	
-	//End Point de Registro.--------------------------------------------------------------------->
-	@RequestMapping(value="/registrarse",method=RequestMethod.POST)
-	public ResponseEntity<Perfil> registrarse1(@RequestBody Perfil perfil_registro){
-		return ResponseEntity.ok(perfilesService.registro(perfil_registro));
-	}
-	
-	//End Point de Todos los Perfiles.----------------------------------------------------------->
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
-	public ResponseEntity<List<Perfil>> getPerfiles(){
-		List<Perfil> perfiles = perfilesService.allPerfiles();
-		return ResponseEntity.ok(perfiles);
+	public ResponseEntity<List<Perfil>> allPerfiles(){
+		return ResponseEntity.ok(perfilesService.allPerfiles());
 	}
-	
-	//End Point de Todos los Servicios.---------------------------------------------------------->
+	@RequestMapping(value="/perfiles/{id}")
+	public ResponseEntity<Perfil> getPerfil(@PathVariable long id){
+		return ResponseEntity.ok(perfilesService.perfilPorId(id));
+	}
+	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
+	public void deletePerfil(@PathVariable Long id){
+		perfilDAO.deleteById(id);
+	}
+	@RequestMapping(value="/perfil/registrar",method=RequestMethod.POST)
+	public ResponseEntity<Perfil> registrarse1(@RequestBody Perfil perfil_registro){
+		return ResponseEntity.ok(perfilesService.registrarPerfil(perfil_registro));
+	}
+	@RequestMapping(value="/perfiles/editar",method=RequestMethod.POST)
+	public ResponseEntity<Perfil> editarPerfil(@RequestBody Perfil perfil_editado){
+		return ResponseEntity.ok(perfilesService.editarPerfil(perfil_editado));
+	}
 	@RequestMapping(value="/servicios",method=RequestMethod.GET)
 	public ResponseEntity<List<Servicio>> getAllServicios(){
-		List<Servicio> servicios=serviciosService.allServicios();
-		return ResponseEntity.ok(servicios);
+		return ResponseEntity.ok(serviciosService.allServicios());
 	}
-	
-	//End Point de Servicio por ID.-------------------------------------------------------------->
 	@RequestMapping(value="/servicios/{id_servicio}", method=RequestMethod.GET)
 	public ResponseEntity<Servicio> PeticionServicios(@PathVariable long id_servicio){
 		return ResponseEntity.ok(serviciosService.servicioPorId(id_servicio));
 	}
-	
-	//End Point de Borrado de Perfiles.----------------------------------------------------------->
-	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Void> deletePerfil(@PathVariable Long id){
-		perfilDAO.deleteById(id);
-		return ResponseEntity.ok(null);
+	@RequestMapping(value="/servicios/{id_profesional}",method=RequestMethod.POST)
+	public ResponseEntity<List<Servicio>> servicioPorId_profesional(@PathVariable long id_profesional){
+		return ResponseEntity.ok(serviciosService.serviciosPorId_profesional(id_profesional));
 	}
-	
-	//End Point de Buscador de Servicios por palabra clave.--------------------------------------->
-	@RequestMapping(value="/Servicio/Buscar/{Keyword}", method=RequestMethod.GET)
-	public ResponseEntity<Servicio> ServicioBuscador(@PathVariable String Keyword){
-		return ResponseEntity.ok(serviciosService.servicioKeyword(Keyword));
-		
+	@RequestMapping(value="/servicio/delete/{id_servicio}",method=RequestMethod.DELETE)
+	public void eliminarServicio(@PathVariable long id_servicio){
+		servicioDAO.deleteById(id_servicio);
+	}
+	@RequestMapping(value="/servicios/registrar",method=RequestMethod.POST)
+	public ResponseEntity<Servicio> registrarServicio(@RequestBody Servicio servicio_registrado){
+		return ResponseEntity.ok(serviciosService.registrarServicio(servicio_registrado));
+	}
+	@RequestMapping(value="/servicios/editar",method=RequestMethod.POST)
+	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado){
+		return ResponseEntity.ok(serviciosService.editarServicio(servicio_editado));
+	}
+	@RequestMapping(value="/clientes",method=RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> getClientes(){
+		return ResponseEntity.ok(clientesService.allClientes());
+	}
+	@RequestMapping(value="/clientes/{id_cita}",method=RequestMethod.POST)
+	public ResponseEntity<Cliente> clientePorId(@PathVariable long id_cita){
+		return ResponseEntity.ok(clientesService.clientePorId_cita(id_cita));
+	}
+	@RequestMapping(value="/clientes/servicio/{id_servicio}",method=RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> clientesPorId_servicio(@PathVariable long id_servicio){
+		return ResponseEntity.ok(clientesService.clientesPorId_servicio(id_servicio));
+	}
+	@RequestMapping(value="/clientes/profesional/{id_profesional}",method=RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> clientesPorId_profesional(@PathVariable long id_profesional){
+		return ResponseEntity.ok(clientesService.clientesPorId_profesional(id_profesional));
+	}
+	@RequestMapping(value="/servicio/Buscar/{Keyword}", method=RequestMethod.GET)
+	public ResponseEntity<List<Servicio>> serviciosKeyword(@PathVariable String Keyword){
+		return ResponseEntity.ok(serviciosService.serviciosKeyword(Keyword));
 	}
 }

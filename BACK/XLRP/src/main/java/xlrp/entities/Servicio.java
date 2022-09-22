@@ -46,6 +46,12 @@ public class Servicio{
 	public void setId_servicio(long id_servicio) {
 		this.id_servicio = id_servicio;
 	}
+	public long getId_profesional() {
+		return this.id_profesional;
+	}
+	public void setId_profesional(long id_profesional) {
+		this.id_profesional=id_profesional;
+	}
 	public String getFoto() {
 		return foto;
 	}

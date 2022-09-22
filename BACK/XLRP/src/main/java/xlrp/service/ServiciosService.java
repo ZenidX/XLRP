@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xlrp.dao.ServicioDAO;
+import xlrp.entities.Perfil;
 import xlrp.entities.Servicio;
 
 @Service
@@ -19,25 +20,48 @@ public class ServiciosService {
 		return servicioDAO.count();
 	}
 	public Servicio servicioPorId(long id_servicio) {
-		List<Servicio>servicios =  servicioDAO.findAll();
-		int i = 0;
-		while(id_servicio != servicios.get(i).getId_servicio()) {
-			i++;
-			if(i==servicios.size()) {
-				break;
-			}
-		}
-		return servicios.get(i);
+		return servicioDAO.getReferenceById(id_servicio);
 	}
-	public Servicio servicioKeyword(String Keyword) {
-		List<Servicio>serviciosKeyword = servicioDAO.findAll();
-		int i = 0;
-		while(Keyword != serviciosKeyword.get(i).getTitulo()) {
-			i++;
-			if(i==serviciosKeyword.size()) {
-				break;
+	public List<Servicio> serviciosPorId_profesional(long id_profesional){
+		List<Servicio> all_servicios=servicioDAO.findAll();
+		List<Servicio> servicios_profesional=all_servicios;
+		servicios_profesional.clear();
+		for(int i=0;i<all_servicios.size();i++){
+			if(all_servicios.get(i).getId_profesional()==id_profesional){
+				servicios_profesional.add(all_servicios.get(i));
 			}
 		}
-		return serviciosKeyword.get(i);
+		return servicios_profesional;
+	}
+	public Servicio registrarServicio(Servicio servicio_registrado){
+		servicioDAO.save(servicio_registrado);
+		List<Servicio> servicios=servicioDAO.findAll();
+		int i=0;
+		while(i!=servicios.size()) {
+			if(servicio_registrado.getId_profesional()==servicios.get(i).getId_profesional()){
+				if(servicio_registrado.getTitulo()==servicios.get(i).getTitulo()){
+					break;
+				}
+			}
+			i++;
+		}
+		return servicios.get(i); 
+	}
+	public Servicio editarServicio(Servicio servicio_editado) {
+		servicioDAO.save(servicio_editado);
+		return servicioDAO.getReferenceById(servicio_editado.getId_servicio());
+	}
+	public List<Servicio> serviciosKeyword(String Keyword) {
+		List<Servicio> servicios=servicioDAO.findAll();
+		List<Servicio> servicios_encontrados=servicios;
+		servicios_encontrados.clear();
+		int i = 0;
+		while(i!=servicios.size()){
+			if(servicios.get(i).getTitulo().contains(Keyword)){
+				servicios_encontrados.add(servicios.get(i));
+			}
+			i++;
+		}
+		return servicios_encontrados;
 	}
 }
