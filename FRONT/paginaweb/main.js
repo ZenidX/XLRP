@@ -73,7 +73,8 @@ formularioRegistro.onsubmit = async (e) => {
     JSON[JSON.length-1]='}';
     let response = await fetch('http://localhost:8080/api/registrarse', {
         method: 'POST',
-        body: JSON
+        body: JSON,
+        headers: {"Content-type": "application/json; charset=UTF-8"}
     });
 
     let result = await response.json();

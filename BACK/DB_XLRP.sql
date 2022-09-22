@@ -55,11 +55,13 @@ CREATE TABLE IF NOT EXISTS clientes(
     FOREIGN KEY (id_servicio) REFERENCES db_xlrp.servicios(id_servicio),
     FOREIGN KEY (id_cliente ) REFERENCES db_xlrp.perfiles(id)
 );
+/*
 INSERT INTO clientes (id_cita, id_cliente, id_servicio, hora, direccion, municipio, cp, comentario) VALUES
   (1,1,1,"Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
   (2,2,2,"Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
   (3,3,3,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
   (4,4,4,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
+  */
 /*
 DROP TABLE IF EXISTS cursos;
 CREATE TABLE IF NOT EXISTS cursos(
