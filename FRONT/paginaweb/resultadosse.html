@@ -105,84 +105,86 @@
             </div>
         </div>
     </header>
-    <!--Servicio-->
+    <!--Resultados-->
     <main style="height: 80vh;" class="container-fluid">
-        <div class="row ms-0 w-100" style="height:35%; margin-bottom: 0.5%;">
-            <div class="col-3 h-100">
-                <div class="col h-100 text-center p-2"  style="overflow:hidden; backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                    <img src="./fotos/foto_creador.jfif" alt="foto creador" class="img-fluid" style="position:absolute; left:-100%; right:-100%; bottom:-100%; top:-100%; margin:auto; min-height:100%; min-width:100%;">
-                </div>
-            </div>
-            <div class="col-9">
-                <div class="col h-100 text-center p-2"  style="overflow:hidden; backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                    <img src="./fotos/foto_portada.jpg" alt="foto portada" class="img-fluid" style="position:absolute; left:-100%; right:-100%; bottom:-100%; top:-100%; margin:auto; min-height:100%; min-width:100%;">
-                </div>
+        <div class="row m-0 w-100" style="height:15%;">
+            <div class="col text-center m-0 p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                <form id="form-search" action="./resultadosge.html" method="get" class="col py-2">
+                    <select name="seleccionar" id="seleccionar" onchange="cambiar()">
+                        <option value="Opción">Elige una opción</option>
+                        <option value="Actividades">Actividades</option>
+                        <option value="Cursos">Cursos</option>
+                        <option value="Servicios">Servicios</option>
+                    </select>
+                    <input type="search" id="search" oninput="buscar()" style="width: 60%;">
+                </form>
             </div>
         </div>
-        <div class="row m-0 w-100" style="height: 61%;">
-            <div class="col-3">
-                <div class="col h-100 text-center p-2" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                    Rubén Medina Martínez <br> <br>
-                    · Animador 3D <br> <br>
-                    · 50 años de experiencia <br> <br>
-                    · Mínimo 125.000 euros la hora <br> <br>
-                    · Puedes ver mis proyectos en este <a href="https://www.linkedin.com/in/rub%C3%A9n-medina-mart%C3%ADnez/" target="_blank">link</a>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row" style="height: 49%; margin-bottom:1%;">
-                    <div class="col">
-                        <div id="serdes" class="col h-100 text-center p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                            Animación 3D de tu alma <br> <br>
-                            · Puedo animarte tu alma tu en 3D dependiendo de lo feo que seas <br> <br>
-                            · Hola
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="height: 49%;">
-                    <div class="col">
-                        <div class="col h-100 text-center p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                            · Tarifa: 126.000 por alma <br> <br>
-                            · Ubicación: Teletrabajo <br> <br>
-                            · Condiciones: No whatsapp
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-3">
-                <div class="col h-100 text-center p-2" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                    · Datos de contacto: 606606606 <br>
-                    choclomaravilla@gmail.com
-                    <form action="">
-                        <input type="date">
-                        <input type="text" placeholder="Comentario">
+        <div class="row" style="height: 81%;">
+            <nav class="col-2 m-0 p-2">
+                <div class="h-100" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h2 class="text-center">Filtros</h2>
+                    <form style="margin-left:4%;" action="">    
+                        <p class="mb-0 fw-bold">Ordenar</p>
+                            <input type="radio" id="Destacados" name="ordenar" value="Destacados">
+                            <label for="Destacados">Destacados</label><br>
+                            <input type="radio" id="Precio bajo" name="ordenar" value="Precio bajo">
+                            <label for="Precio bajo">Precio más bajo</label><br>
+                            <input type="radio" id="Precio alto" name="ordenar" value="Precio alto">
+                            <label for="Precio alto">Precio más alto</label><br>
+                            <input type="radio" id="Valoración" name="ordenar" value="Valoración">
+                            <label for="Valoración">Mejor valorados</label>
+                        <p class="mb-0 fw-bold" style="margin-top:4%;">Distancia</p>
+                            <label for="Distancia">Radio de búsqueda (km)</label>
+                            <input class="" type="range" list="tickmarks" id="Distancia">
+                            <datalist id="tickmarks">
+                                <option value="0" label="0%"></option>
+                                <option value="10"></option>
+                                <option value="20"></option>
+                                <option value="30"></option>
+                                <option value="40"></option>
+                                <option value="50"></option>
+                                <option value="60"></option>
+                                <option value="70"></option>
+                                <option value="80"></option>
+                                <option value="90"></option>
+                                <option value="100" label="100%"></option>
+                            </datalist>
                     </form>
+                </div>
+            </nav>
+            <div class="col text-center m-0 p-2">
+                <div class="h-100" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h2>Resultados</h2>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 1</a></div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 2</a></div>
+                    <div class="h-25 mx-3 mb-4" style="background-color:white; border-radius:12px;"><a href="./resultadoespecifico.html">Resultado 3</a></div>
                 </div>
             </div>
         </div>
     </main>
     <!--Footer-->
-    <ul class="row container-fluid border-top border-2 border-dark m-0 mt-2 text-black" style=" background-color:rgb(150, 126, 118) ;">
+    <ul class="row border-top border-2 border-dark text-black container-fluid m-0 mt-2" style="background-color:rgb(150, 126, 118) ;">
         <li class="col-2 offset-2 list-group">
             <strong>My Job</strong>
-            <a href="" class="text-black text-decoration-none">Sobre nosotros</a>
-            <a href="" class="text-black text-decoration-none">Política de empresa</a>
-            <a href="" class="text-black text-decoration-none">Contacto</a>
+            <a href="./index.html" class="text-black text-decoration-none">Inicio</a>
+            <a href="./buscador.html" class="text-black text-decoration-none">Buscador</a>
+            <a href="" class="text-black text-decoration-none">Conocenos</a>
         </li>
         <li class="col-2 list-group">
             <strong>Comunidad</strong>
-            <a href="" class="text-black text-decoration-none">Servicios</a>
-            <a href="" class="text-black text-decoration-none">Cursos</a>
-            <a href="" class="text-black text-decoration-none">Actividades</a>
+            <a href="./resultadosse.html" class="text-black text-decoration-none">Servicios</a>
+            <a href="./resultadoscu.html" class="text-black text-decoration-none">Cursos</a>
+            <a href="./resultadosac.html" class="text-black text-decoration-none">Actividades</a>
         </li>
         <li class="col-2 list-group">
-            <strong>Privacidad</strong>
-            <a href="" class="text-black text-decoration-none">Aviso legal</a>
-            <a href="" class="text-black text-decoration-none">Cookies</a>
+            <strong>Cuenta</strong>
+            <a href="./perfil.html" class="text-black text-decoration-none">Perfil</a>
+            <a href="" class="text-black text-decoration-none">Crear servicio</a>
         </li>
         <li class="col-2 list-group">
-            <strong>Trabaja con nosotros</strong>
-            <a href="" class="text-black text-decoration-none">Envíanos tu CV</a>
+            <strong>Contacto</strong>
+            <a href="" class="text-black text-decoration-none">Linktree</a>
         </li>
     </ul>
     <!--jQuery-->
