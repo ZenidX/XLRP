@@ -50,22 +50,9 @@ setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
 /* Funcionalidad de estilo del inicio sesión y registro*/
-var boton_inicio = document.getElementById("exampleModalLabel");
-var boton_registro = document.getElementById("registrarselabel");
 
-boton_inicio.addEventListener("click", reseteo);
-boton_registro.addEventListener("click", reseteo);
-
-function reseteo(){
-    form.needs-validation;
-}
 
 /* Funcionalidad del registro a través de JSON*/
-const nombre = document.getElementById("nombre");
-const apellidos = document.getElementById("apellidos");
-const password = document.getElementById("password");
-const emailRegister = document.getElementById("emailRegister");
-
 console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
