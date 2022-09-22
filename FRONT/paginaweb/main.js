@@ -53,20 +53,20 @@ header.css('background-image', backgrounds[0]);
 
 
 /* Funcionalidad del registro a través de JSON*/
-console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
-    const JSON = new FormData(formularioRegistro)
+    const JSON = (new FormData(formularioRegistro)).entries()
     // Para ver que se haya creado el formData correctamente
-    for (var pair of JSON.entries()) {
+    for (var pair of JSON) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
+    console.log(JSON)
     let response = await fetch('http://localhost:8080/api/registrarse', {
         method: 'POST',
         body: JSON
     });
 
-    let result = await response.json();
+    let result = response.then(response => response.json());
 
     alert(result.message);
 };
