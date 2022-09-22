@@ -50,23 +50,38 @@ setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
 /* Funcionalidad de estilo del inicio sesión y registro*/
+var boton_inicio = document.getElementById("exampleModalLabel");
+var boton_registro = document.getElementById("registrarselabel");
 
+boton_inicio.addEventListener("click", reseteo);
+boton_registro.addEventListener("click", reseteo);
+
+function reseteo(){
+    form.needs-validation;
+}
 
 /* Funcionalidad del registro a través de JSON*/
+const nombre = document.getElementById("nombre");
+const apellidos = document.getElementById("apellidos");
+const password = document.getElementById("password");
+const emailRegister = document.getElementById("emailRegister");
+
+console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
-    const JSON = (new FormData(formularioRegistro)).entries()
+    const pepito = (new FormData(formularioRegistro)).entries();
     // Para ver que se haya creado el formData correctamente
-    for (var pair of JSON) {
-        console.log(pair[0]+ ', ' + pair[1]); 
+    var JSON ='{';
+    for (var pair of pepito) {
+        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
     }
-    console.log(JSON)
+    JSON[JSON.length-1]='}';
     let response = await fetch('http://localhost:8080/api/registrarse', {
         method: 'POST',
         body: JSON
     });
 
-    let result = response.then(response => response.json());
+    let result = await response.json();
 
     alert(result.message);
 };
