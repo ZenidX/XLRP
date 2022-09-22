@@ -61,11 +61,6 @@ function reseteo(){
 }
 
 /* Funcionalidad del registro a través de JSON*/
-const nombre = document.getElementById("nombre");
-const apellidos = document.getElementById("apellidos");
-const password = document.getElementById("password");
-const emailRegister = document.getElementById("emailRegister");
-
 console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
