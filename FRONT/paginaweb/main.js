@@ -68,20 +68,20 @@ formularioRegistro.onsubmit = async (e) => {
     // Para ver que se haya creado el formData correctamente
     var JSON ='{';
     for (var pair of pepito) {
-        JSON=JSON+'"'+pair[0]+'"'+ ':' + '"'+pair[1]+'"'+',';
+        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
     }
-    JSON=JSON.substring(0, JSON.length-1)+'}';
     console.log(JSON);
+    JSON[JSON.length-1]='}';
     let response = await fetch('http://localhost:8080/api/registrarse', {
         method: 'POST',
         body: JSON,
         headers: {"Content-type": "application/json; charset=UTF-8"}
     });
-    
+
     let result = await response.json();
 
-    alert(result);
-}
+    alert(result.message);
+};
 
 /* Llamar a servicios desde el buscador*/
 async function fetchJSON(url) {
