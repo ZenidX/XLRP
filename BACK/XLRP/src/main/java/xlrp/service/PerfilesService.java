@@ -15,17 +15,19 @@ public class PerfilesService {
 	@Autowired
 	PerfilDAO perfilDAO;
 	public boolean autentificacion(Perfil perfil_sesion){
-		String cuenta     = perfil_sesion.getCuenta();
-		String contraseña = perfil_sesion.getCuenta();
 		boolean autentification=false;
 		List<Perfil> perfiles=perfilDAO.findAll();
-		for(int i=0;i<perfiles.size();i++){
-			if(cuenta==(perfiles.get(i)).getCuenta()){
-				if(contraseña==(perfiles.get(i)).getContraseña()){
-					autentification=true;
+		int i=0;
+		while(i!=perfiles.size()){
+			if(perfil_sesion.getEmail()==perfiles.get(i).getEmail()) {
+				if(perfil_sesion.getContraseña()==perfiles.get(i).getContraseña()) {
+					autentification = true;
+					break;
 				}
 			}
+			i++;
 		}
+
 		return autentification;
 	}
 	public List<Perfil> allPerfiles(){
