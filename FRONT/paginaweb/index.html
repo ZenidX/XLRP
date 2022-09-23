@@ -44,7 +44,7 @@
                               <div class="mb-3">
                                   <label for="userId" class="form-label">Email</label>
                                   <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                                  <div class="invalid-feedback">Entrada inválida</div>
                               </div>
                               <div class="mb-3">
                                   <label for="contraseña" class="form-label">Contraseña</label>
@@ -89,7 +89,7 @@
                               <div class="mb-3">
                                   <label for="emailRegister" class="form-label">Email</label>
                                   <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                                  <div class="invalid-feedback">Entrada inválida</div>
                               </div>
                               <div class="mb-3 form-check">
                                   <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
@@ -145,55 +145,5 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous">
     </script>
-
-<!-- VALIDAR FORMULARIO, RELLENAR CAMPOS-->
-<script>
-    (() => {
-  'use strict'
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-</script>
-<script>
-  const iniBTN = document.getElementById("iniciar-sesion");
-  const forInicio = document.getElementById("formularioInicio");
-  iniBTN.addEventListener("click", limpiarFormulario);
-  const regBTN = document.getElementById("registro");
-  const forReg = document.getElementById("formularioRegistro");
-  regBTN.addEventListener("click", limpiarFormulario);
-  function limpiarFormulario(){
-    forInicio.reset();
-    forReg.reset();
-    }
-</script>
-
-<script>
-  const iniciarSesionBTN =  document.getElementById("iniciar-sesion");
-  const formularioInicio = document.getElementById("formularioInicio");
-  iniciarSesionBTN.addEventListener("click", myFunction);
-  const registroBTN = document.getElementById("registro");
-  const formularioReg = document.getElementById("formularioRegistro");
-  registroBTN.addEventListener("click", myFunction);
-
-function myFunction() {
-  if(formularioInicio.classList.contains("was-validated")){
-    formularioInicio.classList.remove("was-validated");
-  }
-  if(formularioReg.classList.contains("was-validated")){
-    formularioReg.classList.remove("was-validated");
-  }
-
-}
-</script>
 </body>
 </html>

@@ -1,3 +1,42 @@
+/*Eventos de formularios de inicio de sesión y registro*/
+    /*Validación de formularios*/
+    (() => {'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+    /*Limpieza de inputs cuando se sale de los formularios*/
+    const iniBTN = document.getElementById("iniciar-sesion");
+    const forInicio = document.getElementById("formularioInicio");
+    iniBTN.addEventListener("click", limpiarFormulario);
+    const regBTN = document.getElementById("registro");
+    const forReg = document.getElementById("formularioRegistro");
+    regBTN.addEventListener("click", limpiarFormulario);
+    function limpiarFormulario(){
+        forInicio.reset();
+        forReg.reset();
+    }
+    /*Limpieza de validaciones cuando se sale de los formularios*/
+    iniBTN.addEventListener("click", myFunction);
+    regBTN.addEventListener("click", myFunction);
+    function myFunction() {
+        if(forInicio.classList.contains("was-validated")){
+            forInicio.classList.remove("was-validated");
+        }
+        if(forReg.classList.contains("was-validated")){
+            forReg.classList.remove("was-validated");
+        }
+    }
+
 /* Funcion que te lleva a una página u otra */
 function cambiar(){
     var select = document.getElementById('seleccionar');
@@ -24,23 +63,19 @@ $(".menu-toggle-btn").click(function(){
 
 /* Cambio de foto de fondo */
 var header = $('body');
-
 var backgrounds = new Array(
     'url(https://images2.alphacoders.com/238/238870.jpg)', 
     'url(https://www.gratistodo.com/wp-content/uploads/2022/08/Surf-fondos-de-pantalla-1.jpg)',
     'url(https://wallpaper.dog/large/20553364.jpg)',
     'url(https://wallpaperaccess.com/full/2491123.jpg)'
 );
-    
 var current = 0;
-
 function nextBackground() {
     current++;
     current = current % backgrounds.length;
     header.css('background-image', backgrounds[current]);
 }
 setInterval(nextBackground, 6000);
-
 header.css('background-image', backgrounds[0]);
 
 /* Funcionalidad del registro a través de JSON*/
@@ -72,9 +107,7 @@ async function fetchJSON(url) {
     const jsonResponse = await response.json();
     return jsonResponse;
 } 
-
 const url = 'http://localhost:8080/api/servicios'
-
 fetchJSON(url).then(json => {
     document.getElementById("serdes").innerHTML = json[0].descripcion;
     console.log("Adios");
