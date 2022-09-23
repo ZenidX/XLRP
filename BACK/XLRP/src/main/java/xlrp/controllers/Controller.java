@@ -1,6 +1,7 @@
 package xlrp.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +61,7 @@ public class Controller {
 		return ResponseEntity.ok(serviciosService.allServicios());
 	}
 	@RequestMapping(value="/servicios/{id_servicio}", method=RequestMethod.GET)
-	public ResponseEntity<Servicio> PeticionServicios(@PathVariable long id_servicio){
+	public ResponseEntity<Optional<Servicio>> PeticionServicios(@PathVariable long id_servicio){
 		return ResponseEntity.ok(serviciosService.servicioPorId(id_servicio));
 	}
 	@RequestMapping(value="/servicios/{id_profesional}",method=RequestMethod.POST)
