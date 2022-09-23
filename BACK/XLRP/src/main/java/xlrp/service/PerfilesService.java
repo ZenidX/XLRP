@@ -4,10 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xlrp.XLRPApplication;
 import xlrp.dao.PerfilDAO;
 import xlrp.entities.Perfil;
-import xlrp.entities.Servicio;
 
 
 @Service
