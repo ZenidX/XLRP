@@ -1,6 +1,8 @@
 package xlrp.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,8 @@ public class PerfilesService {
 		List<Perfil> perfiles=perfilDAO.findAll();
 		return perfiles;
 	}
-	public Perfil perfilPorId(long id) {;
-		return perfilDAO.getReferenceById(id);
+	public Optional<Perfil> perfilPorId(long id) {;
+		return perfilDAO.findById(id);
 	}
 	public Long countAll(){
 		return perfilDAO.count();

@@ -41,7 +41,7 @@ public class Controller {
 		return ResponseEntity.ok(perfilesService.allPerfiles());
 	}
 	@RequestMapping(value="/perfiles/{id}")
-	public ResponseEntity<Perfil> getPerfil(@PathVariable long id){
+	public ResponseEntity<Optional<Perfil>> getPerfil(@PathVariable long id){
 		return ResponseEntity.ok(perfilesService.perfilPorId(id));
 	}
 	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
@@ -85,7 +85,7 @@ public class Controller {
 		return ResponseEntity.ok(clientesService.allClientes());
 	}
 	@RequestMapping(value="/clientes/{id_cita}",method=RequestMethod.POST)
-	public ResponseEntity<Cliente> clientePorId(@PathVariable long id_cita){
+	public ResponseEntity<Optional<Cliente>> clientePorId(@PathVariable long id_cita){
 		return ResponseEntity.ok(clientesService.clientePorId_cita(id_cita));
 	}
 	@RequestMapping(value="/clientes/servicio/{id_servicio}",method=RequestMethod.GET)

@@ -1,6 +1,8 @@
 package xlrp.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xlrp.dao.ClienteDAO;
@@ -19,8 +21,8 @@ public class ClientesService {
 	public Long countAll() {
 		return clienteDAO.count();
 	}
-	public Cliente clientePorId_cita(long id_cita) {
-		return clienteDAO.getReferenceById(id_cita);
+	public Optional<Cliente> clientePorId_cita(long id_cita) {
+		return clienteDAO.findById(id_cita);
 	}
 	public List<Cliente> clientesPorId_servicio(long id_servicio){
 		List<Cliente> clientes=clienteDAO.findAll();
