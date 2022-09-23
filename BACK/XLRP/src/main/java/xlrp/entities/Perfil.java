@@ -14,8 +14,8 @@ public class Perfil{
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@Column(name="cuenta")
-	private String cuenta;
+	//@Column(name="cuenta")
+	//private String cuenta;
 	@Column(name="contraseña")
 	private String contraseña;
 	@Column(name="nombre")
@@ -37,8 +37,8 @@ public class Perfil{
 	@Column(name="foto")
 	private String foto;
 	public Perfil(){}
-	public Perfil(String cuenta,String password,String nombre,String apellidos,String titulo,String municipio,String cp,String telefono,String email,String foto){
-		this.cuenta=cuenta;
+	public Perfil(String password,String nombre,String apellidos,String titulo,String municipio,String cp,String telefono,String email,String foto){
+		//this.cuenta=cuenta;
 		this.contraseña=password;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
@@ -56,12 +56,12 @@ public class Perfil{
 	public void setId(long id) {
 		this.id = id;
 	}
-	public void setCuenta(String cuenta) {
+	/*public void setCuenta(String cuenta) {
 		this.cuenta=cuenta;
 	}
 	public String getCuenta() {
 		return this.cuenta;
-	}
+	}*/
 	public void setContraseña(String contraseña) {
 		this.contraseña=contraseña;
 	}
