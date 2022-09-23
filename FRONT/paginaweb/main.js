@@ -1,9 +1,3 @@
-/*FUNCIONES DE PRUEBA*/
-/* function buscar() {
-    var search=document.getElementById("search").value;
-    resultados.innerHTML=search;
-}
-*/
 /* Funcion que te lleva a una página u otra */
 function cambiar(){
     var select = document.getElementById('seleccionar');
@@ -48,17 +42,6 @@ function nextBackground() {
 setInterval(nextBackground, 6000);
 
 header.css('background-image', backgrounds[0]);
-
-/* Funcionalidad de estilo del inicio sesión y registro*/
-var boton_inicio = document.getElementById("exampleModalLabel");
-var boton_registro = document.getElementById("registrarselabel");
-
-boton_inicio.addEventListener("click", reseteo);
-boton_registro.addEventListener("click", reseteo);
-
-function reseteo(){
-    form.needs-validation;
-}
 
 /* Funcionalidad del registro a través de JSON*/
 console.log(JSON)
