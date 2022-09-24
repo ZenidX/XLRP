@@ -15,137 +15,137 @@
 <body class="container-fluid p-0" style="background-size:cover; background-repeat: no-repeat; background-position: center;">
     <!--Header con eventos de inicio y registro-->
     <header class="container-fluid">
-      <!--Barra de navegación-->
-          <div class="inner-width">
-              <h1 class="logo">ActivityApp</h1>
-              <i class="menu-toggle-btn fas fa-bars"></i>
-              <nav class="navigation-menu">
-                  <a href="./index.html"><i class="fas fa-home home"></i>Inicio</a>
-                  <a href="./buscador.html">Buscador</a>
-                  <a href="#">Conocenos</a>
-                  <form action="" class="centrado">
-                      <button type="button" id="iniciar-sesion" class="aj_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</button>
-                  </form>
-                  <form action="" class="centrado">
-                      <button type="button" id="registro" class="aj_btn" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">SIGN UP</button>
-                  </form>
-              </nav>
-          </div>
-          <!--Evento de inicio sesión-->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div style="background-color: rgb(183, 196, 207);" class="modal-content">
-                      <div class="modal-header">
-                          <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
-                      </div>
-                      <div style="font-weight: bold;" class="modal-body">
-                          <form id="formularioInicio" class="needs-validation" novalidate>
-                              <div class="mb-3">
-                                  <label for="userId" class="form-label">Email</label>
-                                  <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
-                                  <div class="invalid-feedback">Entrada inválida</div>
-                              </div>
-                              <div class="mb-3">
-                                  <label for="contraseña" class="form-label">Contraseña</label>
-                                  <input type="password" class="form-control" id="contraseña" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                              </div>
-                              <div class="mb-3 form-check">
-                                  <input type="checkbox" class="form-check-input" id="mantenerConectado">
-                                  <label class="form-check-label" for="mantenerConectado">Mantenerme conectado</label>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Entrar</button>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!--Evento de registro-->
-          <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div style="background-color: rgb(183, 196, 207);" class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="registrarselabel">Registrarse</h5>
-                          <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
-                      </div>
-                      <div style="font-weight: bold;" class="modal-body">
-                          <form action="http://localhost:8080/api/registrarse" id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(value, key)">
-                              <div class="mb-3">
-                                  <label for="nombre" class="form-label">Nombre</label>
-                                  <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                              </div>
-                              <div class="mb-3">
-                                  <label for="apellidos" class="form-label">Apellidos</label>
-                                  <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                              </div>
-                              <div class="mb-3">
-                                  <label for="password" class="form-label">Contraseña</label>
-                                  <input type="password" class="form-control" id="password" name="contraseña" required>
-                                  <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                              </div>
-                              <div class="mb-3">
-                                  <label for="emailRegister" class="form-label">Email</label>
-                                  <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
-                                  <div class="invalid-feedback">Entrada inválida</div>
-                              </div>
-                              <div class="mb-3 form-check">
-                                  <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
-                                  <label class="form-check-label" for="terminos">Aceptar términos y condiciones</label>
-                                  <div class="invalid-feedback">Acceptar condiciones</div>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Regístrate</button>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </header>
+        <!--Barra de navegación-->
+        <div class="inner-width">
+            <h1 class="logo">ActivityApp</h1>
+            <i class="menu-toggle-btn fas fa-bars"></i>
+            <nav class="navigation-menu">
+                <a href="./index.html"><i class="fas fa-home home"></i>Inicio</a>
+                <a href="./buscador.html">Buscador</a>
+                <a href="./conocenos.html">Conocenos</a>
+                <form action="" class="centrado">
+                    <button type="button" id="iniciar-sesion" class="aj_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</button>
+                </form>
+                <form action="" class="centrado">
+                    <button type="button" id="registro" class="aj_btn" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">SIGN UP</button>
+                </form>
+            </nav>
+        </div>
+        <!--Evento de inicio sesión-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div style="background-color: rgb(183, 196, 207);" class="modal-content">
+                    <div class="modal-header">
+                        <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                    </div>
+                    <div style="font-weight: bold;" class="modal-body">
+                        <form id="formularioInicio" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="userId" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
+                                <div class="invalid-feedback">Entrada inválida</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contraseña" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="contraseña" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="mantenerConectado">
+                                <label class="form-check-label" for="mantenerConectado">Mantenerme conectado</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Evento de registro-->
+        <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div style="background-color: rgb(183, 196, 207);" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrarselabel">Registrarse</h5>
+                        <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                    </div>
+                    <div style="font-weight: bold;" class="modal-body">
+                        <form action="http://localhost:8080/api/registrarse" id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(value, key)">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="contraseña" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailRegister" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
+                                <div class="invalid-feedback">Entrada inválida</div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
+                                <label class="form-check-label" for="terminos">Aceptar términos y condiciones</label>
+                                <div class="invalid-feedback">Acceptar condiciones</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Regístrate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <!--Presentación-->
     <main style="height: 80vh;" class="container-fluid">
-      <div class="h-100 w-100 d-flex justify-content-center">
+    <div class="h-100 w-100 d-flex justify-content-center">
         <div class="w-50 p-5" style="height:95%; backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-            <div class="row h-75 w-100">
-              <h3 class="col">Encuentra todos los servicios, actividades y cursos que siempre hayas deseado con ActivityApp</h3>
-              <p class="col">¿Cansado de buscar interminablemente por internet para encontrar un servicio que se ajuste a tus posibilidades? <br> ActivityApp es un portal que te permite encontrar 
+            <div class="row h-50 w-100">
+                <h3 class="col">Encuentra todos los servicios, actividades y cursos que siempre hayas deseado con ActivityApp</h3>
+                <p class="col">¿Cansado de buscar interminablemente por internet para encontrar un servicio que se ajuste a tus posibilidades? <br> ActivityApp es un portal que te permite encontrar 
                 los servicios, actividades y cursos que quieras, en el momento que quieras orientado para pequeños autónomos, freelancers y estudiantes. <br>
-                ¡Registrate <a href="#registrarse" data-bs-toggle="modal" data-bs-target="#registrarse">aquí</a> 
+                ¡Registrate <a href="#registrarse" data-bs-toggle="modal" data-bs-target="#registrarse" class="text-dark">aquí</a> 
                 para participar en un mundo lleno de intercambio de servicios de la forma que tú quieras!</p>
             </div>
-            <div class="row h-25 w-100 text-center">
-              <div class="col-4"><h5>Servicios</h5>Ofrece, intercambia o contrata servicios de mano de miles de profesionales</div>
-              <div class="col-4"><h5>Cursos</h5>Ofrece o apuntate a cursos ofrecidos por los mejores docentes</div>
-              <div class="col-4"><h5>Actividades</h5>Organiza o apuntate a las actividades más excitantes</div>
+            <div class="row h-50 w-100 text-center">
+                <div class="col-4"><img src="./fotos/Servicios.png" class="img-fluid" alt=""><h5>Servicios</h5>Ofrece, intercambia o contrata servicios de mano de miles de profesionales</div>
+                <div class="col-4"><img src="./fotos/Cursos.png" class="img-fluid" alt=""><h5>Cursos</h5>Ofrece o apuntate a cursos ofrecidos por los mejores docentes <h5 style="margin-top:13%;">¡Busca <a href="./buscador.html" class="text-dark">ahora!</a></h5></div>
+                <div class="col-4"><img src="./fotos/Actividades.png" class="img-fluid" alt=""><h5>Actividades</h5>Organiza o apuntate a las actividades más excitantes</div>
             </div>
         </div>
     </div>
     </main>
     <!-- Footer -->
     <ul class="row border-top border-2 border-dark text-black container-fluid m-0 mt-2" style="background-color:rgb(150, 126, 118);">
-      <li class="col-2 offset-2 list-group">
-          <strong>My Job</strong>
-          <a href="./index.html" class="text-black text-decoration-none">Inicio</a>
-          <a href="./buscador.html" class="text-black text-decoration-none">Buscador</a>
-          <a href="" class="text-black text-decoration-none">Conocenos</a>
-      </li>
-      <li class="col-2 list-group">
-          <strong>Comunidad</strong>
-          <a href="./resultadosse.html" class="text-black text-decoration-none">Servicios</a>
-          <a href="./resultadoscu.html" class="text-black text-decoration-none">Cursos</a>
-          <a href="./resultadosac.html" class="text-black text-decoration-none">Actividades</a>
-      </li>
-      <li class="col-2 list-group">
-          <strong>Cuenta</strong>
-          <a href="./perfil.html" class="text-black text-decoration-none">Perfil</a>
-          <a href="" class="text-black text-decoration-none">Crear servicio</a>
-      </li>
-      <li class="col-2 list-group">
-          <strong>Contacto</strong>
-          <a href="" class="text-black text-decoration-none">Linktree</a>
-      </li>
-  </ul>
+        <li class="col-2 offset-2 list-group">
+            <strong>My Job</strong>
+            <a href="./index.html" class="text-black text-decoration-none">Inicio</a>
+            <a href="./buscador.html" class="text-black text-decoration-none">Buscador</a>
+            <a href="./conocenos.html" class="text-black text-decoration-none">Conocenos</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Comunidad</strong>
+            <a href="./resultadosse.html" class="text-black text-decoration-none">Servicios</a>
+            <a href="./resultadoscu.html" class="text-black text-decoration-none">Cursos</a>
+            <a href="./resultadosac.html" class="text-black text-decoration-none">Actividades</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Cuenta</strong>
+            <a href="./perfil.html" class="text-black text-decoration-none">Perfil</a>
+            <a href="./creacion.html" class="text-black text-decoration-none">Crear servicio</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Contacto</strong>
+            <a href="https://linktr.ee/activityapp" target="_blank" class="text-black text-decoration-none">Linktree</a>
+        </li>
+    </ul>
     <!--jQuery-->
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
