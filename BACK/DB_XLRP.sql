@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS perfiles(
     foto 		VARCHAR(255),
     terminos	VARCHAR(255)
 );
-INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titulo, municipio, cp, telefono, foto) VALUES
+INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titular, municipio, cp, telefono, foto) VALUES
   (1,"Xavi", "Lara Moreno","zenid77@gmail.com","DoomEternal",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
   (2,"Ruben","Medina Martinez","ruskimartinez@gmail.com","1234",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","URL_foto_ruben"),
   (3,"Luis","Martinez","zenid77@gmail.com","DoomEternal",24,"Matemático","Badalona", "08195","656393148","URL_foto_luis"),
