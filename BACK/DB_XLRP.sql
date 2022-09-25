@@ -5,20 +5,20 @@ USE db_xlrp;
 DROP TABLE IF EXISTS perfiles;
 CREATE TABLE IF NOT EXISTS perfiles(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    email 		VARCHAR(100),
     contraseña  VARCHAR(255),
     nombre 		VARCHAR(255),
     apellidos 	VARCHAR(255),
     edad		INT,
-    titulo		VARCHAR(255),
+    titular		VARCHAR(255),
     municipio	VARCHAR(255),
     cp 			VARCHAR(10),
     telefono 	VARCHAR(16),
-    email 		VARCHAR(100),
     foto 		VARCHAR(255),
     terminos	VARCHAR(255)
 );
 INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titulo, municipio, cp, telefono, foto) VALUES
-  (1,"Xavi", "Lara Moreno","zenid77@gmail.com","DoomEternal",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
+  (1,"Xavi", "Lara Moreno","zenid77@gmail.com","DoomEternal",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
   (2,"Ruben","Medina Martinez","ruskimartinez@gmail.com","1234",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","URL_foto_ruben"),
   (3,"Luis","Martinez","zenid77@gmail.com","DoomEternal",24,"Matemático","Badalona", "08195","656393148","URL_foto_luis"),
   (4,"Pol","Vela","zenid77@gmail.com","DoomEternal",24,"Policia","Sant Cugat del Vallés", "08195","656393148","URL_foto_pol"),
@@ -58,24 +58,21 @@ CREATE TABLE IF NOT EXISTS clientes(
     FOREIGN KEY (id_servicio) REFERENCES db_xlrp.servicios(id_servicio),
     FOREIGN KEY (id_cliente ) REFERENCES db_xlrp.perfiles(id)
 );
-/*
 INSERT INTO clientes (id_cita, id_cliente, id_servicio, hora, direccion, municipio, cp, comentario) VALUES
-  (1,1,1,"Xavi", "Lara Moreno",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_xavi"),
-  (2,2,2,"Ruben","",           25,"Animador Gráfico","Cornella",              "08195","656393148","zenid77@gmail.com","URL_foto_ruben"),
-  (3,3,3,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_luis"),
-  (4,4,4,"Xavi","Lara Moreno",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","zenid77@gmail.com","URL_foto_pol");
-  */
-/*
+  (1,1,1,"10:00","Calle Sant Patricio 2","Badalona","08194","Lorem Ipsum"),
+  (2,2,2,"13:00","Calle Caps 160","Barcelona","01923","comentario"),
+  (3,3,3,"40:33","Carrer Angosta 4","ojete","666666","comentario");
+SELECT * FROM clientes;
 DROP TABLE IF EXISTS cursos;
 CREATE TABLE IF NOT EXISTS cursos(
-	id_curso    INT PRIMARY KEY NOT NULL,
+	id_curso    INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_profesor INT NOT NULL,
     titulo 		VARCHAR(255),
 	FOREIGN KEY (id_profesor) REFERENCES db_xlrp.perfiles(id)
 );
 DROP TABLE IF EXISTS alumnos;
 CREATE TABLE IF NOT EXISTS alumnos(
-	id_matricula INT PRIMARY KEY,
+	id_matricula INT PRIMARY KEY AUTO_INCREMENT,
 	id_alumno    INT NOT NULL,
     id_curso     INT NOT NULL,
     FOREIGN KEY (id_curso ) REFERENCES db_xlrp.cursos(id_curso),
@@ -83,18 +80,17 @@ CREATE TABLE IF NOT EXISTS alumnos(
 );
 DROP TABLE IF EXISTS actividades;
 CREATE TABLE IF NOT EXISTS actividades(
-	id_actividad INT PRIMARY KEY NOT NULL,
+	id_actividad INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_gestor    INT NOT NULL,
 	FOREIGN KEY (id_gestor) REFERENCES db_xlrp.perfiles(id)
 );
 DROP TABLE IF EXISTS participantes;
 CREATE TABLE IF NOT EXISTS participantes(
-	id_participacion	INT PRIMARY KEY,
+	id_participacion	INT PRIMARY KEY AUTO_INCREMENT,
 	id_participante 	INT NOT NULL,
     id_actividad		INT NOT NULL,
     nombre				VARCHAR(255),
     apellidos			VARCHAR(255),
     FOREIGN KEY (id_actividad)    REFERENCES db_xlrp.actividades(id_actividad),
     FOREIGN KEY (id_participante) REFERENCES db_xlrp.perfiles(id)
-);*/
-
+);

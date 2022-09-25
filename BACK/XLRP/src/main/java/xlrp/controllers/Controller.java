@@ -44,7 +44,7 @@ public class Controller {
 	public ResponseEntity<List<Perfil>> allPerfiles(){
 		return ResponseEntity.ok(perfilesService.allPerfiles());
 	}
-	@RequestMapping(value="/perfiles/{id}")
+	@RequestMapping(value="/perfiles/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Optional<Perfil>> getPerfil(@PathVariable long id){
 		return ResponseEntity.ok(perfilesService.perfilPorId(id));
 	}
@@ -68,7 +68,7 @@ public class Controller {
 	public ResponseEntity<List<Servicio>> servicioPorId_profesional(@PathVariable long id_profesional){
 		return ResponseEntity.ok(serviciosService.serviciosPorId_profesional(id_profesional));
 	}
-	@RequestMapping(value="/servicio/delete/{id_servicio}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/servicios/delete/{id_servicio}",method=RequestMethod.DELETE)
 	public void eliminarServicio(@PathVariable long id_servicio){
 		servicioDAO.deleteById(id_servicio);
 	}
