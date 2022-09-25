@@ -37,18 +37,18 @@ public class Perfil{
 	@Column(name="foto")
 	private String foto;
 	public Perfil(){}
-	public Perfil(String password,String nombre,String apellidos,String titulo,String municipio,String cp,String telefono,String email,String foto){
+	public Perfil(String password,String nombre,String apellidos,String titular,String municipio,String cp,String telefono,String email,String foto){
 		//this.cuenta=cuenta;
 		this.contraseña=password;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
-		this.titulo=titulo;
+		this.titular=titular;
 		//this.direccion=direccion;
 		this.municipio=municipio;
 		this.cp=cp;
 		this.telefono=telefono;
 		this.email=email;
-		this.foto=foto;		
+		this.foto=foto;
 	}
 	public long getId() {
 		return id;
