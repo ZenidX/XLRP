@@ -4,7 +4,7 @@ USE db_xlrp;
 
 DROP TABLE IF EXISTS perfiles;
 CREATE TABLE IF NOT EXISTS perfiles(
-	id INT PRIMARY KEY NOT NULL,
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     contraseña  VARCHAR(255),
     nombre 		VARCHAR(255),
     apellidos 	VARCHAR(255),
@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS perfiles(
     cp 			VARCHAR(10),
     telefono 	VARCHAR(16),
     email 		VARCHAR(100),
-    foto 		VARCHAR(255)
+    foto 		VARCHAR(255),
+    terminos	VARCHAR(255)
 );
 INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titulo, municipio, cp, telefono, foto) VALUES
   (1,"Xavi", "Lara Moreno","zenid77@gmail.com","DoomEternal",24,"Matemático",      "Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
@@ -25,7 +26,7 @@ INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titulo, m
 SELECT * FROM perfiles;
 DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
-	id_servicio    	INT PRIMARY KEY NOT NULL,
+	id_servicio    	INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_profesional 	INT NOT NULL,
     foto 			VARCHAR(255),
     titulo 			VARCHAR(100),
@@ -46,7 +47,7 @@ INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,ho
 SELECT * FROM servicios;
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
-	id_cita     INT PRIMARY KEY,
+	id_cita     INT PRIMARY KEY AUTO_INCREMENT,
 	id_cliente  INT NOT NULL,
     id_servicio INT NOT NULL,
     hora 		VARCHAR(255),
