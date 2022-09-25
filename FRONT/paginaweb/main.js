@@ -106,19 +106,17 @@ async function fetchJSON(url1) {
     const response = await fetch(url1);
     const jsonResponse = await response.json();
     return jsonResponse;
-} 
-var id_servicio=1;
+}
+var id_servicio=8;
 var url_servicios = 'http://localhost:8080/api/servicios/';
 var url_profesionales='http://localhost:8080/api/perfiles/';
 fetchJSON(url_servicios+id_servicio).then(json => {
+    console.log(json)
     document.getElementById("serdes").innerHTML = json.descripcion;
-    console.log("Hemos cambiado la descripcion con el json del servicio");
-    return json.id_profesional;
-}).then(id_profesional=>{
-    prof_json=fetchJSON(url_profesionales+id_profesional);
+    fetchJSON(url_profesionales+json.id_profesional).then(json_prof=>{
+    console.log(json_prof);
     document.getElementById("nombre_profesional").innerHTML = json_prof.nombre+' '+json_prof.apellidos;
-    console.log("Hemos cambiado el nombre y apellidos con el json del profesional que ponia en el json del servicio");
-})
+})})
 
 /* Llamar API y json*/
 /*async function fetchJSON(url) {
