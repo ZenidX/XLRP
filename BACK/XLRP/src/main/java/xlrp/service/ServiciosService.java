@@ -1,5 +1,6 @@
 package xlrp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +26,7 @@ public class ServiciosService {
 	}
 	public List<Servicio> serviciosPorId_profesional(long id_profesional){
 		List<Servicio> all_servicios=servicioDAO.findAll();
-		List<Servicio> servicios_profesional=all_servicios;
-		servicios_profesional.clear();
+		List<Servicio> servicios_profesional=new ArrayList<Servicio>();
 		for(int i=0;i<all_servicios.size();i++){
 			if(all_servicios.get(i).getId_profesional()==id_profesional){
 				servicios_profesional.add(all_servicios.get(i));
@@ -54,8 +54,7 @@ public class ServiciosService {
 	}
 	public List<Servicio> serviciosKeyword(String Keyword) {
 		List<Servicio> servicios=servicioDAO.findAll();
-		List<Servicio> servicios_encontrados=servicios;
-		servicios_encontrados.clear();
+		List<Servicio> servicios_encontrados=new ArrayList<Servicio>();
 		int i = 0;
 		while(i!=servicios.size()){
 			if(servicios.get(i).getTitulo().contains(Keyword)){

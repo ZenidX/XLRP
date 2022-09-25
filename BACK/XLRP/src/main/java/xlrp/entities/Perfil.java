@@ -22,8 +22,8 @@ public class Perfil{
 	private String nombre;
 	@Column(name="apellidos")
 	private String apellidos;
-	@Column(name="titulo")
-	private String titulo;
+	@Column(name="titular")
+	private String titular;
 	//@Column(name="direccion")
 	//private String direccion;
 	@Column(name="municipio")

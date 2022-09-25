@@ -28,6 +28,8 @@ public class Cliente{
 	private String cp;
 	@Column(name="comentario")
 	private String comentario;
+	@Column(name="terminos")
+	private String terminos;
 	public Cliente(){}
 	public Cliente(long id_cita, long id_cliente, long id_servicio, String hora, String direccion, String municipio,
 			String cp, String comentarios) {
@@ -88,5 +90,11 @@ public class Cliente{
 	}
 	public void setComentario(String comentarios) {
 		this.comentario = comentarios;
+	}
+	public String getTerminos() {
+		return this.terminos;
+	}
+	public void setTerminos(String terminos) {
+		this.terminos=terminos;
 	}
 }

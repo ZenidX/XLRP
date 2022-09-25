@@ -79,7 +79,6 @@ setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
 /* Funcionalidad del registro a través de JSON*/
-console.log(JSON)
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
     const pepito = (new FormData(formularioRegistro)).entries();
@@ -89,15 +88,16 @@ formularioRegistro.onsubmit = async (e) => {
         JSON=JSON+pair[0]+ ':' + pair[1]+','; 
     }
     console.log(JSON);
-    JSON[JSON.length-1]='}';
-    let response = await fetch('http://localhost:8080/api/registrarse', {
+    JSON=JSON.substring(0,JSON.length-1)+'}';
+    console.log(JSON);
+    let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
         method: 'POST',
         body: JSON,
         headers: {"Content-type": "application/json; charset=UTF-8"}
     });
 
     let result = await response.json();
-
+    console.log(result);
     alert(result.message);
 };
 
@@ -107,7 +107,7 @@ async function fetchJSON(url1) {
     const jsonResponse = await response.json();
     return jsonResponse;
 }
-var id_servicio=8;
+var id_servicio=1;
 var url_servicios = 'http://localhost:8080/api/servicios/';
 var url_profesionales='http://localhost:8080/api/perfiles/';
 fetchJSON(url_servicios+id_servicio).then(json => {
