@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS servicios(
     tarifa 			VARCHAR(255),
 	FOREIGN KEY (id_profesional) REFERENCES db_xlrp.perfiles(id)
 );
-INSERT INTO servicios (id_servicio, id_profesional, foto, titulo, descripcion,horario, tarifa) VALUES
+INSERT INTO servicios (id_servicio, id_profesional, foto, titular, descripcion,horario, tarifa) VALUES
   (1,1,"foto","Clases Particulares de Matemáticas", "Son 5 años de experiencia motivando a chavales a no tenerle miedo a las matemáticas.","Hasta el amanecer","20€/hora"),
   (2,3,"foto","Clases Particulares de Química",     "Te enseño a hacer caramelos azules","Hasta el amanecer","20€/hora"),
   (3,2,"foto","Clases Particulares de Animación 3D","Con fotoshop te hago lo que quieras","Hasta el amanecer","20€/hora"),
