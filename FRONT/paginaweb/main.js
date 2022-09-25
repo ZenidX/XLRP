@@ -101,19 +101,32 @@ formularioRegistro.onsubmit = async (e) => {
     alert(result.message);
 };
 
+/*Editar el perfil*/
 function cancelar() {
     location.reload();
 }
 function aceptar() {
-    
+    document.getElementById("botones_edicion").innerHTML='<button class="text-dark" id="editarperfil" onclick="editarperfil()">Editar perfil</button>'
+}
+document.getElementById("file").addEventListener('change', readURL, true);
+function readURL(){
+    const file = document.getElementById("file").files[0];
+    const reader = new FileReader();
+    reader.loadend = function(){
+        document.getElementById('foto_creador').innerHTML = "hola";
+    }
+    if(file){
+        reader.readAsDataURL(file);
+    }else{
+    }
 }
 function editarperfil(){
     const editarperfil=document.getElementById("editarperfil");
-    const botones_edicion=document.getElementById("botones_edicion")
+    const botones_edicion=document.getElementById("botones_edicion");
     var foto_creador=document.getElementById("foto_creador");
-    foto_creador.innerHTML='<input type="file" id="file" accept="image/*" style="cursor: pointer">'
+    foto_creador.innerHTML='<input type="file" id="file" accept=".png, .jpg, .jpeg">'
     editarperfil.textContent='Aceptar'
-    editarperfil.onclick="aceptar()"
+    editarperfil.setAttribute('onclick', 'aceptar()')
     botones_edicion.insertAdjacentHTML("beforeend", '<button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>')
 }
 
