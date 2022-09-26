@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "POST /api/autentificacion",
+			"name": "/api/autentificacion",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -36,7 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "POST /api/registrarse",
+			"name": "/api/perfiles/registrar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -66,7 +66,7 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/perfiles",
+			"name": "/api/perfiles",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -86,7 +86,7 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/perfiles/id",
+			"name": "/api/perfiles/id",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -107,7 +107,59 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/servicios",
+			"name": "/api/perfiles/delete/id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/perfiles/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"perfiles",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/perfiles/editar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Luis\",\r\n    \"apellidos\":\"Martínez\",\r\n    \"contraseña\":\"1234\",\r\n    \"email\":\"luis@gmial.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/perfiles/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"perfiles",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/servicios",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -127,7 +179,7 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/servicios/id_servicio",
+			"name": "/api/servicios/id_servicio",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -148,28 +200,7 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/servicios/delete/id_servicio",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/servicios/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"servicios",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get /api/servicios/profesional/id_profesional",
+			"name": "/api/servicios/profesional/id_profesional",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -191,7 +222,181 @@
 			"response": []
 		},
 		{
-			"name": "Get /api/servicios/buscar/keyword",
+			"name": "/api/servicios/delete/id_servicio",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/delete/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/servicios/registrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/servicios/editar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/editar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"editar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clientes/id_cita",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clientes/servicios/id_servicio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clientes/profesional/id_profesional",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clientes/delete/id_cita",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/servicios/buscar/keyword",
 			"request": {
 				"method": "GET",
 				"header": [],
