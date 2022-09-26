@@ -27,22 +27,27 @@ async function fetchJSON(url1) {
     const jsonResponse = await response.json();
     return jsonResponse;
 }
-var id_servicio=1;
-const url_autentificacion='http://localhost:8080/api/autentificacion';
-const url_servicios =     'http://localhost:8080/api/servicios/';
-const url_perfiles=       'http://localhost:8080/api/perfiles/';
-const url_clientes=       'http://localhost:8080/api/clientes/';
 
+const api='http://localhost:8080/api'
+const api_autentificacion='http://localhost:8080/api/autentificacion';
+const api_perf='http://localhost:8080/api/perfiles/';
+const api_perf_regi='http://localhost:8080/api/perfiles/registrar';
+const api_perf_edit='http://localhost:8080/api/perfiles/editar';
+const api_serv='http://localhost:8080/api/servicios/';
+const api_serv_regi='http://localhost:8080/api/servicios/registrar';
+const api_serv_prof='http://localhost:8080/api'
+const api_clie='http://localhost:8080/api/clientes/';
+/*
 fetchJSON(url_servicios+id_servicio).then(json_servicio => {
     document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
     document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
-    document.getElementById("servicio_tarifa").innerHTML = json_servicio.descripcion;
-    document.getElementById("servicio_horario").innerHTML = json_servicio.descripcion;
-    document.getElementById("serdes").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
+    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
     fetchJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
 })});
-
+*/
 /*Eventos de formularios de inicio de sesión y registro*/
     /*Validación de formularios*/
     (() => {'use strict'
@@ -153,9 +158,18 @@ function editarperfil(){
             reader.readAsDataURL(choosedFile)
         }
     }
-    fetchJSON(url_perfiles).then(json => {
-        document.getElementById("name").innerHTML = json.descripcion;
+    fetchJSON(api_perf).then(json_perfil => {
+        document.getElementById("name").innerHTML = json_perfil[0].nombre;
+        document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
+        document.getElementById("email").innerHTML = json_perfil[0].email;
+        document.getElementById("edad").innerHTML = json_perfil[0].edad;
+        document.getElementById("titular").innerHTML = json_perfil[0].titular;
+        document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
+        document.getElementById("cp").innerHTML = json_perfil[0].cp;
+        document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
+        console.log(json_perfil)
     })
+    
 }
 
 
