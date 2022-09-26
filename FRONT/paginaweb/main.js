@@ -167,7 +167,6 @@ function editarperfil(){
         document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
         document.getElementById("cp").innerHTML = json_perfil[0].cp;
         document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
-        console.log(json_perfil)
     })
     
 }
