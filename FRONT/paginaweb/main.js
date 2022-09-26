@@ -1,3 +1,53 @@
+/* Funcionalidad del registro a través de JSON*/
+formularioRegistro.onsubmit = async (e) => {
+    e.preventDefault();
+    const pepito = (new FormData(formularioRegistro)).entries();
+    // Para ver que se haya creado el formData correctamente
+    var JSON ='{';
+    for (var pair of pepito) {
+        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
+    }
+    console.log(JSON);
+    JSON=JSON.substring(0,JSON.length-1)+'}';
+    console.log(JSON);
+    let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
+        method: 'POST',
+        body: JSON,
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+
+    let result = await response.json();
+    console.log(result);
+    alert(result.message);
+};
+
+/* Llamar a servicios desde el buscador*/
+async function fetchJSON(url1) {
+    const response = await fetch(url1);
+    const jsonResponse = await response.json();
+    return jsonResponse;
+}
+
+const api='http://localhost:8080/api'
+const api_autentificacion='http://localhost:8080/api/autentificacion';
+const api_perf='http://localhost:8080/api/perfiles/';
+const api_perf_regi='http://localhost:8080/api/perfiles/registrar';
+const api_perf_edit='http://localhost:8080/api/perfiles/editar';
+const api_serv='http://localhost:8080/api/servicios/';
+const api_serv_regi='http://localhost:8080/api/servicios/registrar';
+const api_serv_prof='http://localhost:8080/api'
+const api_clie='http://localhost:8080/api/clientes/';
+/*
+fetchJSON(url_servicios+id_servicio).then(json_servicio => {
+    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
+    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
+    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
+    fetchJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
+})});
+*/
 /*Eventos de formularios de inicio de sesión y registro*/
     /*Validación de formularios*/
     (() => {'use strict'
@@ -78,47 +128,51 @@ function nextBackground() {
 setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
-/* Funcionalidad del registro a través de JSON*/
-console.log(JSON)
-formularioRegistro.onsubmit = async (e) => {
-    e.preventDefault();
-    const pepito = (new FormData(formularioRegistro)).entries();
-    // Para ver que se haya creado el formData correctamente
-    var JSON ='{';
-    for (var pair of pepito) {
-        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
+
+
+/*Editar el perfil*/
+function cancelar() {
+    location.reload();
+}
+function aceptar() {
+    const botones_edicion=document.getElementById("botones_edicion");
+    botones_edicion.innerHTML='<button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>'
+}
+function editarperfil(){
+    const botones_edicion=document.getElementById("botones_edicion");
+    const editar_perfil=document.getElementById("editar_perfil");
+    editar_perfil.textContent='Aceptar'
+    editar_perfil.setAttribute('onclick', 'aceptar()')
+    botones_edicion.insertAdjacentHTML("afterbegin",'<input type="file" id="file" accept=".png, .jpg, .jpeg">')
+    botones_edicion.insertAdjacentHTML("afterbegin",'<label for="file">Selecciona una foto de perfil:</label>')
+    botones_edicion.insertAdjacentHTML("beforeend", '<button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>')
+    var file=document.getElementById("file");
+    if(file){
+        file.addEventListener('change', readURL, true);
+        function readURL(){
+            const choosedFile = document.getElementById("file").files[0];
+            const reader = new FileReader();
+            reader.onload = function(){
+                document.getElementById('foto_perfil').src = reader.result;
+            }
+            reader.readAsDataURL(choosedFile)
+        }
     }
-    console.log(JSON);
-    JSON[JSON.length-1]='}';
-    let response = await fetch('http://localhost:8080/api/registrarse', {
-        method: 'POST',
-        body: JSON,
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    });
+    fetchJSON(api_perf).then(json_perfil => {
+        document.getElementById("name").innerHTML = json_perfil[0].nombre;
+        document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
+        document.getElementById("email").innerHTML = json_perfil[0].email;
+        document.getElementById("edad").innerHTML = json_perfil[0].edad;
+        document.getElementById("titular").innerHTML = json_perfil[0].titular;
+        document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
+        document.getElementById("cp").innerHTML = json_perfil[0].cp;
+        document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
+    })
+    
+}
 
-    let result = await response.json();
 
-    alert(result.message);
-};
 
-/* Llamar a servicios desde el buscador*/
-async function fetchJSON(url1) {
-    const response = await fetch(url1);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-} 
-var id_servicio=1;
-var url_servicios = 'http://localhost:8080/api/servicios/';
-var url_profesionales='http://localhost:8080/api/perfiles/';
-fetchJSON(url_servicios+id_servicio).then(json => {
-    document.getElementById("serdes").innerHTML = json.descripcion;
-    console.log("Hemos cambiado la descripcion con el json del servicio");
-    return json.id_profesional;
-}).then(id_profesional=>{
-    prof_json=fetchJSON(url_profesionales+id_profesional);
-    document.getElementById("nombre_profesional").innerHTML = json_prof.nombre+' '+json_prof.apellidos;
-    console.log("Hemos cambiado el nombre y apellidos con el json del profesional que ponia en el json del servicio");
-})
 
 /* Llamar API y json*/
 /*async function fetchJSON(url) {

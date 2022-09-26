@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "40ca8173-adc3-4e0d-a689-1fe2a030db20",
+		"name": "XLRP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23099800"
+	},
+	"item": [
+		{
+			"name": "POST /api/autentificacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"zenid77@gmail.com\",\r\n    \"contraseña\":\"DoomEternal\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/autentificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"autentificacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/registrarse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Luis\",\r\n    \"apellidos\":\"Martínez\",\r\n    \"contraseña\":\"1234\",\r\n    \"email\":\"luis@gmial.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/perfiles/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"perfiles",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/perfiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/perfiles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"perfiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/perfiles/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/perfiles/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"perfiles",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/servicios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/servicios/id_servicio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/servicios/delete/id_servicio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/servicios/profesional/id_profesional",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/profesional/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"profesional",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get /api/servicios/buscar/keyword",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/servicios/buscar/Clases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"servicios",
+						"buscar",
+						"Clases"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
