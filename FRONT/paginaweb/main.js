@@ -106,28 +106,28 @@ function cancelar() {
     location.reload();
 }
 function aceptar() {
-    document.getElementById("botones_edicion").innerHTML='<button class="text-dark" id="editarperfil" onclick="editarperfil()">Editar perfil</button>'
-}
-document.getElementById("file").addEventListener('change', readURL, true);
-function readURL(){
-    const file = document.getElementById("file").files[0];
-    const reader = new FileReader();
-    reader.loadend = function(){
-        document.getElementById('foto_creador').innerHTML = "hola";
-    }
-    if(file){
-        reader.readAsDataURL(file);
-    }else{
-    }
+    botones_edicion.innerHTML='<button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>'
 }
 function editarperfil(){
-    const editarperfil=document.getElementById("editarperfil");
     const botones_edicion=document.getElementById("botones_edicion");
-    var foto_creador=document.getElementById("foto_creador");
-    foto_creador.innerHTML='<input type="file" id="file" accept=".png, .jpg, .jpeg">'
-    editarperfil.textContent='Aceptar'
-    editarperfil.setAttribute('onclick', 'aceptar()')
+    const editar_perfil=document.getElementById("editar_perfil");
+    editar_perfil.textContent='Aceptar'
+    editar_perfil.setAttribute('onclick', 'aceptar()')
+    botones_edicion.insertAdjacentHTML("afterbegin",'<input type="file" id="file" accept=".png, .jpg, .jpeg">')
+    botones_edicion.insertAdjacentHTML("afterbegin",'<label for="file">Selecciona una foto de perfil:</label>')
     botones_edicion.insertAdjacentHTML("beforeend", '<button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>')
+    var file=document.getElementById("file");
+    if(file){
+        file.addEventListener('change', readURL, true);
+        function readURL(){
+            const choosedFile = document.getElementById("file").files[0];
+            const reader = new FileReader();
+            reader.onload = function(){
+                document.getElementById('foto_perfil').src = reader.result;
+            }
+            reader.readAsDataURL(choosedFile)
+        }
+    }
 }
 
 /* Llamar a servicios desde el buscador*/
