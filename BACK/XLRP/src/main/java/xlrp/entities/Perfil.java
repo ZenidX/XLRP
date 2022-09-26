@@ -82,6 +82,12 @@ public class Perfil{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	public void setEdad(long edad) {
+		this.edad=edad;
+	}
+	public long getEdad() {
+		return this.edad;
+	}
 	public String getTitular() {
 		return titular;
 	}
