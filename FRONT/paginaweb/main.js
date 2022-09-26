@@ -1,3 +1,48 @@
+/* Funcionalidad del registro a través de JSON*/
+formularioRegistro.onsubmit = async (e) => {
+    e.preventDefault();
+    const pepito = (new FormData(formularioRegistro)).entries();
+    // Para ver que se haya creado el formData correctamente
+    var JSON ='{';
+    for (var pair of pepito) {
+        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
+    }
+    console.log(JSON);
+    JSON=JSON.substring(0,JSON.length-1)+'}';
+    console.log(JSON);
+    let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
+        method: 'POST',
+        body: JSON,
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+
+    let result = await response.json();
+    console.log(result);
+    alert(result.message);
+};
+
+/* Llamar a servicios desde el buscador*/
+async function fetchJSON(url1) {
+    const response = await fetch(url1);
+    const jsonResponse = await response.json();
+    return jsonResponse;
+}
+var id_servicio=1;
+const url_autentificacion='http://localhost:8080/api/autentificacion';
+const url_servicios =     'http://localhost:8080/api/servicios/';
+const url_perfiles=       'http://localhost:8080/api/perfiles/';
+const url_clientes=       'http://localhost:8080/api/clientes/';
+
+fetchJSON(url_servicios+id_servicio).then(json_servicio => {
+    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
+    document.getElementById("servicio_tarifa").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_horario").innerHTML = json_servicio.descripcion;
+    document.getElementById("serdes").innerHTML = json_servicio.descripcion;
+    fetchJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
+})});
+
 /*Eventos de formularios de inicio de sesión y registro*/
     /*Validación de formularios*/
     (() => {'use strict'
@@ -78,34 +123,14 @@ function nextBackground() {
 setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
-/* Funcionalidad del registro a través de JSON*/
-formularioRegistro.onsubmit = async (e) => {
-    e.preventDefault();
-    const pepito = (new FormData(formularioRegistro)).entries();
-    // Para ver que se haya creado el formData correctamente
-    var JSON ='{';
-    for (var pair of pepito) {
-        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
-    }
-    console.log(JSON);
-    JSON=JSON.substring(0,JSON.length-1)+'}';
-    console.log(JSON);
-    let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
-        method: 'POST',
-        body: JSON,
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    });
 
-    let result = await response.json();
-    console.log(result);
-    alert(result.message);
-};
 
 /*Editar el perfil*/
 function cancelar() {
     location.reload();
 }
 function aceptar() {
+    const botones_edicion=document.getElementById("botones_edicion");
     botones_edicion.innerHTML='<button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>'
 }
 function editarperfil(){
@@ -128,24 +153,13 @@ function editarperfil(){
             reader.readAsDataURL(choosedFile)
         }
     }
+    fetchJSON(url_perfiles).then(json => {
+        document.getElementById("name").innerHTML = json.descripcion;
+    })
 }
 
-/* Llamar a servicios desde el buscador*/
-async function fetchJSON(url1) {
-    const response = await fetch(url1);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-}
-var id_servicio=1;
-var url_servicios = 'http://localhost:8080/api/servicios/';
-var url_profesionales='http://localhost:8080/api/perfiles/';
-fetchJSON(url_servicios+id_servicio).then(json => {
-    console.log(json)
-    document.getElementById("serdes").innerHTML = json.descripcion;
-    fetchJSON(url_profesionales+json.id_profesional).then(json_prof=>{
-    console.log(json_prof);
-    document.getElementById("nombre_profesional").innerHTML = json_prof.nombre+' '+json_prof.apellidos;
-})})
+
+
 
 /* Llamar API y json*/
 /*async function fetchJSON(url) {

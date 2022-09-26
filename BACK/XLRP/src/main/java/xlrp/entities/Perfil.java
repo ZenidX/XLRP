@@ -80,11 +80,11 @@ public class Perfil{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public String getTitulo() {
-		return titulo;
+	public String getTitular() {
+		return titular;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitular(String titulo) {
+		this.titular = titulo;
 	}
 	/*public String getDireccion() {
 		return direccion;
