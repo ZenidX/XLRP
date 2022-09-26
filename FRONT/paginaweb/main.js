@@ -44,9 +44,17 @@ forReg.onsubmit = async function hola(e) {
         JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
     }
     JSON=JSON.substring(0,JSON.length-1)+'}';
-    postJSON(api_perf_edit,JSON).then((result)=>{
-        ID_PERFIL=result.id;
+    postJSON(api_perf_regi,JSON).then((json_perfil)=>{
+        ID_PERFIL=json_perfil.id;
         console.log(ID_PERFIL);
+        document.getElementById("name").innerHTML = json_perfil.nombre;
+        document.getElementById("lastname").innerHTML = json_perfil.apellidos;
+        document.getElementById("email").innerHTML = json_perfil.email;
+        document.getElementById("edad").innerHTML = json_perfil.edad;
+        document.getElementById("titular").innerHTML = json_perfil.titular;
+        document.getElementById("municipio").innerHTML = json_perfil.municipio;
+        document.getElementById("cp").innerHTML = json_perfil.cp;
+        document.getElementById("telefono").innerHTML = json_perfil.telefono;
     })
 };
 
@@ -168,16 +176,6 @@ function editarperfil(){
             reader.readAsDataURL(choosedFile)
         }
     }
-    getJSON(api_perf).then(json_perfil => {
-    document.getElementById("name").innerHTML = json_perfil[0].nombre;
-    document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
-    document.getElementById("email").innerHTML = json_perfil[0].email;
-    document.getElementById("edad").innerHTML = json_perfil[0].edad;
-    document.getElementById("titular").innerHTML = json_perfil[0].titular;
-    document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
-    document.getElementById("cp").innerHTML = json_perfil[0].cp;
-    document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
-    })
     const forEdi = document.getElementById("formularioEdicion");
     forEdi.onsubmit = async (e) => {
         e.preventDefault();
