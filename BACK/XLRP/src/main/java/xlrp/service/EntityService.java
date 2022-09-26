@@ -16,6 +16,7 @@ public class EntityService {
 	ServicioDAO servicioDAO;
 	@Autowired
 	ClienteDAO clienteDAO;
+	/////////////////////////////////////////////////////////////////AUTENTIFICACION
 	public boolean autentificacion(Perfil perfil_sesion){
 		boolean autentification=false;
 		List<Perfil> perfiles=perfilDAO.findAll();
@@ -31,6 +32,7 @@ public class EntityService {
 		}
 		return autentification;
 	}
+	/////////////////////////////////////////////////////////////////CONTAR TODAS LAS COSAS
 	public Long countAllPerfiles(){
 		return perfilDAO.count();
 	}
@@ -40,6 +42,7 @@ public class EntityService {
 	public Long countAllClientes() {
 		return clienteDAO.count();
 	}
+	/////////////////////////////////////////////////////////////////OBTENER TODAS LAS COSAS
 	public List<Perfil> allPerfiles(){
 		return perfilDAO.findAll();
 	}
@@ -48,6 +51,19 @@ public class EntityService {
 	}
 	public List<Cliente> allClientes(){
 		return clienteDAO.findAll();
+	}
+	/////////////////////////////////////////////////////////////////OBTENER COSAS BUSCANDO
+	public List<Servicio> serviciosKeyword(String Keyword) {
+		List<Servicio> servicios=servicioDAO.findAll();
+		List<Servicio> servicios_encontrados=new ArrayList<Servicio>();
+		int i = 0;
+		while(i!=servicios.size()){
+			if(servicios.get(i).getTitulo().contains(Keyword)){
+				servicios_encontrados.add(servicios.get(i));
+			}
+			i++;
+		}
+		return servicios_encontrados;
 	}
 	/////////////////////////////////////////////////////////////////OBTENER COSAS POR ID FACIL
 	public Optional<Perfil> perfilPorId(long id) {;
@@ -127,19 +143,6 @@ public class EntityService {
 	public Optional<Perfil> editarPerfil(Perfil perfil_editado) {
 		perfilDAO.save(perfil_editado);
 		return perfilDAO.findById(perfil_editado.getId());
-	}
-	/////////////////////////////////////////////////////////////////BUSCAR COSAS
-	public List<Servicio> serviciosKeyword(String Keyword) {
-		List<Servicio> servicios=servicioDAO.findAll();
-		List<Servicio> servicios_encontrados=new ArrayList<Servicio>();
-		int i = 0;
-		while(i!=servicios.size()){
-			if(servicios.get(i).getTitulo().contains(Keyword)){
-				servicios_encontrados.add(servicios.get(i));
-			}
-			i++;
-		}
-		return servicios_encontrados;
 	}
 	/////////////////////////////////////////////////////////////////ELIMINAR COSAS
 	public void eliminarPorId_cita(long id_cita) {
