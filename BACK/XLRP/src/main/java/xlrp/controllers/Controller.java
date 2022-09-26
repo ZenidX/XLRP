@@ -21,10 +21,12 @@ import xlrp.service.EntityService;
 public class Controller {
 	@Autowired
 	private EntityService entityService;
+	/////////////////////////////////////////////////////////////////AUTENTIFICACION
 	@RequestMapping(value="/autentificacion",method=RequestMethod.POST)
 	public boolean iniciarSesion(@RequestBody Perfil perfil_sesion){
 		return entityService.autentificacion(perfil_sesion);
 	}
+	/////////////////////////////////////////////////////////////////OBTENER COSAS
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
 	public ResponseEntity<List<Perfil>> getAllPerfiles(){
 		return ResponseEntity.ok(entityService.allPerfiles());
@@ -55,6 +57,10 @@ public class Controller {
 	public ResponseEntity<List<Servicio>> servicioPorId_profesional(@PathVariable long id_profesional){
 		return ResponseEntity.ok(entityService.serviciosPorId_profesional(id_profesional));
 	}
+	@RequestMapping(value="/clientes/servicio/{id_servicio}",method=RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> clientesPorId_servicio(@PathVariable long id_servicio){
+		return ResponseEntity.ok(entityService.clientesPorId_servicio(id_servicio));
+	}
 	/////////////////////////////////////////////////////////////////OBTENER COSAS POR ID DEL ABUELO
 	@RequestMapping(value="/clientes/profesional/{id_profesional}",method=RequestMethod.GET)
 	public ResponseEntity<List<Cliente>> clientesPorId_profesional(@PathVariable long id_profesional){
@@ -77,10 +83,6 @@ public class Controller {
 	@RequestMapping(value="/servicios/editar",method=RequestMethod.POST)
 	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado){
 		return ResponseEntity.ok(entityService.editarServicio(servicio_editado));
-	}
-	@RequestMapping(value="/clientes/servicio/{id_servicio}",method=RequestMethod.GET)
-	public ResponseEntity<List<Cliente>> clientesPorId_servicio(@PathVariable long id_servicio){
-		return ResponseEntity.ok(entityService.clientesPorId_servicio(id_servicio));
 	}
 	/////////////////////////////////////////////////////////////////ELIMINAR COSAS
 	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
