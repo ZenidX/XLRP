@@ -16,6 +16,8 @@ public class ClientesService {
 	ClienteDAO clienteDAO;
 	@Autowired
 	ServiciosService servicioService;
+	@Autowired
+	
 	public List<Cliente> allClientes(){
 		return clienteDAO.findAll();
 	}
@@ -44,5 +46,8 @@ public class ClientesService {
 			clientes_profesional.addAll(clientesPorId_servicio(servicios_profesional.get(i).getId_servicio()));
 		}
 		return clientes_profesional;
+	}
+	public void eliminarPorId_cita(long id_cita) {
+		clienteDAO.deleteById(id_cita);
 	}
 }

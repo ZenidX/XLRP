@@ -63,6 +63,7 @@ INSERT INTO clientes (id_cita, id_cliente, id_servicio, hora, direccion, municip
   (2,2,2,"13:00","Calle Caps 160","Barcelona","01923","comentario"),
   (3,3,3,"40:33","Carrer Angosta 4","ojete","666666","comentario");
 SELECT * FROM clientes;
+/*
 DROP TABLE IF EXISTS cursos;
 CREATE TABLE IF NOT EXISTS cursos(
 	id_curso    INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

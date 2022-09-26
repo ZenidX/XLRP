@@ -6,14 +6,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xlrp.dao.PerfilDAO;
-import xlrp.entities.Perfil;
+import xlrp.dao.*;
+import xlrp.entities.*;
+
 
 
 @Service
 public class PerfilesService {
 	@Autowired
 	PerfilDAO perfilDAO;
+	@Autowired
+	ServicioDAO servicioDAO;
+	@Autowired
+	ServiciosService serviciosService;
+	@Autowired
+	ClienteDAO clienteDAO;
+	@Autowired
+	ClientesService clientesService;
 	public boolean autentificacion(Perfil perfil_sesion){
 		boolean autentification=false;
 		List<Perfil> perfiles=perfilDAO.findAll();
@@ -53,8 +62,19 @@ public class PerfilesService {
 		}
 		return perfiles.get(i);
 	}
-	public Perfil editarPerfil(Perfil perfil_editado) {
+	public Optional<Perfil> editarPerfil(Perfil perfil_editado) {
 		perfilDAO.save(perfil_editado);
-		return perfilDAO.getReferenceById(perfil_editado.getId());
+		return perfilDAO.findById(perfil_editado.getId());
+	}
+	public void eliminarPorId(long id){
+		List<Cliente> clientes_profesional  = clientesService.clientesPorId_profesional(id);
+		for(int i=0;i<clientes_profesional.size();i++){
+			clienteDAO.deleteById(clientes_profesional.get(i).getId_cita());
+		}
+		List<Servicio> servicios_profesional = serviciosService.serviciosPorId_profesional(id);
+		for(int i=0;i<servicios_profesional.size();i++) {
+			servicioDAO.deleteById(servicios_profesional.get(i).getId_servicio());
+		}
+		perfilDAO.deleteById(id);
 	}
 }

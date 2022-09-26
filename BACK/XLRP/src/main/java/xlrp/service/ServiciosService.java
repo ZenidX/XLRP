@@ -7,14 +7,21 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xlrp.dao.ServicioDAO;
-import xlrp.entities.Servicio;
+import xlrp.dao.*;
+import xlrp.entities.*;
 
 @Service
 public class ServiciosService {
 	@Autowired
+	PerfilDAO perfilDAO;
+	@Autowired
+	PerfilesService perfilesService;
+	@Autowired
 	ServicioDAO servicioDAO;
-	
+	@Autowired
+	ClienteDAO clienteDAO;
+	@Autowired
+	ClientesService clientesService;
 	public List<Servicio> allServicios(){
 		return servicioDAO.findAll();
 	}
@@ -63,5 +70,13 @@ public class ServiciosService {
 			i++;
 		}
 		return servicios_encontrados;
+	}
+
+	public void eliminarPorId_servicio(long id_servicio){
+		List<Cliente> clientes_servicio = clientesService.clientesPorId_servicio(id_servicio);
+		for(int i=0;i<clientes_servicio.size();i++){
+			clienteDAO.deleteById(clientes_servicio.get(i).getId_cita());
+		}
+		servicioDAO.deleteById(id_servicio);
 	}
 }

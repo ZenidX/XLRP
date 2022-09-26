@@ -21,15 +21,9 @@ import xlrp.service.*;
 @RequestMapping("/api")
 public class Controller {
 	@Autowired
-	private PerfilDAO perfilDAO;
-	@Autowired
 	private PerfilesService perfilesService;
 	@Autowired
-	private ServicioDAO servicioDAO;
-	@Autowired
 	private ServiciosService serviciosService;
-	@Autowired
-	private ClienteDAO clienteDAO;
 	@Autowired
 	private ClientesService clientesService;
 	@RequestMapping(value="/autentificacion",method=RequestMethod.POST)
@@ -50,10 +44,10 @@ public class Controller {
 	}
 	@RequestMapping(value="/perfiles/delete/{id}", method=RequestMethod.DELETE)
 	public void deletePerfil(@PathVariable Long id){
-		perfilDAO.deleteById(id);
+		perfilesService.eliminarPorId(id);
 	}
 	@RequestMapping(value="/perfiles/editar",method=RequestMethod.POST)
-	public ResponseEntity<Perfil> editarPerfil(@RequestBody Perfil perfil_editado){
+	public ResponseEntity<Optional<Perfil>> editarPerfil(@RequestBody Perfil perfil_editado){
 		return ResponseEntity.ok(perfilesService.editarPerfil(perfil_editado));
 	}
 	@RequestMapping(value="/servicios",method=RequestMethod.GET)
@@ -70,7 +64,7 @@ public class Controller {
 	}
 	@RequestMapping(value="/servicios/delete/{id_servicio}",method=RequestMethod.DELETE)
 	public void eliminarServicio(@PathVariable long id_servicio){
-		servicioDAO.deleteById(id_servicio);
+		serviciosService.eliminarPorId_servicio(id_servicio);
 	}
 	@RequestMapping(value="/servicios/registrar",method=RequestMethod.POST)
 	public ResponseEntity<Servicio> registrarServicio(@RequestBody Servicio servicio_registrado){
@@ -95,6 +89,10 @@ public class Controller {
 	@RequestMapping(value="/clientes/profesional/{id_profesional}",method=RequestMethod.GET)
 	public ResponseEntity<List<Cliente>> clientesPorId_profesional(@PathVariable long id_profesional){
 		return ResponseEntity.ok(clientesService.clientesPorId_profesional(id_profesional));
+	}
+	@RequestMapping(value="/clientes/eliminar/{id_cita}",method=RequestMethod.DELETE)
+	public void eliminarCliente(@PathVariable long id_cita) {
+		clientesService.eliminarPorId_cita(id_cita);
 	}
 	@RequestMapping(value="/servicios/buscar/{Keyword}", method=RequestMethod.GET)
 	public ResponseEntity<List<Servicio>> serviciosKeyword(@PathVariable String Keyword){
