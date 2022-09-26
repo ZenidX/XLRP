@@ -1,3 +1,14 @@
+/*Endpoints de las api*/
+const api='http://localhost:8080/api';
+const api_autentificacion='http://localhost:8080/api/autentificacion';
+const api_perf='http://localhost:8080/api/perfiles/';
+const api_perf_regi='http://localhost:8080/api/perfiles/registrar';
+const api_perf_edit='http://localhost:8080/api/perfiles/editar';
+const api_serv='http://localhost:8080/api/servicios/';
+const api_serv_regi='http://localhost:8080/api/servicios/registrar';
+const api_serv_prof='http://localhost:8080/api';
+const api_clie='http://localhost:8080/api/clientes/';
+
 /* Funcionalidad del registro a través de JSON*/
 formularioRegistro.onsubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +26,6 @@ formularioRegistro.onsubmit = async (e) => {
         body: JSON,
         headers: {"Content-type": "application/json; charset=UTF-8"}
     });
-
     let result = await response.json();
     console.log(result);
     alert(result.message);
@@ -28,15 +38,6 @@ async function fetchJSON(url1) {
     return jsonResponse;
 }
 
-const api='http://localhost:8080/api'
-const api_autentificacion='http://localhost:8080/api/autentificacion';
-const api_perf='http://localhost:8080/api/perfiles/';
-const api_perf_regi='http://localhost:8080/api/perfiles/registrar';
-const api_perf_edit='http://localhost:8080/api/perfiles/editar';
-const api_serv='http://localhost:8080/api/servicios/';
-const api_serv_regi='http://localhost:8080/api/servicios/registrar';
-const api_serv_prof='http://localhost:8080/api'
-const api_clie='http://localhost:8080/api/clientes/';
 /*
 fetchJSON(url_servicios+id_servicio).then(json_servicio => {
     document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
@@ -48,6 +49,7 @@ fetchJSON(url_servicios+id_servicio).then(json_servicio => {
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
 })});
 */
+
 /*Eventos de formularios de inicio de sesión y registro*/
     /*Validación de formularios*/
     (() => {'use strict'
@@ -128,8 +130,6 @@ function nextBackground() {
 setInterval(nextBackground, 6000);
 header.css('background-image', backgrounds[0]);
 
-
-
 /*Editar el perfil*/
 function cancelar() {
     location.reload();
@@ -158,6 +158,26 @@ function editarperfil(){
             reader.readAsDataURL(choosedFile)
         }
     }
+    formularioRegistro.onsubmit = async (e) => {
+        e.preventDefault();
+        const pepito = (new FormData(formularioRegistro)).entries();
+        // Para ver que se haya creado el formData correctamente
+        var JSON ='{';
+        for (var pair of pepito) {
+            JSON=JSON+pair[0]+ ':' + pair[1]+','; 
+        }
+        console.log(JSON);
+        JSON=JSON.substring(0,JSON.length-1)+'}';
+        console.log(JSON);
+        let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
+            method: 'POST',
+            body: JSON,
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        });
+        let result = await response.json();
+        console.log(result);
+        alert(result.message);
+    };
     fetchJSON(api_perf).then(json_perfil => {
         document.getElementById("name").innerHTML = json_perfil[0].nombre;
         document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
@@ -170,28 +190,3 @@ function editarperfil(){
     })
     
 }
-
-
-
-
-/* Llamar API y json*/
-/*async function fetchJSON(url) {
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    console.log("se esta ejecutando el fetchMoviesJSON")
-    return jsonResponse;
-} 
-
-const url = 'https://api.chucknorris.io/jokes/random'
-
-fetchJSON(url).then(json => {
-    document.getElementById("chuck").innerHTML = json.value;
-    console.log("se esta ejecutando el extra para el fecthMoviesJSON suelto")
-});
-
-function cambio() {
-    fetchJSON().then(json => 
-        {document.getElementById("chuck").innerHTML = json.value;
-        console.log("se esta haciendo un cambio");
-    });
-}*/
