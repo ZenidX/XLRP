@@ -1,50 +1,65 @@
 /*Endpoints de las api*/
-const api='http://localhost:8080/api';
-const api_autentificacion='http://localhost:8080/api/autentificacion';
-const api_perf='http://localhost:8080/api/perfiles/';
-const api_perf_regi='http://localhost:8080/api/perfiles/registrar';
-const api_perf_edit='http://localhost:8080/api/perfiles/editar';
-const api_serv='http://localhost:8080/api/servicios/';
-const api_serv_regi='http://localhost:8080/api/servicios/registrar';
-const api_serv_prof='http://localhost:8080/api';
-const api_clie='http://localhost:8080/api/clientes/';
+const api='http://localhost:8080/api/';
+const api_autentificacion=api+'autentificacion';
+const api_perf=api+'perfiles/';
+const api_perf_regi=api+'perfiles/registrar';
+const api_perf_edit=api+'perfiles/editar';
+const api_perf_dele=api+'perfiles/delete'
+const api_serv=api+'servicios/';
+const api_serv_regi=api+'servicios/registrar';
+const api_serv_edit=api+'servicios/editar';
+const api_serv_prof=api+'servicios/profesional/';
+const api_serv_busc=api+'servicios/buscar/';
+const api_clie=api+'clientes/';
+const api_clie_regi=api+'clientes/registrar';
+const api_clie_edit=api+'clientes/editar';
+const api_clie_dele=api+'clientes/delete/';
+const api_clie_serv=api+'clientes/servicio/';
+const api_clie_prof=api+'clientes/profesional/';
 
-/* Funcionalidad del registro a través de JSON*/
-formularioRegistro.onsubmit = async (e) => {
-    e.preventDefault();
-    const pepito = (new FormData(formularioRegistro)).entries();
-    // Para ver que se haya creado el formData correctamente
-    var JSON ='{';
-    for (var pair of pepito) {
-        JSON=JSON+pair[0]+ ':' + pair[1]+','; 
-    }
-    console.log(JSON);
-    JSON=JSON.substring(0,JSON.length-1)+'}';
-    console.log(JSON);
-    let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
+/*Metodos de acceso api*/
+async function getJSON(url){
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+    return jsonResponse;
+}
+async function postJSON(url,JSON){
+    let response = await fetch(url, {
         method: 'POST',
         body: JSON,
         headers: {"Content-type": "application/json; charset=UTF-8"}
     });
-    let result = await response.json();
-    console.log(result);
-    alert(result.message);
+    let jsonResponse = await response.json()
+    return jsonResponse;
+}
+var ID_PERFIL=0;
+/* Funcionalidad del registro a través de JSON*/
+const forReg = document.getElementById("formularioRegistro");
+forReg.onsubmit = async function hola(e) {
+    e.preventDefault();
+    const pepito = (new FormData(forReg)).entries();
+    // Para ver que se haya creado el formData correctamente
+    var JSON ='{';
+    for (var pair of pepito) {
+        JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
+    }
+    JSON=JSON.substring(0,JSON.length-1)+'}';
+    postJSON(api_perf_edit,JSON).then((result)=>{
+        ID_PERFIL=result.id;
+        console.log(ID_PERFIL);
+    })
 };
 
 /* Llamar a servicios desde el buscador*/
-async function fetchJSON(url1) {
-    const response = await fetch(url1);
-    const jsonResponse = await response.json();
-    return jsonResponse;
-}
 
+/*Codigo para rellenar pagina de servicio*/
 /*
-fetchJSON(url_servicios+id_servicio).then(json_servicio => {
+getJSON(url_servicios+id_servicio).then(json_servicio => {
     document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
     document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
     document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
     document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
-    fetchJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
+    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
 })});
@@ -71,7 +86,6 @@ fetchJSON(url_servicios+id_servicio).then(json_servicio => {
     const forInicio = document.getElementById("formularioInicio");
     iniBTN.addEventListener("click", limpiarFormulario);
     const regBTN = document.getElementById("registro");
-    const forReg = document.getElementById("formularioRegistro");
     regBTN.addEventListener("click", limpiarFormulario);
     function limpiarFormulario(){
         forInicio.reset();
@@ -140,11 +154,7 @@ function aceptar() {
 }
 function editarperfil(){
     const botones_edicion=document.getElementById("botones_edicion");
-    const editar_perfil=document.getElementById("editar_perfil");
-    editar_perfil.textContent='Aceptar'
-    editar_perfil.setAttribute('onclick', 'aceptar()')
-    botones_edicion.insertAdjacentHTML("afterbegin",'<input type="file" id="file" accept=".png, .jpg, .jpeg">')
-    botones_edicion.insertAdjacentHTML("afterbegin",'<label for="file">Selecciona una foto de perfil:</label>')
+    botones_edicion.innerHTML='<form action="http://localhost:8080/api/perfiles/editar" method="POST" id="formularioEdicion" onsubmit="registrarse(value, key)"><input type="text" name="nombre" placeholder="Nombre"><input type="text" name="apellidos" placeholder="Apellidos"><input type="text" name="email" placeholder="Email"><input type="text" name="edad" placeholder="Edad"><input type="text" name="titular" placeholder="Titular"><input type="text" name="municipio" placeholder="Municipio"><input type="text" name="cp" placeholder="C.P."><input type="text" name="telefono" placeholder="Teléfono"><label for="file">Selecciona una foto de perfil:</label><input type="file" id="file" name="foto" accept=".png, .jpg, .jpeg"><button type="submit" class="text-dark" id="editar_perfil">Aceptar</button></form>'
     botones_edicion.insertAdjacentHTML("beforeend", '<button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>')
     var file=document.getElementById("file");
     if(file){
@@ -158,35 +168,31 @@ function editarperfil(){
             reader.readAsDataURL(choosedFile)
         }
     }
-    formularioRegistro.onsubmit = async (e) => {
-        e.preventDefault();
-        const pepito = (new FormData(formularioRegistro)).entries();
-        // Para ver que se haya creado el formData correctamente
-        var JSON ='{';
-        for (var pair of pepito) {
-            JSON=JSON+pair[0]+ ':' + pair[1]+','; 
-        }
-        console.log(JSON);
-        JSON=JSON.substring(0,JSON.length-1)+'}';
-        console.log(JSON);
-        let response = await fetch('http://localhost:8080/api/perfiles/registrar', {
-            method: 'POST',
-            body: JSON,
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-        });
-        let result = await response.json();
-        console.log(result);
-        alert(result.message);
-    };
-    fetchJSON(api_perf).then(json_perfil => {
-        document.getElementById("name").innerHTML = json_perfil[0].nombre;
-        document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
-        document.getElementById("email").innerHTML = json_perfil[0].email;
-        document.getElementById("edad").innerHTML = json_perfil[0].edad;
-        document.getElementById("titular").innerHTML = json_perfil[0].titular;
-        document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
-        document.getElementById("cp").innerHTML = json_perfil[0].cp;
-        document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
+    getJSON(api_perf).then(json_perfil => {
+    document.getElementById("name").innerHTML = json_perfil[0].nombre;
+    document.getElementById("lastname").innerHTML = json_perfil[0].apellidos;
+    document.getElementById("email").innerHTML = json_perfil[0].email;
+    document.getElementById("edad").innerHTML = json_perfil[0].edad;
+    document.getElementById("titular").innerHTML = json_perfil[0].titular;
+    document.getElementById("municipio").innerHTML = json_perfil[0].municipio;
+    document.getElementById("cp").innerHTML = json_perfil[0].cp;
+    document.getElementById("telefono").innerHTML = json_perfil[0].telefono;
     })
-    
+    const forEdi = document.getElementById("formularioEdicion");
+    forEdi.onsubmit = async (e) => {
+        e.preventDefault();
+        const pepito = (new FormData(forEdi)).entries();
+        // Para ver que se haya creado el formData correctamente
+        console.log(ID_PERFIL)
+        var JSON =`{"id":"${ID_PERFIL}",`;
+        for (var pair of pepito) {
+            JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
+        }
+        JSON=JSON.substring(0,JSON.length-1)+'}';
+        console.log(JSON)
+        postJSON(api_perf_edit,JSON).then((result)=>{
+            console.log(result)
+        })
+        //alert(result.message);
+    };
 }
