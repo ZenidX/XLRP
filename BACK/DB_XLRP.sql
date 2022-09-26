@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS servicios(
 	id_servicio    	INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_profesional 	INT NOT NULL,
     foto 			VARCHAR(255),
-    titulo 			VARCHAR(100),
+    titular 			VARCHAR(100),
     descripcion 	VARCHAR(1000),
     horario		 	VARCHAR(255),
     tarifa 			VARCHAR(255),
