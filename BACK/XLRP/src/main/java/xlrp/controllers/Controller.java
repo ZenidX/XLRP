@@ -23,8 +23,8 @@ public class Controller {
 	private EntityService entityService;
 	/////////////////////////////////////////////////////////////////AUTENTIFICACION
 	@RequestMapping(value="/autentificacion",method=RequestMethod.POST)
-	public ResponseEntity<Perfil> iniciarSesion(@RequestBody Perfil perfil_sesion){
-		return ResponseEntity.ok(entityService.autentificacion(perfil_sesion));
+	public boolean iniciarSesion(@RequestBody Perfil perfil_sesion){
+		return entityService.autentificacion(perfil_sesion);
 	}
 	/////////////////////////////////////////////////////////////////OBTENER COSAS
 	@RequestMapping(value="/perfiles",method=RequestMethod.GET)
