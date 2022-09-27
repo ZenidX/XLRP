@@ -40,7 +40,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                     </div>
                     <div style="font-weight: bold;" class="modal-body">
-                        <form id="formularioInicio" class="needs-validation" novalidate>
+                        <form action="http://localhost:8080/api/autentificacion" method="POST" id="formularioInicio" class="needs-validation" novalidate onsubmit="iniciar()">
                             <div class="mb-3">
                                 <label for="userId" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
@@ -70,7 +70,7 @@
                         <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
                     </div>
                     <div style="font-weight: bold;" class="modal-body">
-                        <form action="http://localhost:8080/api/registrarse" id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(value, key)">
+                        <form action="./perfil.html" id="formularioRegistro" class="needs-validation" method="GET" novalidate onsubmit="registrar(value, key)">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required>
