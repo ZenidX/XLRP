@@ -33,59 +33,18 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
+    document.getElementById("name").innerHTML=json_perfil.nombre;
+    document.getElementById("lastname").innerHTML=json_perfil.apellidos;
+    document.getElementById("titular").innerHTML=json_perfil.titular;
+    document.getElementById("edad").innerHTML=json_perfil.edad;
+    document.getElementById("email").innerHTML=json_perfil.email;
+    document.getElementById("municipio").innerHTML=json_perfil.municipio;
+    document.getElementById("cp").innerHTML=json_perfil.cp;
+})
+
 //ID del perfil que se arrastrará en todo el JS despues de haberte registrado o iniciado sesións
 var ID_PERFIL=0;
-
-// Inicio de sesión autentificación
-const forIni = document.getElementById("formularioInicio");
-forIni.onsubmit = async function iniciar(e){
-    e.preventDefault();
-    // Crear un array con los datos del formulario
-    const pepito = (new FormData(forIni)).entries();
-    // Convertir el array en un JSON
-    var JSON ='{';
-    for (var pair of pepito) {
-        JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
-    }
-    JSON=JSON.substring(0,JSON.length-1)+'}';
-    // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
-    postJSON(api_autentificacion,JSON).then((json_id)=>{
-        valor=json_id;
-        console.log(valor);
-        if (valor != -1) {
-            localStorage.setItem("id", valor)
-            window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
-            }
-        else {alert("Error")}
-    })
-}
-
-/* Funcionalidad del registro a través de JSON*/
-const forReg = document.getElementById("formularioRegistro");
-forReg.onsubmit = async function hola(e) {
-    e.preventDefault();
-    // Crear un array con los datos del formulario
-    const pepito = (new FormData(forReg)).entries();
-    // Convertir el array en un JSON
-    var JSON ='{';
-    for (var pair of pepito) {
-        JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
-    }
-    JSON=JSON.substring(0,JSON.length-1)+'}';
-    // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
-    postJSON(api_perf_regi,JSON).then((json_perfil)=>{
-        ID_PERFIL=json_perfil.id;
-        console.log(ID_PERFIL);
-        document.getElementById("name").innerHTML = json_perfil.nombre;
-        document.getElementById("lastname").innerHTML = json_perfil.apellidos;
-        document.getElementById("email").innerHTML = json_perfil.email;
-        /*document.getElementById("edad").innerHTML = json_perfil.edad;
-        document.getElementById("titular").innerHTML = json_perfil.titular;
-        document.getElementById("municipio").innerHTML = json_perfil.municipio;
-        document.getElementById("cp").innerHTML = json_perfil.cp;
-        document.getElementById("telefono").innerHTML = json_perfil.telefono;*/
-    })
-};
 
 /*Editar el perfil*/
 function cancelar() {
@@ -143,44 +102,6 @@ getJSON(url_servicios+id_servicio).then(json_servicio => {
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
 })});
 */
-
-/*Eventos de formularios de inicio de sesión y registro*/
-    //Validación de formularios
-    (() => {'use strict'
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-    //Limpieza de inputs cuando se sale de los formularios
-    const iniBTN = document.getElementById("iniciar-sesion");
-    const forInicio = document.getElementById("formularioInicio");
-    iniBTN.addEventListener("click", limpiarFormulario);
-    const regBTN = document.getElementById("registro");
-    regBTN.addEventListener("click", limpiarFormulario);
-    function limpiarFormulario(){
-        forInicio.reset();
-        forReg.reset();
-    }
-    //Limpieza de validaciones cuando se sale de los formularios
-    iniBTN.addEventListener("click", myFunction);
-    regBTN.addEventListener("click", myFunction);
-    function myFunction() {
-        if(forInicio.classList.contains("was-validated")){
-            forInicio.classList.remove("was-validated");
-        }
-        if(forReg.classList.contains("was-validated")){
-            forReg.classList.remove("was-validated");
-        }
-    }
 
 /*Menú de navegación con jQuery*/
 $(".menu-toggle-btn").click(function(){

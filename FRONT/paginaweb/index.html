@@ -43,17 +43,13 @@
                         <form action="http://localhost:8080/api/autentificacion" method="POST" id="formularioInicio" class="needs-validation" novalidate onsubmit="iniciar()">
                             <div class="mb-3">
                                 <label for="userId" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="userId" aria-describedby="emailHelp" required>
+                                <input type="email" class="form-control" id="userId" name="email" aria-describedby="emailHelp" required>
                                 <div class="invalid-feedback">Entrada inválida</div>
                             </div>
                             <div class="mb-3">
                                 <label for="contraseña" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="contraseña" required>
+                                <input type="password" class="form-control" name="contraseña" id="contraseña" required>
                                 <div class="invalid-feedback">Rellenar los campos en blanco</div>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="mantenerConectado">
-                                <label class="form-check-label" for="mantenerConectado">Mantenerme conectado</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Entrar</button>
                         </form>
@@ -90,11 +86,6 @@
                                 <label for="emailRegister" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
                                 <div class="invalid-feedback">Entrada inválida</div>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
-                                <label class="form-check-label" for="terminos">Aceptar términos y condiciones</label>
-                                <div class="invalid-feedback">Acceptar condiciones</div>
                             </div>
                             <button type="submit" class="btn btn-primary">Regístrate</button>
                         </form>
