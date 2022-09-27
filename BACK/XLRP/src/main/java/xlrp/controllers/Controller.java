@@ -68,6 +68,10 @@ public class Controller {
 	public ResponseEntity<List<Cliente>> clientesPorId_profesional(@PathVariable long id_profesional){
 		return ResponseEntity.ok(entityService.clientesPorId_profesional(id_profesional));
 	}
+	@RequestMapping(value="/clientes/cliente/{id_cliente}",method=RequestMethod.GET)
+	public ResponseEntity<List<Cliente>> clientePorId_cliente(@PathVariable long id_cliente){
+		return ResponseEntity.ok(entityService.clientesPorId_cliente(id_cliente));
+	}
 	/////////////////////////////////////////////////////////////////REGISTRAR COSAS
 	@RequestMapping(value="/perfiles/registrar",method=RequestMethod.POST)
 	public ResponseEntity<Perfil> registrarse1(@RequestBody Perfil perfil_registro){

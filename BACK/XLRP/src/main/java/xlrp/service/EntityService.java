@@ -106,6 +106,17 @@ public class EntityService {
 		}
 		return clientes_profesional;
 	}
+	/////////////////////////////////////////////////////////////////OBTENER COSAS POR ID DEL HIJO
+	public List<Cliente> clientesPorId_cliente(long id_cliente){
+		List<Cliente> clientes=clienteDAO.findAll();
+		List<Cliente> citas_cliente=new ArrayList<Cliente>();
+		for(int i=0;i<clientes.size();i++) {
+			if(clientes.get(i).getId_cliente()==id_cliente){
+				citas_cliente.add(clientes.get(i));
+			}
+		}
+		return citas_cliente;
+	}
 	/////////////////////////////////////////////////////////////////REGISTRAR COSAS
 	public Perfil registrarPerfil(Perfil perfil_registro){
 		perfilDAO.save(perfil_registro);
