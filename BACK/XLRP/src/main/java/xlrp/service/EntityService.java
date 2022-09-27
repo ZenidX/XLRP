@@ -22,8 +22,8 @@ public class EntityService {
 		List<Perfil> perfiles=perfilDAO.findAll();
 		int i=0;
 		while(i!=perfiles.size()){
-			if(perfil_sesion.getEmail()==perfiles.get(i).getEmail()) {
-				if(perfil_sesion.getContraseña()==perfiles.get(i).getContraseña()) {
+			if(perfil_sesion.getEmail().equals(perfiles.get(i).getEmail())) {
+				if(perfil_sesion.getContraseña().equals(perfiles.get(i).getContraseña())) {
 					autentification = true;
 					break;
 				}
