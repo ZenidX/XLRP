@@ -22,7 +22,8 @@ INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titular, 
   (2,"Ruben","Medina Martinez","ruskimartinez@gmail.com","1234",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","URL_foto_ruben"),
   (3,"Luis","Martinez","zenid77@gmail.com","DoomEternal",24,"Matemático","Badalona", "08195","656393148","URL_foto_luis"),
   (4,"Pol","Vela","zenid77@gmail.com","DoomEternal",24,"Policia","Sant Cugat del Vallés", "08195","656393148","URL_foto_pol"),
-  (5,"Pantufla-Sama","pa pa papure","samaPantufla@papurree.ea","meiamoPantuflaSma",3000,"hda del bozque","my caza del uerto","78012","987654321","fotuu");
+  (5,"Pantufla-Sama","pa pa papure","samaPantufla@papurree.ea","meiamoPantuflaSma",3000,"hda del bozque","my caza del uerto","78012","987654321","fotuu"),
+  (6,"Luis","Martínez","luismartinez.rodriguez.1@gmail.com","1234","25","Químico","Badalona","08917","606297136","URL_foto_luis");
 SELECT * FROM perfiles;
 DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
