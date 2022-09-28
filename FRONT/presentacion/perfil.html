@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActivityApp</title>
+    <!--Normalización de css para navegadores-->
+    <link rel="stylesheet" href="./normalize.css">
+    <!--Linkeación al bootstrap-->
+    <link rel="stylesheet" href="./style.css">
+    <!--Link a algunos estilos guapos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<body class="container-fluid p-0" style="background-size:cover; background-repeat: no-repeat; background-position: center;">
+    <!--Header con eventos de inicio y registro-->
+    <header class="container-fluid">
+    <!--Barra de navegación-->
+        <div class="inner-width">
+            <h1 class="logo">ActivityApp</h1>
+            <i class="menu-toggle-btn fas fa-bars"></i>
+            <nav class="navigation-menu">
+                <a href="./index.html"><i class="fas fa-home home"></i>Inicio</a>
+                <a href="./buscador.html">Buscador</a>
+                <a href="./conocenos.html">Conocenos</a>
+                <a href=".perfil.html">Perfil</a>
+            </nav>
+        </div>
+    </header>
+    <!--Perfil-->
+    <main style="height: 80vh;" class="container-fluid">
+        <div class="row ms-0 w-100" style="height:35%; margin-bottom: 0.5%;">
+            <div class="col-3 h-100">
+                <div class="col h-100 text-center p-2" id="foto_creador" style="overflow:hidden; backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <img src="./fotos/foto_perfil.jpg" id="foto_perfil" alt="foto creador" class="img-fluid" style="position:absolute; left:-100%; right:-100%; bottom:-100%; top:-100%; margin:auto; min-height:100%; min-width:100%;">
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="col h-100 text-center p-2"  style="overflow:hidden; backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(173, 181, 152, 0.63); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h1 id="cambio">Servicios propios</h1>
+                    <button>Añadir servicio</button>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 w-100" style="height: 61%;">
+            <div class="col-3">
+                <div class="col h-100 text-center p-2" id="desper" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <div id="name" class="align-self-start profile_description"></div>
+                    <div id="lastname" class="align-self-start profile_description"></div>
+                    <div id="email" class="align-self-start profile_description"></div>
+                    <div id="titular" class="align-self-start profile_description"></div>
+                    <div id="edad" class="align-self-start profile_description"></div>
+                    <div id="municipio" class="align-self-start profile_description"></div>
+                    <div id="cp" class="align-self-start profile_description"></div>
+                    <div id="telefono" class="align-self-start profile_description"></div>
+                    <div id="botones_edicion">
+                        <button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row" style="height: 49%; margin-bottom:0.6%;">
+                    <div class="col">
+                        <div class="col h-100 text-center p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                            <h1>Servicios apuntados</h1>
+                            <h2>Añadir servicio</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height: 49%;">
+                    <div class="col">
+                        <div class="col h-100 text-center p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                            <h1>Citas</h1>
+                            <form action="">
+                                <input type="date">
+                                <input type="text" placeholder="Comentario">
+                            </form>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </main>
+    <!--Footer-->
+    <ul class="row border-top border-2 border-dark text-black container-fluid m-0 mt-2" style="background-color:rgb(150, 126, 118);">
+        <li class="col-2 offset-2 list-group">
+            <strong>My Job</strong>
+            <a href="./index.html" class="text-black text-decoration-none">Inicio</a>
+            <a href="./buscador.html" class="text-black text-decoration-none">Buscador</a>
+            <a href="./conocenos.html" class="text-black text-decoration-none">Conocenos</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Comunidad</strong>
+            <a href="./resultados.html" class="text-black text-decoration-none">Servicios</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Cuenta</strong>
+            <a href="./perfil.html" class="text-black text-decoration-none">Perfil</a>
+            <a href="./creacion.html" class="text-black text-decoration-none">Crear servicio</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Contacto</strong>
+            <a href="https://linktr.ee/activityapp" target="_blank" class="text-black text-decoration-none">Linktree</a>
+        </li>
+    </ul>
+    <!--jQuery-->
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+    <!--Link al archivo js-->
+    <script src="./maininiciado.js"></script>
+    <!--Link a bootstrap-->
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>

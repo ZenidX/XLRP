@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActivityApp</title>
+    <!--Normalización de css para navegadores-->
+    <link rel="stylesheet" href="./normalize.css">
+    <!--Linkeación al bootstrap-->
+    <link rel="stylesheet" href="./style.css">
+    <!--Link a algunos estilos guapos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<body class="container-fluid p-0" style="background-size:cover; background-repeat: no-repeat; background-position: center;">
+    <!--Header con eventos de inicio y registro-->
+    <header class="container-fluid">
+    <!--Barra de navegación-->
+        <div class="inner-width">
+            <h1 class="logo">ActivityApp</h1>
+            <i class="menu-toggle-btn fas fa-bars"></i>
+            <nav class="navigation-menu">
+                <a href="./index.html"><i class="fas fa-home home"></i>Inicio</a>
+                <a href="./buscador.html">Buscador</a>
+                <a href="./conocenos.html">Conocenos</a>
+                <form action="" class="centrado">
+                    <button type="button" id="iniciar-sesion" class="aj_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fas fa-lock" aria-hidden="true"></i>LOGIN</button>
+                </form>
+                <form action="" class="centrado">
+                    <button type="button" id="registro" class="aj_btn" data-bs-toggle="modal" data-bs-target="#registrarse" data-bs-whatever="@getbootstrap">SIGN UP</button>
+                </form>
+            </nav>
+        </div>
+        <!--Evento de inicio sesión-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div style="background-color: rgb(183, 196, 207);" class="modal-content">
+                    <div class="modal-header">
+                        <h5 style="font-weight: bold;" class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                    </div>
+                    <div style="font-weight: bold;" class="modal-body">
+                        <form action="http://localhost:8080/api/autentificacion" method="POST" id="formularioInicio" class="needs-validation" novalidate onsubmit="iniciar()">
+                            <div class="mb-3">
+                                <label for="userId" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="userId" name="email" aria-describedby="emailHelp" required>
+                                <div class="invalid-feedback">Entrada inválida</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contraseña" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" name="contraseña" id="contraseña" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Evento de registro-->
+        <div class="modal fade" id="registrarse" tabindex="-1" aria-labelledby="registrarselabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div style="background-color: rgb(183, 196, 207);" class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrarselabel">Registrarse</h5>
+                        <button type="button" id="cerrarFormulario" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" onclick="limpiarFormulario()"></button>
+                    </div>
+                    <div style="font-weight: bold;" class="modal-body">
+                        <form action="http://localhost:8080/api/registrarse" id="formularioRegistro" class="needs-validation" method="POST" novalidate onsubmit="registrar(value, key)">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="contraseña" required>
+                                <div class="invalid-feedback">Rellenar los campos en blanco</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailRegister" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailRegister" name="email" aria-describedby="emailHelp" required>
+                                <div class="invalid-feedback">Entrada inválida</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Regístrate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Buscador-->
+    <main style="height: 80vh;" class="container-fluid">
+        <div class="h-100 w-100 d-flex justify-content-center">
+            <div class="w-50 p-5" style="height:95%; backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                <div class="row h-50 w-100">
+                    <div class="col"><h5>ActivityApp aparece como un proyecto de 4 jovenes estudiantes de programación con Java en el centro de 
+                        <a href="https://fundesplai.org/ca/nosaltres/qui-som?gclid=Cj0KCQjw1bqZBhDXARIsANTjCPKwsIMUhbqBR0M4FHwQwVfq8DdNgRJ5uHMLWkqpIPr9YOuCDSYlaRsaAkpWEALw_wcB" class="text-dark" target="_blank">
+                        Fundació Esplai</a>. <br> <br> Esta idea surgió por la inquietud que se genera cuando se piensa en la gran cantidad de gente que tiene experiencia o conoce en profundidad cualquier tema
+                        pero, a la vez, en España hay una gran tasa de desempleo. <br> <br> Este portal intenta ayudar a esas personas que conocen cualquier tema que puedan y quieran compartir y a la vez
+                        intenta ser una herramienta donde los pequeños autonomos puedan ofrecer sus servicios de forma cómoda y rápida.</h5>
+                    </div>
+                </div>
+                <div class="row h-50 w-100">
+                    <h5 class="col-12">Las cuatro maravillosas mentes que construyeron este proyecto son:</h5>
+                    <h5 class="col text-center">Luis Martínez Rodríguez</h5>
+                    <h5 class="col text-center">Xavi Lara Moreno</h5>
+                    <h5 class="col text-center">Rubén Medina Martínez</h5>
+                    <h5 class="col text-center">Pol Vela</h5>
+                    <h5 class="col-12 text-center">Ponte en contacto con nosotros a través de este <a href="https://linktr.ee/activityapp" target="_blank" class="text-dark">enlace</a>.</h5>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--Footer-->
+    <ul class="row border-top border-2 border-dark text-black container-fluid m-0 mt-2" style="background-color:rgb(150, 126, 118);">
+        <li class="col-2 offset-2 list-group">
+            <strong>My Job</strong>
+            <a href="./index.html" class="text-black text-decoration-none">Inicio</a>
+            <a href="./buscador.html" class="text-black text-decoration-none">Buscador</a>
+            <a href="./conocenos.html" class="text-black text-decoration-none">Conocenos</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Comunidad</strong>
+            <a href="./resultados.html" class="text-black text-decoration-none">Servicios</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Cuenta</strong>
+            <a href="./perfil.html" class="text-black text-decoration-none">Perfil</a>
+            <a href="./creacion.html" class="text-black text-decoration-none">Crear servicio</a>
+        </li>
+        <li class="col-2 list-group">
+            <strong>Contacto</strong>
+            <a href="https://linktr.ee/activityapp" target="_blank" class="text-black text-decoration-none">Linktree</a>
+        </li>
+    </ul>
+    <!--jQuery-->
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+    <!--Link al archivo js-->
+    <script src="./main.js"></script>
+    <!--Link a bootstrap-->
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
