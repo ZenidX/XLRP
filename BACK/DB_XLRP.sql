@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS perfiles(
     municipio	VARCHAR(255),
     cp 			VARCHAR(10),
     telefono 	VARCHAR(16),
-    foto 		VARCHAR(255),
+    foto 		BLOB,
     terminos	VARCHAR(255)
 );
 INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titular, municipio, cp, telefono, foto) VALUES
@@ -29,8 +29,8 @@ DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
 	id_servicio    	INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_profesional 	INT NOT NULL,
-    foto 			VARCHAR(255),
-    titular 			VARCHAR(100),
+    foto 			BLOB,
+    titular 		VARCHAR(100),
     descripcion 	VARCHAR(1000),
     horario		 	VARCHAR(255),
     tarifa 			VARCHAR(255),
