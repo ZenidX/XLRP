@@ -14,8 +14,6 @@ public class Perfil{
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	//@Column(name="cuenta")
-	//private String cuenta;
 	@Column(name="contraseña")
 	private String contraseña;
 	@Column(name="nombre")
@@ -26,8 +24,6 @@ public class Perfil{
 	private long edad;
 	@Column(name="titular")
 	private String titular;
-	//@Column(name="direccion")
-	//private String direccion;
 	@Column(name="municipio")
 	private String municipio;
 	@Column(name="cp")
@@ -37,15 +33,21 @@ public class Perfil{
 	@Column(name="email")
 	private String email;
 	@Column(name="foto")
-	private String foto;
+	private byte[] foto;
 	public Perfil(){}
-	public Perfil(String password,String nombre,String apellidos,String titular,String municipio,String cp,String telefono,String email,String foto){
-		//this.cuenta=cuenta;
+	public Perfil(String password,
+			String nombre,
+			String apellidos,
+			String titular,
+			String municipio,
+			String cp,
+			String telefono,
+			String email,
+			byte[] foto){
 		this.contraseña=password;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
 		this.titular=titular;
-		//this.direccion=direccion;
 		this.municipio=municipio;
 		this.cp=cp;
 		this.telefono=telefono;
@@ -58,12 +60,6 @@ public class Perfil{
 	public void setId(long id) {
 		this.id = id;
 	}
-	/*public void setCuenta(String cuenta) {
-		this.cuenta=cuenta;
-	}
-	public String getCuenta() {
-		return this.cuenta;
-	}*/
 	public void setContraseña(String contraseña) {
 		this.contraseña=contraseña;
 	}
@@ -94,12 +90,6 @@ public class Perfil{
 	public void setTitular(String titulo) {
 		this.titular = titulo;
 	}
-	/*public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}*/
 	public String getMunicipio() {
 		return municipio;
 	}
@@ -124,10 +114,10 @@ public class Perfil{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 }

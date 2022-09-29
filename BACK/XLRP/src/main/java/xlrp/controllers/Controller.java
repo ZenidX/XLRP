@@ -2,6 +2,7 @@ package xlrp.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import xlrp.entities.*;
 import xlrp.service.EntityService;
@@ -85,13 +88,25 @@ public class Controller {
 	}
 	/////////////////////////////////////////////////////////////////EDITAR COSAS
 	@RequestMapping(value="/perfiles/editar",method=RequestMethod.POST)
-	public ResponseEntity<Optional<Perfil>> editarPerfil(@RequestBody Perfil perfil_editado){
+	public ResponseEntity<Optional<Perfil>> editarPerfil(@RequestBody Perfil perfil_editado,@RequestParam("file") MultipartFile imageFile){
+		try {
+	        byte[] img = imageFile.getBytes();
+	        perfil_editado.setFoto(img);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }    
 		return ResponseEntity.ok(entityService.editarPerfil(perfil_editado));
 	}
 	
 	//Este no se como comprobar la edicion (error 400)-------------------------------------
 	@RequestMapping(value="/servicios/editar",method=RequestMethod.POST)
-	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado){
+	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado,@RequestParam("file") MultipartFile imageFile){
+		try {
+	        byte[] img = imageFile.getBytes();
+	        servicio_editado.setFoto(img);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }    
 		return ResponseEntity.ok(entityService.editarServicio(servicio_editado));
 	}
 	/////////////////////////////////////////////////////////////////ELIMINAR COSAS

@@ -17,9 +17,9 @@ public class Servicio{
 	@Column(name="id_profesional")
 	private long id_profesional;
 	@Column(name="foto")
-	private String foto;
-	@Column(name="titulo")
-	private String titulo;
+	private byte[] foto;
+	@Column(name="titular")
+	private String titular;
 	@Column(name="descripcion")
 	private String descripcion;
 	@Column(name="horario")
@@ -28,14 +28,14 @@ public class Servicio{
 	private String tarifa;
 	public Servicio(){}
 	public Servicio(
-			String foto,
+			byte[] foto,
 			String titulo,
 			String descripcion,
 			String horario,
 			String tarifa
 			){
 		this.foto=foto;
-		this.titulo=titulo;
+		this.titular=titulo;
 		this.descripcion=descripcion;
 		this.horario=horario;
 		this.tarifa=tarifa;
@@ -52,17 +52,17 @@ public class Servicio{
 	public void setId_profesional(long id_profesional) {
 		this.id_profesional=id_profesional;
 	}
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
-	public String getTitulo() {
-		return titulo;
+	public String getTitular() {
+		return titular;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitulo(String titular) {
+		this.titular = titular;
 	}
 	public String getDescripcion() {
 		return descripcion;
