@@ -58,7 +58,7 @@ public class EntityService {
 		List<Servicio> servicios_encontrados=new ArrayList<Servicio>();
 		int i = 0;
 		while(i!=servicios.size()){
-			if(servicios.get(i).getTitulo().contains(Keyword)){
+			if(servicios.get(i).getTitular().contains(Keyword)){
 				servicios_encontrados.add(servicios.get(i));
 			}
 			i++;
@@ -138,7 +138,7 @@ public class EntityService {
 		int i=0;
 		while(i!=servicios.size()) {
 			if(servicio_registrado.getId_profesional()==servicios.get(i).getId_profesional()){
-				if(servicio_registrado.getTitulo()==servicios.get(i).getTitulo()){
+				if(servicio_registrado.getTitular()==servicios.get(i).getTitular()){
 					break;
 				}
 			}
