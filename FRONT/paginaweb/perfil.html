@@ -45,7 +45,7 @@
         </div>
         <div class="row m-0 w-100" style="height: 61%;">
             <div class="col-3">
-                <div class="col h-100 text-center p-2" id="desper" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                <div class="col h-100 p-2" id="desper" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
                     <div id="name" class="align-self-start profile_description"></div>
                     <div id="lastname" class="align-self-start profile_description"></div>
                     <div id="email" class="align-self-start profile_description"></div>
@@ -57,6 +57,21 @@
                     <div id="botones_edicion">
                         <button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>
                     </div>
+                    <form action="http://localhost:8080/api/perfiles/editar" method="POST" style="display: none;" id="formularioEdicion" onsubmit="registrarse(value, key)">
+                        <input type="text" name="nombre" placeholder="Nombre">
+                        <input type="text" name="apellidos" placeholder="Apellidos">
+                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="password" name="contraseña" placeholder="Contraseña" required>
+                        <input type="text" name="edad" placeholder="Edad">
+                        <input type="text" name="titular" placeholder="Titular">
+                        <input type="text" name="municipio" placeholder="Municipio">
+                        <input type="text" name="cp" placeholder="C.P.">
+                        <input type="text" name="telefono" placeholder="Teléfono">
+                        <label for="file">Selecciona una foto de perfil:</label>
+                        <input type="file" id="file" name="foto" accept=".png, .jpg, .jpeg">
+                        <button type="submit" class="text-dark" id="aceptar">Aceptar</button>
+                    </form>
+                    <button class="text-dark" id="cancelar" style="display:none;" onclick="cancelar()">Cancelar</button>
                 </div>
             </div>
             <div class="col-9">

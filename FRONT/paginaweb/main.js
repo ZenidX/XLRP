@@ -53,7 +53,7 @@ forIni.onsubmit = async function iniciar(e){
             localStorage.setItem("id", ID_PERFIL)
             window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
             }
-        else {alert("Error")}
+        else {alert("Usuario y/o contraseña incorrecto/s")}
     })
 }
 
