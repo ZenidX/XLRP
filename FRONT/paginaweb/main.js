@@ -33,9 +33,6 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
-//ID del perfil que se arrastrará en todo el JS despues de haberte registrado o iniciado sesións
-var ID_PERFIL=0;
-
 /*Inicio de sesión autentificación*/
 const forIni = document.getElementById("formularioInicio");
 forIni.onsubmit = async function iniciar(e){
@@ -73,6 +70,8 @@ forReg.onsubmit = async function hola(e) {
     }
     JSON=JSON.substring(0,JSON.length-1)+'}';
     // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
+    formularioRegistro=document.getElementById("formularioRegistro")
+    if (formularioRegistro.checkValidity())
     postJSON(api_perf_regi,JSON).then((json_perfil)=>{
         ID_PERFIL=json_perfil.id;
         console.log(ID_PERFIL);
@@ -86,65 +85,14 @@ if(localStorage.getItem("id")){
     document.getElementById("iniciar-sesion").style.display="none";
     document.getElementById("registro").style.display="none";
     const navegador=document.getElementsByClassName("navigation-menu");
-    navegador[0].insertAdjacentHTML("beforeend", '<a href="./perfil.html">Perfil</a>');
+    navegador[0].insertAdjacentHTML("beforeend", '<a href="./perfil.html">Perfil</a><button type="button" id="cerrar-sesion" class="aj_btn" onclick="cerrar()">LOG OUT</button>');
 }
 
-/*Editar el perfil*/
-function cancelar() {
-    location.reload();
+/*Cerrar sesión*/
+function cerrar(){
+    localStorage.removeItem("id");
+    window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
 }
-function aceptar() {
-    const botones_edicion=document.getElementById("botones_edicion");
-    botones_edicion.innerHTML='<button class="text-dark" id="editar_perfil" onclick="editarperfil()">Editar perfil</button>'
-}
-function editarperfil(){
-    document.querySelectorAll("profile_description")
-    const botones_edicion=document.getElementById("botones_edicion");
-    botones_edicion.innerHTML='<form action="http://localhost:8080/api/perfiles/editar" method="POST" id="formularioEdicion" onsubmit="registrarse(value, key)"><input type="text" name="nombre" placeholder="Nombre"><input type="text" name="apellidos" placeholder="Apellidos"><input type="text" name="email" placeholder="Email"><input type="text" name="edad" placeholder="Edad"><input type="text" name="titular" placeholder="Titular"><input type="text" name="municipio" placeholder="Municipio"><input type="text" name="cp" placeholder="C.P."><input type="text" name="telefono" placeholder="Teléfono"><label for="file">Selecciona una foto de perfil:</label><input type="file" id="file" name="foto" accept=".png, .jpg, .jpeg"><button type="submit" class="text-dark" id="editar_perfil">Aceptar</button></form>'
-    botones_edicion.insertAdjacentHTML("beforeend", '<button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>')
-    var file=document.getElementById("file");
-    if(file){
-        file.addEventListener('change', readURL, true);
-        function readURL(){
-            const choosedFile = document.getElementById("file").files[0];
-            const reader = new FileReader();
-            reader.onload = function(){
-                document.getElementById('foto_perfil').src = reader.result;
-            }
-            reader.readAsDataURL(choosedFile)
-        }
-    }
-    const forEdi = document.getElementById("formularioEdicion");
-    forEdi.onsubmit = async (e) => {
-        e.preventDefault();
-        const pepito = (new FormData(forEdi)).entries();
-        // Para ver que se haya creado el formData correctamente
-        console.log(ID_PERFIL)
-        var JSON =`{"id":"${ID_PERFIL}",`;
-        for (var pair of pepito) {
-            JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
-        }
-        JSON=JSON.substring(0,JSON.length-1)+'}';
-        console.log(JSON)
-        postJSON(api_perf_edit,JSON).then((result)=>{
-            console.log(result)
-        })
-        //alert(result.message);
-    };
-}
-
-/*Codigo para rellenar pagina de servicio*/
-/*
-getJSON(url_servicios+id_servicio).then(json_servicio => {
-    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
-    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
-    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
-    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
-    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
-})});
-*/
 
 /*Eventos de formularios de inicio de sesión y registro*/
     //Validación de formularios
@@ -224,3 +172,16 @@ function cambiar(){
         formsearch.setAttribute("action", "./resultadosse.html");
     }
 } */
+
+/*Codigo para rellenar pagina de servicio*/
+/*
+getJSON(url_servicios+id_servicio).then(json_servicio => {
+    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
+    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
+    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
+    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
+})});
+*/

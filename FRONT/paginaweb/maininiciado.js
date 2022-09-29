@@ -33,19 +33,24 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+/*Cerrar sesión*/
+function cerrar(){
+    localStorage.removeItem("id");
+    window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
+}
 
+/*Método para editar el perfil directamente desde la base de datos de forma personalizada*/
 getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
     document.getElementById("name").innerHTML=json_perfil.nombre;
     document.getElementById("lastname").innerHTML=json_perfil.apellidos;
     document.getElementById("titular").innerHTML=json_perfil.titular;
+    if(json_perfil.edad>1){
     document.getElementById("edad").innerHTML=json_perfil.edad;
+    }
     document.getElementById("email").innerHTML=json_perfil.email;
     document.getElementById("municipio").innerHTML=json_perfil.municipio;
     document.getElementById("cp").innerHTML=json_perfil.cp;
 })
-
-//ID del perfil que se arrastrará en todo el JS despues de haberte registrado o iniciado sesións
-var ID_PERFIL=0;
 
 /*Editar el perfil*/
 function cancelar() {
@@ -91,19 +96,6 @@ function editarperfil(){
     };
 }
 
-/*Codigo para rellenar pagina de servicio*/
-/*
-getJSON(url_servicios+id_servicio).then(json_servicio => {
-    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
-    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
-    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
-    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
-    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
-})});
-*/
-
 /*Menú de navegación con jQuery*/
 $(".menu-toggle-btn").click(function(){
     $(this).toggleClass("fa-times");
@@ -144,3 +136,16 @@ function cambiar(){
         formsearch.setAttribute("action", "./resultadosse.html");
     }
 } */
+
+/*Codigo para rellenar pagina de servicio*/
+/*
+getJSON(url_servicios+id_servicio).then(json_servicio => {
+    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
+    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
+    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
+    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
+    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
+    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
+})});
+*/
