@@ -156,7 +156,7 @@ public class EntityService {
 		return perfilDAO.findById(perfil_editado.getId());
 	}
 	/////////////////////////////////////////////////////////////////ELIMINAR COSAS
-	public void eliminarPorId_cita(long id_cita) {
+	public void eliminarPorId_cita(long id_cita){
 		clienteDAO.deleteById(id_cita);
 	}
 	public void eliminarPorId_servicio(long id_servicio){

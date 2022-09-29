@@ -82,6 +82,13 @@ public class Controller {
 	}
 	
 	//no se como registrar yo desde postman---------------------------------------------
+	/*
+	 	En el postman haz que el metodo sea POST, luego te dejara acceder a editor de texto Body
+	 	hay has de meter el codigo JSON:{"variable1":"valor1","variable2":"valor2",...} y entonces le das a enviar.
+	 	Los datos han de encajar con la base de datos y las entidades del java para que no haya errores 400,405,415,etc.
+	 	Cada codigo significa que el error esta en un sitio concreto, el 500 directamente el problema esta en el script del MySQL.
+	 	Si son 400 son del SpringBoot o de que lo que le envias no esta bien.
+	 */
 	@RequestMapping(value="/servicios/registrar",method=RequestMethod.POST)
 	public ResponseEntity<Servicio> registrarServicio(@RequestBody Servicio servicio_registrado){
 		return ResponseEntity.ok(entityService.registrarServicio(servicio_registrado));
