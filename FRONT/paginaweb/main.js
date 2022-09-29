@@ -36,7 +36,7 @@ async function postJSON(url,JSON){
 //ID del perfil que se arrastrará en todo el JS despues de haberte registrado o iniciado sesións
 var ID_PERFIL=0;
 
-// Inicio de sesión autentificación
+/*Inicio de sesión autentificación*/
 const forIni = document.getElementById("formularioInicio");
 forIni.onsubmit = async function iniciar(e){
     e.preventDefault();
@@ -50,10 +50,10 @@ forIni.onsubmit = async function iniciar(e){
     JSON=JSON.substring(0,JSON.length-1)+'}';
     // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
     postJSON(api_autentificacion,JSON).then((json_id)=>{
-        valor=json_id;
-        console.log(valor);
-        if (valor != -1) {
-            localStorage.setItem("id", valor)
+        ID_PERFIL=json_id;
+        console.log(ID_PERFIL);
+        if (ID_PERFIL != -1) {
+            localStorage.setItem("id", ID_PERFIL)
             window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
             }
         else {alert("Error")}
@@ -76,16 +76,18 @@ forReg.onsubmit = async function hola(e) {
     postJSON(api_perf_regi,JSON).then((json_perfil)=>{
         ID_PERFIL=json_perfil.id;
         console.log(ID_PERFIL);
-        document.getElementById("name").innerHTML = json_perfil.nombre;
-        document.getElementById("lastname").innerHTML = json_perfil.apellidos;
-        document.getElementById("email").innerHTML = json_perfil.email;
-        /*document.getElementById("edad").innerHTML = json_perfil.edad;
-        document.getElementById("titular").innerHTML = json_perfil.titular;
-        document.getElementById("municipio").innerHTML = json_perfil.municipio;
-        document.getElementById("cp").innerHTML = json_perfil.cp;
-        document.getElementById("telefono").innerHTML = json_perfil.telefono;*/
-    })
+        localStorage.setItem("id", ID_PERFIL);
+        window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html';
+    }); 
 };
+
+/*Cambio de header una vez registrado/iniciado*/
+if(localStorage.getItem("id")){
+    document.getElementById("iniciar-sesion").style.display="none";
+    document.getElementById("registro").style.display="none";
+    const navegador=document.getElementsByClassName("navigation-menu");
+    navegador[0].insertAdjacentHTML("beforeend", '<a href="./perfil.html">Perfil</a>');
+}
 
 /*Editar el perfil*/
 function cancelar() {

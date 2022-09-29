@@ -33,6 +33,7 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+
 getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
     document.getElementById("name").innerHTML=json_perfil.nombre;
     document.getElementById("lastname").innerHTML=json_perfil.apellidos;
