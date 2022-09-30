@@ -114,18 +114,23 @@ function editarperfil(){
 }
 
 /*Mostrar los servicios añadidos*/
-    getJSON(api_serv_prof+localStorage.getItem("id")).then(json_servicio=>{
-        console.log(json_servicio[1])
-        for(let i=0;i<json_servicio.length;i++){
-            a=String("titulo_"+`${i+1}`)
-            console.log(a)
-            b=String("servicio_"+`${i+1}`)
-            console.log(b)
-            console.log(typeof b)
-            document.getElementById(b).style.display="block";
-            document.getElementById(a).innerHTML=json_servicio[i].titular;
+getJSON(api_serv_prof+localStorage.getItem("id")).then(json_servicio=>{
+    console.log(json_servicio[1])
+    for(let i=0;i<json_servicio.length;i++){
+        a=String("titulo_"+`${i+1}`)
+        console.log(a)
+        b=String("servicio_"+`${i+1}`)
+        console.log(b)
+        console.log(typeof b)
+        document.getElementById(b).style.display="block";
+        document.getElementById(a).innerHTML=json_servicio[i].titular;
+        document.getElementById(a).onclick= function servicio() {
+            console.log(json_servicio[i].id_servicio)
+            localStorage.setItem("id_servicio", json_servicio[i].id_servicio)
+            window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultadoespecifico.html'
         }
-    });
+    }
+});
 
 /*Añadir servicio desde el perfil*/
 function anadir(){
