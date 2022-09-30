@@ -57,18 +57,18 @@
             </div>
             <div class="col-6">
                 <div class="row" style="height: 100%; margin-bottom:1%;">
-                    <div class="col">
-                        <div id="serdes" class="col h-100 text-center p-2" style="backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                            <form action="http://localhost:8080/api/servicios/editar" method="POST" id="formularioServicio" onsubmit="registrarse(value, key)">
-                                <input type="text" name="titular" placeholder="Título" required>
-                                <input type="text" name="descripcion" placeholder="Descripción" required>
-                                <input type="text" name="horario" placeholder="Horario">
-                                <input type="text" name="tarifa" placeholder="Tarifa">
-                                <label for="file">Selecciona una foto de portada:</label>
-                                <input type="file" id="file" accept=".png, .jpg, .jpeg">
+                    <div class="col h-100">
+                        <div id="serdes" class="col h-100 text-center p-2" style="overflow: auto; backdrop-filter: blur(18px) saturate(200%); -webkit-backdrop-filter: blur(18px) saturate(200%); background-color: rgba(183, 196, 207, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                            <form action="http://localhost:8080/api/servicios/editar" method="POST" id="formularioServicio" onsubmit="registrarse(value, key)" class="h-75 w-100">
+                                <input type="text" name="titular" placeholder="Título" required style="width:60%; margin-bottom:0.5%;"> <br>
+                                <input type="text" name="descripcion" placeholder="Descripción" required style="width:60%; height:25%; margin-bottom:0.5%;"> <br>
+                                <input type="text" name="horario" placeholder="Horario" style="width:60%; margin-bottom:0.5%;"> <br>
+                                <input type="text" name="tarifa" placeholder="Tarifa" style="width:60%; margin-bottom:0.5%;"> <br>
+                                <label for="file" style="margin-bottom: 0.5%;">Selecciona una foto de portada:</label> <br>
+                                <input type="file" id="file" accept=".png, .jpg, .jpeg" style="margin-bottom: 0.5%;"> <br>
                                 <button type="submit" class="text-dark" id="aceptar">Aceptar</button>
+                                <button type="button" class="text-dark" id="cancelar">Cancelar</button>
                             </form>
-                            <button class="text-dark" id="cancelar" onclick="cancelar()">Cancelar</button>
                             <!--<button id="cambio">AAAA</button>-->
                         </div>
                     </div>

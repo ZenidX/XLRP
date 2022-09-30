@@ -60,7 +60,7 @@ getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
 })
 
 /*Editar el servicio*/
-function cancelar() {
+document.getElementById("cancelar").onclick=function cancelar() {
     window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html';
 }
 var file=document.getElementById("file")
