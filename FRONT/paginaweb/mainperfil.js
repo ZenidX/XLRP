@@ -96,7 +96,7 @@ function editarperfil(){
         postJSON(api_perf_edit,JSON).then((result)=>{
             console.log(result)
         })
-        window.location.href ='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
+        //window.location.href ='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
     };
     getJSON(api_perf+localStorage.getItem("id")).then(json_perfil =>{
         document.getElementsByName("nombre")[0].value=json_perfil.nombre;
@@ -110,7 +110,6 @@ function editarperfil(){
         document.getElementsByName("municipio")[0].value=json_perfil.municipio;
         document.getElementsByName("cp")[0].value=json_perfil.cp;
         document.getElementsByName("telefono")[0].value=json_perfil.telefono;
-        document.getElementsByName("foto")[0].value=json_perfil.foto;
     })
 }
 
