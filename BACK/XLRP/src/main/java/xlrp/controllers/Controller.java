@@ -95,25 +95,13 @@ public class Controller {
 	}
 	/////////////////////////////////////////////////////////////////EDITAR COSAS
 	@RequestMapping(value="/perfiles/editar",method=RequestMethod.POST)
-	public ResponseEntity<Optional<Perfil>> editarPerfil(@RequestBody Perfil perfil_editado,@RequestParam("file") MultipartFile imageFile){
-		try {
-	        byte[] img = imageFile.getBytes();
-	        perfil_editado.setFoto(img);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }    
+	public ResponseEntity<Optional<Perfil>> editarPerfil(@RequestBody Perfil perfil_editado){
 		return ResponseEntity.ok(entityService.editarPerfil(perfil_editado));
 	}
 	
 	//Este no se como comprobar la edicion (error 400)-------------------------------------
 	@RequestMapping(value="/servicios/editar",method=RequestMethod.POST)
-	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado,@RequestParam("file") MultipartFile imageFile){
-		try {
-	        byte[] img = imageFile.getBytes();
-	        servicio_editado.setFoto(img);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }    
+	public ResponseEntity<Servicio> editarServicio(@RequestBody Servicio servicio_editado){
 		return ResponseEntity.ok(entityService.editarServicio(servicio_editado));
 	}
 	/////////////////////////////////////////////////////////////////ELIMINAR COSAS
