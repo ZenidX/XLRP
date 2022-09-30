@@ -79,17 +79,19 @@ const forSer=document.getElementById("formularioServicio")
 forSer.onsubmit = async (e) => {
     e.preventDefault();
     const pepito = (new FormData(forSer)).entries();
-    var JSON =`{"id":"${localStorage.getItem("id")}",`;
+    var JSON =`{"id_profesional":${localStorage.getItem("id")},`;
     for (var pair of pepito) {
     JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
     }
     JSON=JSON.substring(0,JSON.length-1)+'}';
-    postJSON(api_serv_edit,JSON).then((result)=>{
-        console.log(result)
-    })
-    //window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultadoespecifico.html'
+    console.log(JSON)
+    postJSON(api_serv_edit,JSON).then((json_servicio)=>{
+        console.log(json_servicio)
+        var ID_SERVICIO=json_servicio.id_servicio
+        localStorage.setItem("id_servicio", ID_SERVICIO)
+    window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultadoespecifico.html'
+    });
 };
-
 
 /*Menú de navegación con jQuery*/
 $(".menu-toggle-btn").click(function(){
@@ -143,3 +145,21 @@ function cambiar(){
     document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
 })});
 */
+
+/*Intentar guardar la foto el localstorage*/
+/*function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+
+}
+const cambio=document.getElementById("cambio")
+cambio.onclick = function hola() {
+    bannerImage = document.getElementById('file');
+    imgData = getBase64Image(bannerImage);
+    localStorage.setItem("foto", imgData);
+}*/

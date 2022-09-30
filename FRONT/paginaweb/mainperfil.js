@@ -96,7 +96,7 @@ function editarperfil(){
         postJSON(api_perf_edit,JSON).then((result)=>{
             console.log(result)
         })
-        //window.location.href ='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
+        window.location.href ='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html'
     };
     getJSON(api_perf+localStorage.getItem("id")).then(json_perfil =>{
         document.getElementsByName("nombre")[0].value=json_perfil.nombre;
@@ -112,6 +112,20 @@ function editarperfil(){
         document.getElementsByName("telefono")[0].value=json_perfil.telefono;
     })
 }
+
+/*Mostrar los servicios añadidos*/
+    getJSON(api_serv_prof+localStorage.getItem("id")).then(json_servicio=>{
+        console.log(json_servicio[1])
+        for(let i=0;i<json_servicio.length;i++){
+            a=String("titulo_"+`${i+1}`)
+            console.log(a)
+            b=String("servicio_"+`${i+1}`)
+            console.log(b)
+            console.log(typeof b)
+            document.getElementById(b).style.display="block";
+            document.getElementById(a).innerHTML=json_servicio[i].titular;
+        }
+    });
 
 /*Añadir servicio desde el perfil*/
 function anadir(){
