@@ -56,15 +56,12 @@ getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
     document.getElementById("email").innerHTML=json_perfil.email;
     document.getElementById("municipio").innerHTML=json_perfil.municipio;
     document.getElementById("cp").innerHTML=json_perfil.cp;
+    document.getElementById("telefono").innerHTML=json_perfil.telefono;
 })
 
 /*Editar el perfil*/
 function cancelar() {
     location.reload();
-}
-document.getElementById("aceptar").onclick = function aceptar() {
-    const botones_edicion=document.getElementById("botones_edicion");
-    botones_edicion.innerHTML='<button class="text-dark" id="aceptar" onclick="editarperfil()">Editar perfil</button>'
 }
 function editarperfil(){
     document.querySelectorAll(".profile_description").forEach(function(el) {
@@ -91,7 +88,6 @@ function editarperfil(){
     forEdi.onsubmit = async (e) => {
         e.preventDefault();
         const pepito = (new FormData(forEdi)).entries();
-        // Para ver que se haya creado el formData correctamente
         var JSON =`{"id":"${localStorage.getItem("id")}",`;
         for (var pair of pepito) {
             JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
@@ -116,6 +112,11 @@ function editarperfil(){
         document.getElementsByName("telefono")[0].value=json_perfil.telefono;
         document.getElementsByName("foto")[0].value=json_perfil.foto;
     })
+}
+
+/*Añadir servicio desde el perfil*/
+function anadir(){
+    window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/creacion.html'
 }
 
 /*Menú de navegación con jQuery*/
