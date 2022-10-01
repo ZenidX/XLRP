@@ -94,14 +94,10 @@ function cerrar(){
     window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
 }
 
-/*Funcionalidad del buscador*/
-getJSON(api_serv_busc).then(json_servicio=>{
-    
-});
-
-/*Mostrar los resultados*/
-getJSON(api_serv).then(json_servicio=>{
-    console.log(json_servicio[1])
+/*Mostrar los resultados dependiendo si escribes una palabra o no*/
+if(localStorage.getItem("busqueda")){
+    getJSON(api_serv_busc+localStorage.getItem("busqueda")).then(json_servicio=>{
+    console.log(json_servicio[0]);
     for(let i=0;i<json_servicio.length;i++){
         a=String("titulo_"+`${i+1}`)
         console.log(a)
@@ -118,7 +114,27 @@ getJSON(api_serv).then(json_servicio=>{
             window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultadoespecifico.html'
         }
     }
-});
+})} else {
+    getJSON(api_serv).then(json_servicio=>{
+        console.log(json_servicio[1])
+        for(let i=0;i<json_servicio.length;i++){
+            a=String("titulo_"+`${i+1}`)
+            console.log(a)
+            b=String("servicio_"+`${i+1}`)
+            console.log(b)
+            console.log(typeof b)
+            document.getElementById(b).style.display="flex";
+            document.getElementById(b).style.justifyContent="center";
+            document.getElementById(b).style.alignItems="center";
+            document.getElementById(a).innerHTML=json_servicio[i].titular;
+            document.getElementById(a).onclick= function servicio() {
+                console.log(json_servicio[i].id_servicio)
+                localStorage.setItem("id_servicio", json_servicio[i].id_servicio)
+                window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultadoespecifico.html'
+            }
+        }
+    });
+}
 
 /*Eventos de formularios de inicio de sesión y registro*/
     //Validación de formularios

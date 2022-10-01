@@ -94,14 +94,13 @@ function cerrar(){
     window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
 }
 
-/*Funcionalidad del buscador*/
+/*Guardar palabra de búsqueda en el localStorage*/
 document.getElementById("form-search").onsubmit=function (e){
     e.preventDefault();
     console.log(document.getElementById("search").value)
     var palabra= document.getElementById("search").value
-    getJSON(api_serv_busc+palabra).then(json_servicio=>{
-        console.log(json_servicio[0])
-    })
+    localStorage.setItem("busqueda", palabra)
+    window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultados.html'
 };
 
 /*Eventos de formularios de inicio de sesión y registro*/
