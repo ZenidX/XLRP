@@ -134,18 +134,6 @@ function cambiar(){
     }
 } */
 
-/*Codigo para rellenar pagina de servicio*/
-/*getJSON(url_servicios+id_servicio).then(json_servicio => {
-    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
-    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
-    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
-    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
-    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
-})});
-*/
-
 /*Intentar guardar la foto el localstorage*/
 /*function getBase64Image(img) {
     var canvas = document.createElement("canvas");
