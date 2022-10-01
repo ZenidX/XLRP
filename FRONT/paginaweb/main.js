@@ -141,19 +141,20 @@ $(".menu-toggle-btn").click(function(){
 /*Cambio de foto de fondo */
 var header = $('body');
 var backgrounds = new Array(
-    'url(https://images2.alphacoders.com/238/238870.jpg)', 
-    'url(https://www.gratistodo.com/wp-content/uploads/2022/08/Surf-fondos-de-pantalla-1.jpg)',
-    'url(https://wallpaper.dog/large/20553364.jpg)',
-    'url(https://wallpaperaccess.com/full/2491123.jpg)'
+    'url(./fotos/background_1.jpg)', 
+    'url(./fotos/background_2.jpg)',
+    'url(./fotos/background_3.jpg)',
+    'url(./fotos/background_4.jpg)',
 );
+header.css('background-image', backgrounds[0]);
 var current = 0;
 function nextBackground() {
+    
     current++;
     current = current % backgrounds.length;
     header.css('background-image', backgrounds[current]);
 }
 setInterval(nextBackground, 6000);
-header.css('background-image', backgrounds[0]);
 
 /*Funcion que te lleva a una página u otra
 function cambiar(){
@@ -172,16 +173,3 @@ function cambiar(){
         formsearch.setAttribute("action", "./resultadosse.html");
     }
 } */
-
-/*Codigo para rellenar pagina de servicio*/
-/*
-getJSON(url_servicios+id_servicio).then(json_servicio => {
-    document.getElementById("servicio_descripcion").innerHTML = json_servicio.descripcion;
-    document.getElementById("servicio_titular").innerHTML     = json_servicio.titular;
-    document.getElementById("servicio_tarifa").innerHTML      = json_servicio.tarifa;
-    document.getElementById("servicio_horario").innerHTML     = json_servicio.horario;
-    getJSON(url_perfiles+json_servicio.id_profesional).then(json_profesional=>{
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos;
-    document.getElementById("nombre_profesional").innerHTML = json_profesional.nombre+' '+json_profesional.apellidos; 
-})});
-*/

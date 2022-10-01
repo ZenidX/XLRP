@@ -10940,6 +10940,18 @@ textarea.form-control-lg {
   font-family: "Poppins", sans-serif;
 }
 
+/*body::before{
+  content: "";
+  background-image: url('https://placekitten.com/1200/800');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -50;
+  opacity: 0.75;
+}*/
 header {
   height: 90px;
   background: rgba(0, 0, 0, 0.431372549);
