@@ -33,6 +33,9 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+/*Borrar el storage de búsqueda*/
+localStorage.removeItem("busqueda");
+
 /*Necesitar una id en localStorage para entrar en perfil y creacion*/
 if(!localStorage.getItem("id")){
     alert("Debes iniciar sesión o registrarte para acceder a tu perfil.");
@@ -63,6 +66,9 @@ getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
 function cancelar() {
     location.reload();
 }
+if(localStorage.getItem("foto_perfil")){
+    document.getElementById("foto_perfil").src=localStorage.getItem("foto_perfil")
+}
 function editarperfil(){
     document.querySelectorAll(".profile_description").forEach(function(el) {
         el.style.display="none"
@@ -81,6 +87,7 @@ function editarperfil(){
             const reader = new FileReader();
             reader.onload = function(){
                 document.getElementById('foto_perfil').src = reader.result;
+                localStorage.setItem("foto_perfil",reader.result)
             }
             reader.readAsDataURL(choosedFile)
         }
@@ -177,21 +184,3 @@ function cambiar(){
         formsearch.setAttribute("action", "./resultadosse.html");
     }
 } */
-
-/*Intentar guardar la foto el localstorage*/
-/*function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-
-}
-const cambio=document.getElementById("cambio")
-cambio.onclick = function hola() {
-    bannerImage = document.getElementById('file');
-    imgData = getBase64Image(bannerImage);
-    localStorage.setItem("foto", imgData);
-}*/

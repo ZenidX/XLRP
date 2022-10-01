@@ -33,6 +33,15 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+/*Poner la foto de perfil*/
+if(localStorage.getItem("foto_perfil")){
+    document.getElementById("foto_perfil").src=localStorage.getItem("foto_perfil")
+    console.log(localStorage.getItem("foto_perfil"))
+}
+
+/*Borrar el storage de búsqueda*/
+localStorage.removeItem("busqueda");
+
 /*Necesitar una id en localStorage para entrar en perfil y creacion*/
 if(!localStorage.getItem("id")){
     alert("Debes iniciar sesión o registrarte para acceder a tu perfil.");
@@ -63,6 +72,25 @@ getJSON(api_perf+localStorage.getItem('id')).then(json_perfil=>{
 document.getElementById("cancelar").onclick=function cancelar() {
     window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/perfil.html';
 }
+
+//Intentar guardar la foto el localstorage
+/*function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+
+}
+const cambio=document.getElementById("cambio")
+cambio.onclick = function hola() {
+    bannerImage = document.getElementById('file');
+    imgData = getBase64Image(bannerImage);
+    localStorage.setItem("foto", imgData);
+}*/
+
 var file=document.getElementById("file")
 if(file){
     file.addEventListener('change', readURL, true);
@@ -133,21 +161,3 @@ function cambiar(){
         formsearch.setAttribute("action", "./resultadosse.html");
     }
 } */
-
-/*Intentar guardar la foto el localstorage*/
-/*function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-
-}
-const cambio=document.getElementById("cambio")
-cambio.onclick = function hola() {
-    bannerImage = document.getElementById('file');
-    imgData = getBase64Image(bannerImage);
-    localStorage.setItem("foto", imgData);
-}*/

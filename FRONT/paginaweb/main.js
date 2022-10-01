@@ -33,6 +33,9 @@ async function postJSON(url,JSON){
     return jsonResponse;
 }
 
+/*Borrar el storage de búsqueda*/
+localStorage.removeItem("busqueda");
+
 /*Inicio de sesión autentificación*/
 const forIni = document.getElementById("formularioInicio");
 forIni.onsubmit = async function iniciar(e){
