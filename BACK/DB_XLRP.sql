@@ -18,12 +18,11 @@ CREATE TABLE IF NOT EXISTS perfiles(
     terminos	VARCHAR(255)
 );
 INSERT INTO perfiles (id, nombre, apellidos, email, contraseña, edad, titular, municipio, cp, telefono, foto) VALUES
-  (1,"Xavi", "Lara Moreno","zenid77@gmail.com","DoomEternal",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
+  (1,"Xavi", "Lara Moreno","zenid77@gmail.com","1234",24,"Matemático","Sant Cugat del Vallés", "08195","656393148","URL_foto_xavi"),
   (2,"Ruben","Medina Martinez","ruskimartinez@gmail.com","1234",25,"Animador Gráfico 3D","Hospitalet de Llobregat","08905","689992760","URL_foto_ruben"),
-  (3,"Luis","Martinez","zenid77@gmail.com","DoomEternal",24,"Matemático","Badalona", "08195","656393148","URL_foto_luis"),
-  (4,"Pol","Vela","zenid77@gmail.com","DoomEternal",24,"Policia","Sant Cugat del Vallés", "08195","656393148","URL_foto_pol"),
-  (5,"Pantufla-Sama","pa pa papure","samaPantufla@papurree.ea","meiamoPantuflaSma",3000,"hda del bozque","my caza del uerto","78012","987654321","fotuu"),
-  (6,"Luis","Martínez","luismartinez.rodriguez.1@gmail.com","1234","25","Químico","Badalona","08917","606297136","URL_foto_luis");
+  (3,"Pol","Vela","polvelaprous@gmail.com","1234",24,"Policia","Sant Cugat del Vallés", "08195","656393148","URL_foto_pol"),
+  (4,"Alejandra","pa pa papure","samaPantufla@papurree.ea","1234",21,"Programadora","Barcelona","78012","987654321","foto"),
+  (5,"Luis","Martínez","luismartinez.rodriguez.1@gmail.com","1234","25","Químico","Badalona","08917","606297136","URL_foto_luis");
 SELECT * FROM perfiles;
 DROP TABLE IF EXISTS servicios;
 CREATE TABLE IF NOT EXISTS servicios(
@@ -37,14 +36,14 @@ CREATE TABLE IF NOT EXISTS servicios(
 	FOREIGN KEY (id_profesional) REFERENCES db_xlrp.perfiles(id)
 );
 INSERT INTO servicios (id_servicio, id_profesional, foto, titular, descripcion,horario, tarifa) VALUES
-  (1,1,"foto","Clases Particulares de Matemáticas", "Son 5 años de experiencia motivando a chavales a no tenerle miedo a las matemáticas.","Hasta el amanecer","20€/hora"),
-  (2,3,"foto","Clases Particulares de Química",     "Te enseño a hacer caramelos azules","Hasta el amanecer","20€/hora"),
-  (3,2,"foto","Clases Particulares de Animación 3D","Con fotoshop te hago lo que quieras","Hasta el amanecer","20€/hora"),
-  (4,2,"foto","Edición Photoshop", "Con fotoshop te hago lo que quieras","Hasta el amanecer","100€/hora+mamada"),
-  (5,1,"foto","Examenes de Matemáticas", "Te hago tus examenes de asignaturas matematicas del grado","Hasta el amanecer","100€/hora sin presiones, 300€/hora preparado"),
-  (6,3,"foto","Ph piscinas", "Te mido el ph de la piscina","martes por la mañana","tu primogenito"),
-  (7,4,"foto","policia gigolo", "Te doy duro con mi porra de cadete de la academia de polica","Hasta el amanecer","300€/hora+mamadas"),
-  (8,5,"foticahh","hda zuprema del bozque","manda' a to' mundoo","de pimeh añyo lunah al tece' añyo lunah","5 bolsahh de tigohh");
+  (1,1,"foto","Clases Particulares de Matemáticas", "Son 5 años de experiencia motivando a chavales a no tenerle miedo a las matemáticas.","Jornada completa","20€/hora"),
+  (2,4,"foto","Clases Particulares de Química","Preparación para clases universitarias","Jornada completa","20€/hora"),
+  (3,2,"foto","Clases Particulares de Animación 3D","Currículums dinamicos y mucho más","Jornada completa","20€/hora"),
+  (4,2,"foto","Edición Photoshop", "Con fotoshop te hago lo que quieras","Jornada completa","100€/hora"),
+  (5,1,"foto","Examenes de Matemáticas", "Te ayudo con tus examenes de asignaturas matematicas del grado","Jornada completa","100€/hora sin presiones, 300€/hora preparado"),
+  (6,4,"foto","Calidad de las piscinas", "Gestión de calidad del agua","Martes por la mañana","500€/servicio"),
+  (7,3,"foto","Guardaespaldas", "Vigilancia 24/7 e investigación","Jornada completa","300€/hora"),
+  (8,5,"foto","Web development","Desarrollo de páginas web con cualquier funcionalidad deseada","Fines de semana","1.000€/página");
 SELECT * FROM servicios;
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
@@ -61,8 +60,8 @@ CREATE TABLE IF NOT EXISTS clientes(
 );
 INSERT INTO clientes (id_cita, id_cliente, id_servicio, hora, direccion, municipio, cp, comentario) VALUES
   (1,1,1,"10:00","Calle Sant Patricio 2","Badalona","08194","Lorem Ipsum"),
-  (2,2,2,"13:00","Calle Caps 160","Barcelona","01923","comentario"),
-  (3,3,3,"40:33","Carrer Angosta 4","ojete","666666","comentario");
+  (2,2,2,"13:00","Calle Caps 160","Barcelona","01923","Lorem Ipsum"),
+  (3,3,3,"12:30","Carrer Angosta 4","Barcelona","666666","Lorem Ipsum");
 SELECT * FROM clientes;
 /*
 DROP TABLE IF EXISTS cursos;
