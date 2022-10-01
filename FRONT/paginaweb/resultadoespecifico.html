@@ -134,11 +134,15 @@
                 </div>
             </div>
             <div class="col-3">
-                <div class="col h-100 text-center p-2" style="backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
-                    datos_contacto
-                    <form action="">
-                        <input type="date">
-                        <input type="text" placeholder="Comentario">
+                <div class="col h-100 text-center p-2" style="overflow: auto; backdrop-filter: blur(5px) saturate(0%); -webkit-backdrop-filter: blur(5px) saturate(0%); background-color: rgba(238, 227, 203, 0.7); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125);">
+                    <h3>Reserva</h3>
+                    <form class="h-75" action="" id="formularioReserva" onsubmit="registrarse(value,key)">
+                        <input style="width: 100%; margin-bottom:3.5%;" type="text" placeholder="Hora de reserva" name="hora">
+                        <input style="width: 100%; margin-bottom:3.5%;" type="text" placeholder="Dirección" name="direccion">
+                        <input style="width: 100%; margin-bottom:3.5%;" type="text" placeholder="Municipio" name="municipio">
+                        <input style="width: 100%; margin-bottom:3.5%;" type="text" placeholder="C.P." name="cp">
+                        <input style="width: 100%; margin-bottom:3.5%; height: 25%;" type="text" placeholder="Comentario" required name="comentario">
+                        <button type="submit" class="text-dark">Reservar</button>
                     </form>
                 </div>
             </div>

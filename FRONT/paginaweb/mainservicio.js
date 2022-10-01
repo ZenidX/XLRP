@@ -70,8 +70,7 @@ forReg.onsubmit = async function hola(e) {
     }
     JSON=JSON.substring(0,JSON.length-1)+'}';
     // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
-    formularioRegistro=document.getElementById("formularioRegistro")
-    if (formularioRegistro.checkValidity())
+    if (forReg.checkValidity())
     postJSON(api_perf_regi,JSON).then((json_perfil)=>{
         ID_PERFIL=json_perfil.id;
         console.log(ID_PERFIL);
@@ -114,6 +113,30 @@ getJSON(api_serv+localStorage.getItem("id_servicio")).then(json_servicio=>{
     document.getElementById("horario").innerHTML=json_servicio.horario;
     document.getElementById("tarifa").innerHTML=json_servicio.tarifa;
 });
+
+/*Formulario de reserva*/
+const forRes = document.getElementById("formularioReserva");
+forRes.onsubmit = async function hola(e) {
+    e.preventDefault();
+    // Crear un array con los datos del formulario
+    const pepito = (new FormData(forReg)).entries();
+    // Convertir el array en un JSON
+    var JSON ='{';
+    for (var pair of pepito) {
+        JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
+    }
+    JSON=JSON.substring(0,JSON.length-1)+'}';
+    // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
+    if (forRes.checkValidity())
+    postJSON(api_clie_regi,JSON).then((json_clie)=>{
+        console.log(json_clie)
+        ID_PERFIL=json_clie.id_cliente;
+        console.log(ID_PERFIL);
+        localStorage.setItem("id", ID_PERFIL);
+        //window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html';
+    }); 
+};
+
 
 /*Eventos de formularios de inicio de sesión y registro*/
     //Validación de formularios
