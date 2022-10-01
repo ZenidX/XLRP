@@ -94,6 +94,15 @@ function cerrar(){
     window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
 }
 
+/*Guardar palabra de búsqueda en el localStorage*/
+document.getElementById("form-search").onsubmit=function (e){
+    e.preventDefault();
+    console.log(document.getElementById("search").value)
+    var palabra= document.getElementById("search").value
+    localStorage.setItem("busqueda", palabra)
+    window.location.href='http://127.0.0.1:5500/FRONT/paginaweb/resultados.html'
+};
+
 /*Mostrar los resultados dependiendo si escribes una palabra o no*/
 if(localStorage.getItem("busqueda")){
     getJSON(api_serv_busc+localStorage.getItem("busqueda")).then(json_servicio=>{
