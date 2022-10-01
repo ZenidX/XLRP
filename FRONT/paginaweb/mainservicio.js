@@ -119,24 +119,28 @@ const forRes = document.getElementById("formularioReserva");
 forRes.onsubmit = async function hola(e) {
     e.preventDefault();
     // Crear un array con los datos del formulario
-    const pepito = (new FormData(forReg)).entries();
+    const pepito = (new FormData(forRes)).entries();
     // Convertir el array en un JSON
-    var JSON ='{';
+    var JSON =`{"id_cliente":"${localStorage.getItem("id")}","id_servicio":"${localStorage.getItem("id_servicio")}",`;
     for (var pair of pepito) {
         JSON=JSON+'"'+pair[0]+'"'+':'+'"'+pair[1]+'"'+',';
     }
     JSON=JSON.substring(0,JSON.length-1)+'}';
+    console.log(JSON)
+    //Obligación de estar logeado para reservar
+    if(!localStorage.getItem("id")){
+        alert("Debes iniciar sesión para reservar un servicio.");
+        window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/index.html';
+    } 
     // Enviar los datos a la base de datos + con el .then que nos devuelva cosas
-    if (forRes.checkValidity())
-    postJSON(api_clie_regi,JSON).then((json_clie)=>{
+    else if (forRes.checkValidity()){
+    postJSON(api_clie,JSON).then((json_clie)=>{
         console.log(json_clie)
         ID_PERFIL=json_clie.id_cliente;
         console.log(ID_PERFIL);
-        localStorage.setItem("id", ID_PERFIL);
         //window.location.href = 'http://127.0.0.1:5500/FRONT/paginaweb/perfil.html';
-    }); 
+    })};
 };
-
 
 /*Eventos de formularios de inicio de sesión y registro*/
     //Validación de formularios
