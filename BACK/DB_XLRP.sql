@@ -37,13 +37,13 @@ CREATE TABLE IF NOT EXISTS servicios(
 );
 INSERT INTO servicios (id_servicio, id_profesional, foto, titular, descripcion,horario, tarifa) VALUES
   (1,1,"foto","Clases Particulares de Matemáticas", "Son 5 años de experiencia motivando a chavales a no tenerle miedo a las matemáticas.","Jornada completa","20€/hora"),
-  (2,4,"foto","Clases Particulares de Química","Preparación para clases universitarias","Jornada completa","20€/hora"),
+  (2,5,"foto","Clases Particulares de Química","Preparación para clases universitarias","Jornada completa","20€/hora"),
   (3,2,"foto","Clases Particulares de Animación 3D","Currículums dinamicos y mucho más","Jornada completa","20€/hora"),
   (4,2,"foto","Edición Photoshop", "Con fotoshop te hago lo que quieras","Jornada completa","100€/hora"),
   (5,1,"foto","Examenes de Matemáticas", "Te ayudo con tus examenes de asignaturas matematicas del grado","Jornada completa","100€/hora sin presiones, 300€/hora preparado"),
-  (6,4,"foto","Calidad de las piscinas", "Gestión de calidad del agua","Martes por la mañana","500€/servicio"),
+  (6,5,"foto","Calidad de las piscinas", "Gestión de calidad del agua","Martes por la mañana","500€/servicio"),
   (7,3,"foto","Guardaespaldas", "Vigilancia 24/7 e investigación","Jornada completa","300€/hora"),
-  (8,5,"foto","Web development","Desarrollo de páginas web con cualquier funcionalidad deseada","Fines de semana","1.000€/página");
+  (8,4,"foto","Web development","Desarrollo de páginas web con cualquier funcionalidad deseada","Fines de semana","1.000€/página");
 SELECT * FROM servicios;
 DROP TABLE IF EXISTS clientes;
 CREATE TABLE IF NOT EXISTS clientes(
